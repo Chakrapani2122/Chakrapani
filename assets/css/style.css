@@ -566,15 +566,7 @@ main {
   scroll-snap-align: center;
 }
 
-.testimonials-avatar-box {
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform: translate(15px, -25px);
-  background: var(--bg-gradient-onyx);
-  border-radius: 14px;
-  box-shadow: var(--shadow-1);
-}
+
 
 .testimonials-item-title { margin-bottom: 7px; }
 
@@ -1296,7 +1288,7 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   .avatar-box { border-radius: 30px; }
 
-  .avatar-box img { width: 120px; }
+  .avatar-box img { width: 120px; border-radius: 20px; }
 
   .info-content .name { margin-bottom: 15px; }
 
