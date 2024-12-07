@@ -115,3 +115,21 @@ a:hover {
         text-decoration: none;  /* Removes underline */
         color: black;  /* Sets text color to black */
     }
+
+    /* Layout the skills in 3 columns */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+    gap: 20px; /* Add space between columns */
+    margin-bottom: 20px;
+}
+
+.skills-column h3 {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.skills-column ul {
+    padding-left: 20px;
+}
