@@ -80,6 +80,7 @@ function loadContent() {
     });
 }
 
+
 // Initialize content on page load
 document.addEventListener("DOMContentLoaded", function() {
     loadContent(); // Load projects dynamically
@@ -113,3 +114,21 @@ const form = document.getElementById("contact-form");
 if (form) {
     form.addEventListener("submit", handleFormSubmit);
 }
+
+
+// Get the button element
+const goToTopButton = document.getElementById('goToTop');
+
+// Show the button when the user scrolls down 100px
+window.onscroll = function () {
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        goToTopButton.style.display = 'block';
+    } else {
+        goToTopButton.style.display = 'none';
+    }
+};
+
+// Scroll to the top when the button is clicked
+goToTopButton.onclick = function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+};

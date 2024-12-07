@@ -133,3 +133,115 @@ a:hover {
 .skills-column ul {
     padding-left: 20px;
 }
+
+
+/* Container for all certifications */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
+    gap: 20px; /* Space between cards */
+    margin-bottom: 20px;
+}
+
+/* General styles for certification cards */
+.certification-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+    height: 250px; /* Fixed height for cards */
+    background-size: cover;
+    background-position: center;
+}
+
+/* Hover effect for cards */
+.certification-card:hover {
+    transform: scale(1.05);
+}
+
+/* Anchor link within the certification card */
+.certification-link {
+    display: block;
+    height: 100%;
+    text-decoration: none; /* Remove underline */
+    color: white; /* Text color */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Card title inside certification card */
+.certification-card h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    z-index: 2; /* Ensure text is above the background */
+    margin: 0;
+}
+
+/* Background images for each card */
+#certification-1 {
+    background-image: url('assets\images\Data_Analysis_Coursera.png');
+}
+
+#certification-2 {
+    background-image: url('https://via.placeholder.com/400x250/7bcfe3/ffffff?text=Infosys');
+}
+
+#certification-3 {
+    background-image: url('https://via.placeholder.com/400x250/89c2f9/ffffff?text=LinkedIn');
+}
+
+#certification-4 {
+    background-image: url('https://via.placeholder.com/400x250/62c0d9/ffffff?text=LinkedIn');
+}
+
+#certification-5 {
+    background-image: url('https://via.placeholder.com/400x250/52a8c5/ffffff?text=LinkedIn');
+}
+
+#certification-6 {
+    background-image: url('https://via.placeholder.com/400x250/4f9ec9/ffffff?text=SkillUp');
+}
+
+/* Optional: If you want a subtle overlay, adjust the opacity */
+.certification-link::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3); /* Optional darker overlay for better readability */
+    z-index: 1;
+}
+
+
+
+/* Go to Top Button */
+#goToTop {
+    position: fixed;
+    bottom: 20px; /* Distance from the bottom of the page */
+    right: 20px; /* Distance from the right side of the page */
+    background-color: #ffffff; /* Button color */
+    color: rgb(0, 0, 0); /* Text color */
+    border: none;
+    border-radius:10px; /* Rounded button */
+    padding: 10px 15px; /* Button size */
+    font-size: 16px; /* Text size */
+    cursor: pointer;
+    display: none; /* Initially hidden */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth appearance */
+}
+
+#goToTop:hover {
+    background-color: #949597; /* Darker blue on hover */
+    transform: scale(1.1); /* Slightly enlarge on hover */
+}
