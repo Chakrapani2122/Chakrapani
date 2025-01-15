@@ -27,7 +27,7 @@ function loadContent() {
             title: "IRIS FLOWER SPECIES DETECTION",
             description: "Achieved 97% accuracy using Support Vector Classifier (SVC) to classify flower species based on petal and sepal dimensions.",
             link: "https://link-to-iris-project.com",  // Replace with the actual link
-            image: "assets\images\iris.jpg"  // Replace with the actual image URL
+            image: "assets/images/iris.jpg"  // Replace with the actual image URL
         },
         {
             title: "EMAIL SPAM DETECTION",
@@ -52,7 +52,7 @@ function loadContent() {
     projects.forEach(project => {
         const projectElement = document.createElement("div");
         projectElement.classList.add("card");
-        
+
         // Create an anchor tag wrapping the card content
         const anchor = document.createElement("a");
         anchor.href = project.link;
@@ -63,7 +63,7 @@ function loadContent() {
         projectElement.style.backgroundImage = `url(${project.image})`;
         projectElement.style.backgroundSize = "cover";  // Ensures the image covers the entire card
         projectElement.style.backgroundPosition = "center";  // Centers the image
-        
+
         // Insert content inside the card
         projectElement.innerHTML = `
             <div class="card-content">
@@ -71,24 +71,23 @@ function loadContent() {
                 <p>${project.description}</p>
             </div>
         `;
-        
+
         // Append the card inside the anchor tag
         anchor.appendChild(projectElement);
-        
+
         // Append the anchor-wrapped card to the projects container
         projectsContainer.appendChild(anchor);
     });
 }
 
-
 // Initialize content on page load
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     loadContent(); // Load projects dynamically
 
     // Example: Add event listeners for smooth scrolling
     const projectSectionLink = document.getElementById("projects-link");
     if (projectSectionLink) {
-        projectSectionLink.addEventListener("click", function(event) {
+        projectSectionLink.addEventListener("click", function (event) {
             event.preventDefault();
             document.getElementById("projects").scrollIntoView({ behavior: 'smooth' });
         });
@@ -114,7 +113,6 @@ const form = document.getElementById("contact-form");
 if (form) {
     form.addEventListener("submit", handleFormSubmit);
 }
-
 
 // Get the button element
 const goToTopButton = document.getElementById('goToTop');
