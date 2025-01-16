@@ -128,7 +128,7 @@ projects = [
         "title": "GUI-BASED WEATHER FORECASTING APPLICATION",
         "description": "Developed a Python app integrated with OpenWeatherMap API to deliver real-time weather forecasts with 95% accuracy.",
         "link": "https://github.com/Chakrapani2122/Weather-App",
-        "image": "assets/images/Projects/weatherapp.png"  # Updated path to project image
+        "image": "assets/images/Projects/Weatherapp.png"  # Updated path to project image
     },
 ]
 
