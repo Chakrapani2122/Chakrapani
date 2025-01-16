@@ -6,6 +6,12 @@ from email.mime.multipart import MIMEMultipart
 from dotenv import load_dotenv
 import os
 
+# Set the page configuration
+st.set_page_config(
+    page_title="Chakrapani Gajji",
+    page_icon="src/assets/images/logo.png"  # Path to your logo image
+)
+
 # Load environment variables from .env file
 load_dotenv()
 
@@ -16,17 +22,17 @@ st.title("Chakrapani Gajji")
 st.header("About Me")
 
 # Create a layout with two columns
-col1, col2 = st.columns([3, 1])
+col1, col2 = st.columns([3, 2])
 
 with col1:
     st.write("""
-    Data scientist with expertise in machine learning, AI, and data analytics. Currently pursuing a Master’s in Data Analytics at Kansas State University.
-    Experienced in projects like image colorization with CNNs, real-time object counting, and sales forecasting using Random Forest models. Proficient in Python, SQL, Tableau, and TensorFlow, with a strong background in soil data analysis, achieving 98% accuracy and improving workflow efficiency by 20%. Seeking opportunities to apply my skills in data-driven decision-making and innovative solutions.
+    Data scientist with expertise in Machine Learning, AI, and Data Analytics. Currently pursuing a Master’s in Data Analytics at Kansas State University.
+    Experienced in projects like Image Colorization with CNNs, Real-time Object Counting, and Sales Forecasting using Random Forest models. Proficient in Python, SQL, Tableau, and TensorFlow, with a strong background in soil data analysis, achieving 98% accuracy and improving workflow efficiency by 20%. Seeking opportunities to apply my skills in data-driven decision-making and innovative solutions.
     """)
 
 with col2:
     image = Image.open("src/assets/images/photo2.jpeg")
-    st.image(image, caption="Chakrapani Gajji", output_format="JPEG", width=300)  # Adjust the width as needed
+    st.image(image, caption="Chakrapani Gajji", output_format="JPEG", width=400)  # Adjust the width as needed
 
 # Details About Me Section
 st.header("Details About Me")
@@ -38,7 +44,7 @@ st.write("""
 - **Date of Birth:** August 21, 2002
 - **LinkedIn:** [Chakrapani](https://www.linkedin.com/in/chakrapanigajji/)
 - **GitHub:** [Chakrapani](https://github.com/Chakrapani2122)
-- **Address:** Tunstall Cir Apt 24 Manhattan, Kansas 66502 United States of America.
+- **Address:** 2020 Tunstall Cir Apt 24 Manhattan, Kansas 66502 United States of America.
 """)
 
 # Experience Section
@@ -61,13 +67,14 @@ st.write("""
 st.header("Education")
 st.subheader("Kansas State University")
 st.write("Master’s in Data Analytics (2024 - Expected 2025)")
+st.write("GPA: 3.67/4.0")
 st.write("""
 I am currently pursuing a Master’s in Data Analytics at Kansas State University, with an expected graduation in December 2025. My studies emphasize advanced statistical modeling, machine learning, and big data analysis, providing me with the expertise to turn data into valuable insights. Through practical projects, I am gaining experience in data management, visualization, and predictive analytics, utilizing tools such as Python, SQL, and Tableau. This program has strengthened my ability to solve data-driven challenges and has prepared me to apply analytical solutions across various industries.
 """)
 st.write("Address: Manhattan, Kansas, USA 66502")
 st.subheader("Sri Indu College of Engineering and Technology")
 st.write("Bachelor’s in Computer Science Engineering (AI & ML, 2020 - 2024)")
-st.write("Grade: 3.41/4.0")
+st.write("Grade: 3.45/4.0")
 st.write("""
 I earned my Bachelor’s degree in Computer Science Engineering with a specialization in AI & ML from Sri Indu College of Engineering and Technology. During my studies, I developed a strong foundation in machine learning, data science, and programming, with an emphasis on applying AI to solve real-world problems. Through coursework, projects, and internships, I gained practical experience in data analysis and model development, preparing me to tackle complex challenges in data analytics and beyond.
 """)
@@ -90,44 +97,44 @@ projects = [
     {
         "title": "VIVIDTONES",
         "description": "Implemented CNNs with pre-trained deep learning models to colorize grayscale images, achieving realistic color outputs.",
-        "link": "https://link-to-vividtones-project.com",
+        "link": "https://drive.google.com/file/d/1Nu5hzntq6PtnXyEdR5oteFLzXdw_jVl_/view?usp=sharing",
         "image": "src/assets/images/Projects/vividtones.jpg"
     },
     {
         "title": "PRECISION OBJECT COUNTING SYSTEM",
         "description": "Built a computer vision-based tool for real-time object and people counting using OpenCV.",
-        "link": "https://link-to-object-counting-project.com",
+        "link": "https://colab.research.google.com/drive/1Q-Wj4eXzCx4HRM-eNA1b1IJTJUzg0Ay_?usp=sharing",
         "image": "src/assets/images/Projects/precisionobjectcounting.png"
     },
     {
         "title": "IRIS FLOWER SPECIES DETECTION",
         "description": "Achieved 97% accuracy using Support Vector Classifier (SVC) to classify flower species based on petal and sepal dimensions.",
-        "link": "https://link-to-iris-project.com",
+        "link": "https://github.com/Chakrapani2122/ML-Projects/tree/main/Iris%20Flower%20Species%20recognition",
         "image": "src/assets/images/Projects/iris.jpg"
     },
     {
         "title": "EMAIL SPAM DETECTION",
         "description": "Improved spam email classification accuracy to 98% using Logistic Regression and feature extraction from text data.",
-        "link": "https://link-to-email-spam-project.com",
+        "link": "https://github.com/Chakrapani2122/ML-Projects/tree/main/E-mail%20Spam%20detection",
         "image": "src/assets/images/Projects/email-spam.jpg"
     },
     {
         "title": "ADVERTISING SALES PREDICTION",
         "description": "Forecasted sales with 98% accuracy using Random Forest models, optimizing features for better prediction reliability.",
-        "link": "https://link-to-sales-prediction-project.com",
+        "link": "https://github.com/Chakrapani2122/ML-Projects/tree/main/Advertising%20Sales%20Prediction",
         "image": "src/assets/images/Projects/advertising-sales.jpg"
     },
     {
         "title": "GUI-BASED WEATHER FORECASTING APPLICATION",
         "description": "Developed a Python app integrated with OpenWeatherMap API to deliver real-time weather forecasts with 95% accuracy.",
-        "link": "https://link-to-weather-app-project.com",
+        "link": "https://github.com/Chakrapani2122/Weather-App",
         "image": "src/assets/images/Projects/weatherapp.png"
     },
 ]
 
 for project in projects:
     st.subheader(project["title"])
-    st.image(project["image"], use_container_width=True)
+    st.image(project["image"], use_container_width=True, width=100)
     st.write(project["description"])
     st.markdown(f"[View Source Code]({project['link']})")
 
@@ -182,7 +189,18 @@ certifications = [
 for certificate in certifications:
     st.subheader(certificate["title"])
     st.image(certificate["image"], use_container_width=True)
-    st.markdown(f"[See Online]({certificate['link']})")
+    # st.markdown(f"[See Online]({certificate['link']})")
+
+# Resume Download Button
+st.header("Resume")
+resume_file_path = "src/assets/Chakrapani_Gajji_Resume.pdf"
+with open(resume_file_path, "rb") as file:
+    btn = st.download_button(
+        label="Download Resume",
+        data=file,
+        file_name="Chakrapani_Gajji_Resume.pdf",
+        mime="application/pdf"
+    )
 
 # Contact Section
 st.header("Contact")
@@ -194,7 +212,7 @@ with st.form("contact_form"):
     submitted = st.form_submit_button("Submit")
     if submitted:
         # Email configuration
-        sender_email = email
+        sender_email = "chakrapani.g99@gmail.com"  # Use a predefined email address
         receiver_email = "chakrapani.g99@gmail.com"
         password = os.getenv("EMAIL_PASSWORD")
 
@@ -216,5 +234,7 @@ with st.form("contact_form"):
             server.sendmail(sender_email, receiver_email, text)
             server.quit()
             st.success("Thank you for your message! We will get back to you soon.")
+        except smtplib.SMTPAuthenticationError:
+            st.error("Authentication error: Please check your email credentials and ensure that less secure app access is enabled or use an App Password if 2-Step Verification is enabled.")
         except Exception as e:
             st.error(f"An error occurred: {e}")
