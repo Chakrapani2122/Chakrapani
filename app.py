@@ -9,7 +9,7 @@ import os
 # Set the page configuration
 st.set_page_config(
     page_title="Chakrapani Gajji",
-    page_icon="src/assets/images/logo.png"  # Path to your logo image
+    page_icon="assets/images/logo.png"  # Updated path to your logo image
 )
 
 # Load environment variables from .env file
@@ -31,7 +31,7 @@ with col1:
     """)
 
 with col2:
-    image = Image.open("src/assets/images/photo2.jpeg")
+    image = Image.open("assets/images/photo.jpg")  # Updated path to your photo
     st.image(image, caption="Chakrapani Gajji", output_format="JPEG", width=400)  # Adjust the width as needed
 
 # Details About Me Section
@@ -98,37 +98,37 @@ projects = [
         "title": "VIVIDTONES",
         "description": "Implemented CNNs with pre-trained deep learning models to colorize grayscale images, achieving realistic color outputs.",
         "link": "https://drive.google.com/file/d/1Nu5hzntq6PtnXyEdR5oteFLzXdw_jVl_/view?usp=sharing",
-        "image": "src/assets/images/Projects/vividtones.jpg"
+        "image": "assets/images/Projects/vividtones.jpg"  # Updated path to project image
     },
     {
         "title": "PRECISION OBJECT COUNTING SYSTEM",
         "description": "Built a computer vision-based tool for real-time object and people counting using OpenCV.",
         "link": "https://colab.research.google.com/drive/1Q-Wj4eXzCx4HRM-eNA1b1IJTJUzg0Ay_?usp=sharing",
-        "image": "src/assets/images/Projects/precisionobjectcounting.png"
+        "image": "assets/images/Projects/precisionobjectcounting.png"  # Updated path to project image
     },
     {
         "title": "IRIS FLOWER SPECIES DETECTION",
         "description": "Achieved 97% accuracy using Support Vector Classifier (SVC) to classify flower species based on petal and sepal dimensions.",
         "link": "https://github.com/Chakrapani2122/ML-Projects/tree/main/Iris%20Flower%20Species%20recognition",
-        "image": "src/assets/images/Projects/iris.jpg"
+        "image": "assets/images/Projects/iris.jpg"  # Updated path to project image
     },
     {
         "title": "EMAIL SPAM DETECTION",
         "description": "Improved spam email classification accuracy to 98% using Logistic Regression and feature extraction from text data.",
         "link": "https://github.com/Chakrapani2122/ML-Projects/tree/main/E-mail%20Spam%20detection",
-        "image": "src/assets/images/Projects/email-spam.jpg"
+        "image": "assets/images/Projects/email-spam.jpg"  # Updated path to project image
     },
     {
         "title": "ADVERTISING SALES PREDICTION",
         "description": "Forecasted sales with 98% accuracy using Random Forest models, optimizing features for better prediction reliability.",
         "link": "https://github.com/Chakrapani2122/ML-Projects/tree/main/Advertising%20Sales%20Prediction",
-        "image": "src/assets/images/Projects/advertising-sales.jpg"
+        "image": "assets/images/Projects/advertising-sales.jpg"  # Updated path to project image
     },
     {
         "title": "GUI-BASED WEATHER FORECASTING APPLICATION",
         "description": "Developed a Python app integrated with OpenWeatherMap API to deliver real-time weather forecasts with 95% accuracy.",
         "link": "https://github.com/Chakrapani2122/Weather-App",
-        "image": "src/assets/images/Projects/weatherapp.png"
+        "image": "assets/images/Projects/weatherapp.png"  # Updated path to project image
     },
 ]
 
@@ -157,32 +157,32 @@ certifications = [
     {
         "title": "Data Analysis with Python - Coursera",
         "link": "https://link-to-vividtones-project.com",
-        "image": "src/assets/images/certificates/Data_Analysis_Coursera.png"
+        "image": "assets/images/certificates/Data_Analysis_Coursera.png"
     },
     {
         "title": "Introduction to Data Science - Infosys Springboard",
         "link": "https://link-to-object-counting-project.com",
-        "image": "src/assets/images/certificates/Introduction_to_Dat_Science_Infosys_Springboard.png"
+        "image": "assets/images/certificates/Introduction_to_Dat_Science_Infosys_Springboard.png"
     },
     {
         "title": "Python (OOPs) - LinkedIn",
         "link": "https://link-to-iris-project.com",
-        "image": "src/assets/images/certificates/OOPs Python.png"
+        "image": "assets/images/certificates/OOPs Python.png"
     },
     {
         "title": "Structured Query Language - LinkedIn",
         "link": "https://link-to-email-spam-project.com",
-        "image": "src/assets/images/certificates/DC-SQL.jpg"
+        "image": "assets/images/certificates/DC-SQL.jpg"
     },
     {
         "title": "C Programming - LinkedIn",
         "link": "https://link-to-sales-prediction-project.com",
-        "image": "src/assets/images/certificates/Linkedin C.jpg"
+        "image": "assets/images/certificates/Linkedin C.jpg"
     },
     {
         "title": "Introduction to AI - SkillUp",
         "link": "https://link-to-weather-app-project.com",
-        "image": "src/assets/images/certificates/Skillup-AI.jpg"
+        "image": "assets/images/certificates/Skillup-AI.jpg"
     },
 ]
 
@@ -193,7 +193,7 @@ for certificate in certifications:
 
 # Resume Download Button
 st.header("Resume")
-resume_file_path = "src/assets/Chakrapani_Gajji_Resume.pdf"
+resume_file_path = "assets/Chakrapani_Gajji_Resume.pdf"  # Updated path to resume
 with open(resume_file_path, "rb") as file:
     btn = st.download_button(
         label="Download Resume",
