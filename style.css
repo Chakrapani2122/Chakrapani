@@ -1,7 +1,7 @@
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
-    padding: 0;
+    padding: 2%;
     background-color: #ffffff;
     color: #333;
 }
@@ -68,7 +68,7 @@ section h2 {
     padding-right: 20px;
 }
 
-content .image {
+.content .image {
     flex: 2;
     text-align: center;
 }
@@ -77,6 +77,8 @@ content .image {
     max-width: 100%;
     height: auto;
     border-radius: 10px;
+    width: 600px; /* Adjust the width */
+    height: auto; /* Maintain aspect ratio */
 }
 
 table {
@@ -92,16 +94,31 @@ table, th, td {
 th, td {
     padding: 10px;
     text-align: left;
+    vertical-align: top;
 }
 
 .project, .certificate {
     margin-bottom: 20px;
 }
 
-.project img, .certificate img {
-    max-width: 100%;
-    height: auto;
+.certificate img {
+    width: 500px; /* Set the width */
+    height: auto; /* Set the height */
     border-radius: 10px;
+    /*fill the image in the container*/
+    object-fit: cover;
+    /*center the image*/
+    object-position: center;
+
+}
+.project img {
+    width: 500px; /* Set the width */
+    height: 350px; /* Set the height */
+    border-radius: 10px;
+    /*fill the image in the container*/
+    object-fit: cover;
+    /*center the image*/
+    object-position: center;
 }
 
 form {
