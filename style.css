@@ -1,0 +1,322 @@
+/* General styles */
+body {
+    margin: 0;
+    font-family: 'Roboto', Arial, sans-serif; /* Professional font family */
+    background: #222222; /* Updated background color */
+    color: #fff; /* White text */
+}
+
+/* Navigation bar styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to right, #000, #333); /* Black and gray mixed shade */
+    padding: 10px 20px;
+}
+
+.navbar .logo {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .logo img {
+    height: 40px;
+    margin-right: 10px;
+    border-radius: 50%; /* Circular image */
+}
+
+.navbar .logo span {
+    color: #2e8bc8; /* Updated color */
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.navbar .nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar .nav-links li {
+    margin: 0 10px;
+}
+
+.navbar .nav-links a {
+    text-decoration: none;
+    color: #fff; /* White text */
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.navbar .nav-links a:hover {
+    color: #2e8bc8; /* Updated color */
+}
+
+/* Hide menu icon in desktop view */
+.menu-icon {
+    display: none; /* Hidden by default */
+}
+
+/* Section styling */
+section {
+    padding: 60px;
+    text-align: center;
+    color: #fff; /* White text */
+    background-color: #222222; /* Updated background color */
+}
+
+/* Homepage section styling */
+.home-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    height: 100vh; /* Full viewport height */
+}
+
+.home-left {
+    flex: 1;
+    text-align: left;
+    color: #ffffff; /* Blue shade */
+    font-size: 36px;
+    font-weight: bold;
+    max-width: 50%; /* Restrict content to the left half */
+}
+
+.home-left h2 {
+    color: #2e8bc8; /* Updated color */
+    font-size: 28px;
+    margin-top: 10px;
+}
+
+.home-left p {
+    color: #fff; /* White color for paragraph */
+    font-size: 20px;
+    line-height: 1.6;
+    margin-top: 10px;
+}
+
+.home-right {
+    flex: 1;
+    text-align: right;
+    display: flex;
+    justify-content: flex-end; /* Align image to the right */
+    align-items: center; /* Center image vertically */
+    height: 100%; /* Full height of the section */
+    margin-top: -400px; /* Move the image upwards */
+}
+
+.home-right img {
+    width: 40%; /* Adjust image size */
+    height: auto;
+    padding: 10px; /* Padding around the image */
+    border-radius: 50%; /* Circular image */
+    border: 10px solid #fff; /* White border */
+}
+
+/* Section visibility */
+.section {
+    display: none; /* Hide all sections by default */
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out; /* Smooth transition */
+}
+
+.section.active {
+    display: block; /* Show only the active section */
+    opacity: 1;
+}
+
+/* About section styling */
+#about p {
+    font-size: 18px; /* Increase text size */
+    line-height: 1.8; /* Improve readability */
+    padding: 0 200px; /* Add padding to the left and right */
+}
+
+/* Skills table styling */
+.skills-table {
+    width: auto; /* Adjust width to fit content */
+    margin: 0 auto; /* Center the table horizontally */
+    text-align: center;
+    border-collapse: collapse; /* Remove extra spacing between cells */
+}
+
+.skills-table th, .skills-table td {
+    padding: 5px; /* Reduce padding for compact layout */
+    text-align: center; /* Center the contents */
+    color: #fff; /* White text */
+    border: 1px solid #222222; /* Match website background color */
+}
+
+.skills-table img {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    background-color: #fff; /* White background for icons */
+    padding: 5px;
+}
+
+/* Skills section styling */
+.skills-category {
+    margin: 20px 0; /* Reduce vertical spacing between categories */
+    text-align: center;
+}
+
+.skills-category h3 {
+    font-size: 24px;
+    color: #2e8bc8; /* Updated color */
+    margin-bottom: 20px;
+}
+
+.skills-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.skills-icons img {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    background-color: #fff; /* White background for icons */
+    padding: 5px;
+}
+
+.skill-icon {
+    width: 50px;
+    height: 50px;
+    fill: #fff; /* White color for icons */
+    background-color: #2e8bc8; /* Match the theme color */
+    padding: 5px;
+    border-radius: 5px;
+    object-fit: contain; /* Ensure icons fit within the container */
+}
+
+.skills-details {
+    text-align: left;
+    margin: 0 auto;
+    max-width: 80%;
+}
+
+.skills-details p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #fff; /* White text for descriptions */
+}
+
+/* Education section styling */
+#education .education-item {
+    text-align: left; /* Align text to the left */
+    padding: 0 500px; /* Add space to both left and right sides */
+    margin-bottom: 20px; /* Add spacing between education items */
+}
+
+#education .education-item h2 {
+    font-size: 22px; /* Adjust font size for headings */
+    color: #2e8bc8; /* Match theme color */
+    margin-bottom: 10px; /* Add spacing below headings */
+}
+
+#education .education-item p {
+    font-size: 16px; /* Adjust font size for paragraphs */
+    line-height: 1.6; /* Improve readability */
+    margin-bottom: 10px; /* Add spacing between paragraphs */
+}
+
+/* Responsive styles for mobile view */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar .nav-links {
+        display: none; /* Hide navigation links by default */
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .navbar .nav-links.active {
+        display: flex; /* Show navigation links when active */
+    }
+
+    .navbar .menu-icon {
+        display: block; /* Show menu icon in mobile view */
+    }
+
+    .navbar .logo img {
+        display: none; /* Hide the logo image in mobile view */
+    }
+
+    .home-left {
+        max-width: 100%; /* Allow content to span the full width */
+    }
+
+    .home-left p {
+        font-size: 12px; /* Smaller text size for paragraph */
+        text-align: justify; /* Justify text for better readability */
+    }
+
+    .home-right {
+        display: none; /* Hide the image in mobile view */
+    }
+
+    .section {
+        padding: 20px; /* Add padding for better spacing */
+        margin-bottom: 20px; /* Add space between sections */
+        text-align: left; /* Align text to the left */
+    }
+
+    #about p {
+        padding: 0 10px; /* Full width with smaller padding */
+        text-align: justify; /* Justify text for better readability */
+    }
+
+    .skills-category {
+        margin: 20px 0; /* Add spacing between categories */
+    }
+
+    .skills-category h3 {
+        font-size: 20px; /* Adjust font size for category name */
+        margin-bottom: 10px; /* Add spacing below category name */
+    }
+
+    .skills-table {
+        width: 100%; /* Full width for mobile view */
+        margin: 0 auto; /* Center the table horizontally */
+        display: flex; /* Display icons in a row */
+        flex-wrap: wrap; /* Wrap icons to the next line if needed */
+        justify-content: center; /* Center align icons */
+    }
+
+    .skills-table tr {
+        display: flex; /* Ensure rows are displayed */
+        flex-direction: row; /* Display icons and names side by side */
+        align-items: center; /* Center align skills */
+        justify-content: center; /* Center align rows */
+    }
+
+    .skills-table td {
+        display: flex; /* Display icons and names together */
+        flex-direction: column; /* Stack icon and name vertically */
+        align-items: center; /* Center align content */
+        padding: 10px; /* Add spacing around skills */
+    }
+
+    .skills-table img {
+        width: 50px; /* Adjust icon size */
+        height: 50px;
+        margin-bottom: 5px; /* Add spacing below the icon */
+    }
+
+    .skills-table td:last-child {
+        display: none; /* Hide skill names in mobile view */
+    }
+
+    #education .education-item {
+        padding: 0; /* Remove padding in mobile view */
+    }
+}
