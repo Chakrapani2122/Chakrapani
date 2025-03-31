@@ -65,3 +65,10 @@ menuIcon.addEventListener('click', () => {
         });
     }
 });
+
+const themeToggleSwitch = document.getElementById('theme-toggle');
+const body = document.body;
+
+themeToggleSwitch.addEventListener('change', () => {
+    body.classList.toggle('light-theme'); // Toggle the light-theme class
+});
