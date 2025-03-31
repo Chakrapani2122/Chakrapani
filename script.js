@@ -31,6 +31,19 @@ document.querySelectorAll('.nav-link').forEach(link => {
     });
 });
 
+// Highlight the active navigation link
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', function () {
+        // Remove "active" class from all links
+        document.querySelectorAll('.nav-link').forEach(navLink => {
+            navLink.classList.remove('active');
+        });
+
+        // Add "active" class to the clicked link
+        this.classList.add('active');
+    });
+});
+
 // Toggle navigation menu for mobile view
 const menuIcon = document.createElement('div');
 menuIcon.classList.add('menu-icon');
