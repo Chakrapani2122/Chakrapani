@@ -537,6 +537,9 @@ section {
         display: none; /* Hide navigation links by default */
         flex-direction: column;
         width: 100%;
+        height: auto; /* Allow dynamic height */
+        max-height: 300px; /* Increase the height of the menu box */
+        overflow-y: auto; /* Add scroll if content exceeds height */
     }
 
     .navbar .nav-links.active {
@@ -545,10 +548,22 @@ section {
 
     .navbar .menu-icon {
         display: block; /* Show menu icon in mobile view */
+        font-size: 24px; /* Increase the size of the menu button */
+        padding: 10px; /* Add padding for better touch area */
     }
 
     .navbar .logo img {
         display: none; /* Hide the logo image in mobile view */
+    }
+
+    .navbar .nav-links li {
+        font-size: 20px; /* Increase font size of menu sections */
+        padding: 10px 0; /* Add vertical padding for better spacing */
+        border-bottom: 1px solid #ccc; /* Add a thin line between sections */
+    }
+
+    .navbar .nav-links li:last-child {
+        border-bottom: none; /* Remove the line for the last section */
     }
 
     .home-left {
@@ -723,6 +738,77 @@ section {
     .card {
         margin: 0 auto; /* Center the cards */
         width: 90%; /* Adjust card width for mobile view */
+    }
+
+    .menu-icon {
+        position: absolute; /* Position the menu button */
+        top: 10px; /* Place it at the top */
+        right: 10px; /* Align it to the right */
+        font-size: 24px; /* Ensure the size remains increased */
+        padding: 10px; /* Add padding for better touch area */
+    }
+}
+
+/* Responsive styles for iPad view */
+@media (max-width: 1024px) {
+    #education .education-item,
+    #experience .experience-item {
+        padding: 0 20px; /* Reduce padding for better fit */
+        text-align: left; /* Align text to the left */
+    }
+
+    .certifications-grid,
+    .projects-grid {
+        grid-template-columns: 1fr; /* Display one card per row */
+        gap: 15px; /* Adjust spacing between items */
+    }
+
+    .certification-item,
+    .project-item {
+        padding: 15px; /* Adjust padding for smaller screens */
+    }
+
+    .certification-image,
+    .project-image {
+        width: 100%; /* Make the image fit the card width */
+        height: auto;
+    }
+
+    #education .education-item h2,
+    #experience .experience-item h2 {
+        font-size: 20px; /* Adjust font size for headings */
+        margin-bottom: 10px; /* Add spacing below headings */
+    }
+
+    #education .education-item p,
+    #experience .experience-item p,
+    #experience .experience-item ul {
+        font-size: 14px; /* Adjust font size for text */
+        line-height: 1.4; /* Improve readability */
+    }
+
+    #experience .experience-item ul {
+        padding-left: 20px; /* Add padding for list items */
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    #education .education-item,
+    #experience .experience-item {
+        padding: 0; /* Remove left and right padding */
+        text-align: left; /* Align text to the left */
+    }
+
+    .certifications-grid,
+    .projects-grid {
+        padding: 0; /* Remove padding for the grid */
+        grid-template-columns: repeat(2, 1fr); /* Two cards per row */
+        gap: 20px; /* Adjust spacing between items */
+    }
+
+    .certification-item,
+    .project-item {
+        padding: 20px; /* Maintain padding inside the cards */
     }
 }
 
@@ -956,4 +1042,8 @@ light-theme h6,
 .light-theme .project-item {
     background-color: #ffffff; /* Change project cards background to white */
     color: #000; /* Ensure text color is black */
+}
+
+.light-theme .home-right img {
+    border-color: #2e8bc8; /* Change border color to blue */
 }
