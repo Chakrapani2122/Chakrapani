@@ -1047,3 +1047,35 @@ light-theme h6,
 .light-theme .home-right img {
     border-color: #2e8bc8; /* Change border color to blue */
 }
+
+/* Social links table styling */
+.social-links-table {
+    margin: 20px 0;
+    width: auto; /* Adjust width to fit content */
+    text-align: center;
+}
+
+.social-links-table td {
+    padding: 0 5px; /* Reduce horizontal padding for less space between icons */
+}
+
+.social-icon {
+    width: 40px; /* Adjust icon size */
+    height: 40px;
+}
+
+.social-link {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #2e8bc8;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.social-link:hover {
+    background-color: #1e6fa8;
+    transform: scale(1.1);
+}
