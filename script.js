@@ -98,3 +98,14 @@ if (goTopBtn) {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 }
+
+// Show success message on submit
+document.querySelectorAll('.contact-form').forEach(form => {
+    form.addEventListener('submit', function(e) {
+        e.preventDefault(); // Prevent default for instant feedback
+        setTimeout(() => {
+            const msg = form.querySelector('#form-success');
+            if (msg) msg.style.display = 'block';
+        }, 500);
+    });
+});

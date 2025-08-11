@@ -3,17 +3,20 @@ body, html {
     margin: 0;
     padding: 0;
     font-family: 'Inter', 'Montserrat', Arial, sans-serif;
-    background: #f7f9fc;
-    color: #222;
+    background: #f8fafc;
+    color: #222e3a;
     min-height: 100vh;
     box-sizing: border-box;
     transition: background 0.4s, color 0.4s;
+    font-size: 16px; /* Decreased from 18px */
+    line-height: 1.6;
+    letter-spacing: 0.1px;
 }
 html { scroll-behavior: smooth; }
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 32px 16px;
+    padding: 32px 24px;
 }
 
 /* Navigation Bar - professional, simple */
@@ -66,7 +69,7 @@ html { scroll-behavior: smooth; }
 .nav-link {
     font-weight: 600;
     font-size: 1rem;
-    color: #1e40af;
+    color: #176fc1;
     background: none;
     border-radius: 6px;
     padding: 8px 14px;
@@ -85,7 +88,12 @@ html { scroll-behavior: smooth; }
 }
 .nav-link.active::after, .nav-link:hover::after {
     content: '';
-    display: none;          /* Remove underline effect */
+    display: block;
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 3px;
+    background: #176fc1;
+    border-radius: 2px;
 }
 .menu-toggle {
     display: none;
@@ -188,7 +196,7 @@ html { scroll-behavior: smooth; }
     transform: scale(1.05) rotate(-2deg);
 }
 .main-title {
-    font-size: 3.2rem;
+    font-size: 2.4rem; /* Decreased from 3.2rem */
     font-weight: 900;
     margin-bottom: 0.5rem;
     color: #1e40af;
@@ -217,7 +225,7 @@ html { scroll-behavior: smooth; }
     100% { opacity: 1;}
 }
 .subtitle {
-    font-size: 1.6rem;
+    font-size: 1.25rem; /* Decreased from 1.6rem */
     font-weight: 700;
     color: #176fc1;
     margin-bottom: 1rem;
@@ -227,7 +235,7 @@ html { scroll-behavior: smooth; }
     margin: 0 8px;
 }
 .intro-text {
-    font-size: 1.15rem;
+    font-size: 1rem; /* Decreased from 1.15rem */
     margin-bottom: 1rem;
     color: #444;
 }
@@ -266,7 +274,8 @@ html { scroll-behavior: smooth; }
 .resume-button-container {
     margin-top: 1rem;
 }
-.btn-primary, .download-resume-btn {
+.resume-button-container .btn-primary,
+.resume-button-container .download-resume-btn {
     background: #176fc1;
     color: #fff;
     border-radius: 8px;
@@ -275,23 +284,20 @@ html { scroll-behavior: smooth; }
     font-size: 1rem;
     padding: 10px 24px;
     border: none;
-    transition: background 0.2s, box-shadow 0.2s;
-    width: 110px;
-    min-width: unset;
-    display: block;
-    margin-left: 0;
-    text-align: center;
-}
-.btn-primary:hover, .download-resume-btn:hover {
-    background: #1e40af;
-    box-shadow: 0 2px 12px rgba(30,64,175,0.14);
+    transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+    width: auto;           /* Allow button to fit its text */
+    min-width: 130px;      /* Minimum width for appearance */
+    max-width: 220px;      /* Prevent button from being too wide */
+    white-space: nowrap;   /* Prevent text wrapping */
+    padding-left: 18px;
+    padding-right: 18px;
 }
 
 /* Section */
 .section {
     margin-top: 48px;
     margin-bottom: 48px;
-    padding: 32px 24px;
+    padding: 48px 0 48px 0;
     animation: fadeInSection 0.8s cubic-bezier(.77,0,.175,1) both;
     will-change: opacity, transform;
 }
@@ -299,7 +305,7 @@ html { scroll-behavior: smooth; }
 /* Apply home section padding/margin to all sections except #home */
 .section:not(#home) {
     background: #fff;
-    color: #222;
+    color: #222e3a;
     border-radius: 14px;
     box-shadow: 0 2px 12px rgba(30,64,175,0.08);
     border: 1px solid #e3f0ff;
@@ -312,19 +318,40 @@ html { scroll-behavior: smooth; }
 .section:not(#home) h1,
 .section:not(#home) h2,
 .section:not(#home) h3 {
+    font-size: 1.5rem; /* Decreased from 2rem */
     color: #1e40af;
     font-family: 'Montserrat', 'Inter', Arial, sans-serif;
     font-weight: 700;
-    margin-bottom: 0.5rem;
+    margin-top: 0;
+    margin-bottom: 0.7em;
     letter-spacing: 1px;
-    font-size: 2rem;
+}
+
+/* Section title icons - different for each section */
+.section:not(#home) h1::before {
+    display: inline-block;
+    margin-right: 6px;
+    font-size: 1.2em;
+    vertical-align: middle;
+}
+.section#about h1::before { content: "👤"; color: #176fc1; }
+.section#education h1::before { content: "🎓"; color: #176fc1; }
+.section#experience h1::before { content: "💼"; color: #176fc1; }
+.section#certifications h1::before { content: "📜"; color: #176fc1; }
+.section#projects h1::before { content: "🛠️"; color: #176fc1; }
+.section#contact h1::before { content: "✉️"; color: #176fc1; }
+
+/* Remove the generic icon for h2 titles */
+.section:not(#home) h2::before {
+    content: "";
+    margin-right: 0;
 }
 
 .section:not(#home) p,
 .section:not(#home) li,
 .section:not(#home) td {
+    font-size: 1rem; /* Decreased from 1.15rem */
     color: #444;
-    font-size: 1.15rem;
     line-height: 2;
     font-family: 'Inter', 'Montserrat', Arial, sans-serif;
 }
@@ -339,6 +366,15 @@ html { scroll-behavior: smooth; }
 
 .section:not(#home) .skills-category {
     margin-bottom: 32px;
+}
+
+/* Tagline style */
+.tagline {
+    font-size: 1.1rem; /* Decreased from 1.25rem */
+    color: #176fc1;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.5px;
 }
 
 /* Cards inside sections (education, experience, etc.) */
@@ -366,32 +402,6 @@ html { scroll-behavior: smooth; }
     box-shadow: 0 8px 24px rgba(30,64,175,0.18);
     background: linear-gradient(135deg, #e3f0ff 60%, #f7f9fc 100%);
     transform: translateY(-2px) scale(1.01);
-}
-
-.section:not(#home) .btn-primary,
-.section:not(#home) .download-resume-btn,
-.section:not(#home) .contact-form button {
-    background: #176fc1;
-    color: #fff;
-    border-radius: 8px;
-    font-weight: 600;
-    box-shadow: 0 1px 6px rgba(30,64,175,0.08);
-    font-size: 1rem;
-    padding: 10px 24px;
-    border: none;
-    transition: background 0.2s, box-shadow 0.2s;
-    width: 110px;
-    min-width: unset;
-    display: block;
-    margin-left: 0;
-    text-align: center;
-}
-
-.section:not(#home) .btn-primary:hover,
-.section:not(#home) .download-resume-btn:hover,
-.section:not(#home) .contact-form button:hover {
-    background: #1e40af;
-    box-shadow: 0 2px 12px rgba(30,64,175,0.14);
 }
 
 /* Responsive for sections */
@@ -428,7 +438,7 @@ html { scroll-behavior: smooth; }
     box-shadow: 0 2px 12px rgba(30,64,175,0.07);
 }
 .cta-text {
-    font-size: 1.18rem;
+    font-size: 1rem; /* Decreased from 1.18rem */
     color: #176fc1;
     margin-bottom: 0.5rem;
 }
@@ -471,12 +481,12 @@ html { scroll-behavior: smooth; }
     cursor: pointer;
     box-shadow: 0 1px 6px rgba(30,64,175,0.08);
     transition: background 0.2s, box-shadow 0.2s;
-    width: 110px;         /* Set a fixed, smaller width */
-    min-width: unset;
-    padding: 8px 0;       /* Reduce horizontal padding */
-    display: block;
-    margin-left: 0;
-    text-align: center;   /* Center text in button */
+    width: auto;           /* Allow button to fit its text */
+    min-width: 130px;      /* Minimum width for appearance */
+    max-width: 220px;      /* Prevent button from being too wide */
+    white-space: nowrap;   /* Prevent text wrapping */
+    padding-left: 18px;
+    padding-right: 18px;
 }
 
 /* Skills Table */
@@ -628,6 +638,19 @@ html { scroll-behavior: smooth; }
 .footer-content {
     max-width: 1200px;
     margin: 0 auto;
+}
+.footer-social {
+    margin-top: 12px;
+}
+.footer-social a img {
+    width: 32px;
+    height: 32px;
+    margin: 0 8px;
+    vertical-align: middle;
+    transition: transform 0.2s;
+}
+.footer-social a img:hover {
+    transform: scale(1.15);
 }
 
 /* Scrollbar */
@@ -862,17 +885,7 @@ html { scroll-behavior: smooth; }
     border: 1px solid #e3f0ff;
     padding: 22px 16px;
     margin-bottom: 20px;
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);, transform 0.2s, background 0.2s;
     -webkit-backdrop-filter: blur(8px);
     transition: box-shadow 0.2s, transform 0.2s, background 0.2s;
-}
-
-/* Card hover: deeper blue shadow and glassy highlight */
-.education-item:hover,
-.experience-item:hover,
-.certification-item:hover,
-.project-item:hover {
-    box-shadow: 0 8px 24px rgba(30,64,175,0.18);
-    background: linear-gradient(135deg, #e3f0ff 60%, #f7f9fc 100%);
-    transform: translateY(-2px) scale(1.01);
 }
