@@ -1,0 +1,6 @@
+services:
+  chakrapani:
+    image: chakrapani
+    build:
+      context: .
+      dockerfile: ./Dockerfile
