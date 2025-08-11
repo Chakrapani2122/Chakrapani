@@ -4,6 +4,9 @@ window.addEventListener('DOMContentLoaded', function() {
     if (themeToggleSwitch) {
         themeToggleSwitch.checked = false;
         document.body.classList.add('light-theme');
+        themeToggleSwitch.addEventListener('change', () => {
+            document.body.classList.toggle('light-theme');
+        });
     }
 });
 
@@ -46,24 +49,52 @@ document.querySelectorAll('.nav-link').forEach(link => {
     });
 });
 
-// Theme toggle logic
-const themeToggleSwitch = document.getElementById('theme-toggle');
-if (themeToggleSwitch) {
-    themeToggleSwitch.addEventListener('change', () => {
-        document.body.classList.toggle('light-theme');
-    });
-}
-    });
-}
-    link.addEventListener('blur', function () {
-        this.classList.remove('active');
+// Navbar shadow on scroll for sticky effect
+window.addEventListener('scroll', function() {
+    const navbar = document.querySelector('.sticky');
+    if (navbar) {
+        if (window.scrollY > 10) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    }
+});
+
+// Staggered fade-in for sections
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.section').forEach((section, i) => {
+        section.style.opacity = '0';
+        setTimeout(() => {
+            section.style.opacity = '1';
+            section.style.transition = 'opacity 0.8s cubic-bezier(.77,0,.175,1)';
+        }, 200 + i * 150);
     });
 });
 
-// Theme toggle logic
-const themeToggleSwitch = document.getElementById('theme-toggle');
-if (themeToggleSwitch) {
-    themeToggleSwitch.addEventListener('change', () => {
-        document.body.classList.toggle('light-theme');
+// Ensure CTA row is always visible at the top of the home section
+document.addEventListener('DOMContentLoaded', () => {
+    const ctaRow = document.getElementById('ctaRow');
+    if (ctaRow) {
+        ctaRow.style.display = 'block';
+        ctaRow.style.opacity = '1';
+        ctaRow.style.visibility = 'visible';
+    }
+});
+
+// Go to Top Button logic
+const goTopBtn = document.getElementById('goTopBtn');
+window.addEventListener('scroll', function() {
+    if (goTopBtn) {
+        if (window.scrollY > 200) {
+            goTopBtn.classList.add('show');
+        } else {
+            goTopBtn.classList.remove('show');
+        }
+    }
+});
+if (goTopBtn) {
+    goTopBtn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 }

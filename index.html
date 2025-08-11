@@ -11,11 +11,11 @@
 <body>
     <header>
         <nav class="navbar sticky" aria-label="Main Navigation">
-            <div class="container nav-container">
-                <div class="logo">
+            <div class="container nav-container" style="display: flex; align-items: center; justify-content: space-between;">
+                <div class="logo" style="margin-right: auto;">
                     <span class="logo-text">Chakrapani Gajji</span>
                 </div>
-                <ul class="nav-links" role="menubar">
+                <ul class="nav-links" role="menubar" style="margin-left: 32px;">
                     <li role="none"><a href="#home" class="nav-link active" data-target="home" role="menuitem">Home</a></li>
                     <li role="none"><a href="#about" class="nav-link" data-target="about" role="menuitem">About</a></li>
                     <li role="none"><a href="#education" class="nav-link" data-target="education" role="menuitem">Education</a></li>
@@ -36,9 +36,9 @@
             <div class="container hero-content">
                 <div class="hero-left">
                     <h1 class="main-title gradient-text animate-title">Chakrapani Gajji</h1>
-                    <h2 class="subtitle animate-subtitle">Data Analytics Graduate <span class="divider">|</span> AI & ML Specialist</h2>
+                    <h2 class="subtitle animate-subtitle">Data Analytics Graduate <span class="divider">|</span> AI & ML Specialist </h2>
                     <p class="intro-text highlight animate-fade">
-                        <span class="highlight-badge">Kansas State University</span> <span class="divider">|</span> <span class="highlight-badge">AI & ML</span>
+                        <span class="highlight-badge">Kansas State University, Manhattan, Kansas, USA, 66502</span>
                     </p>
                     <p class="intro-text animate-fade">
                         Passionate about transforming complex data into actionable insights. Experienced in data science, machine learning, and computer vision. Dedicated to advancing sustainable solutions through data-driven innovation.
@@ -58,369 +58,381 @@
                     <img src="assets/photo.jpg" alt="Profile Picture" class="profile-picture elevated-card">
                 </div>
             </div>
-            <div class="container cta-row animate-fade">
+            <div class="container cta-row animate-fade" id="ctaRow">
                 <p class="cta-text"><strong>Let’s connect!</strong> I’d love to discuss opportunities, collaborations, or simply chat about data and tech.</p>
                 <p class="cta-text">Feel free to drop me a message—I look forward to hearing from you!</p>
             </div>
         </section>
         <section id="about" class="section">
-            <h1>About</h1>
-            <p>
-                Hi, I’m Chakrapani Gajji—a data enthusiast with a knack for uncovering insights through analytics and machine learning. 
-                Currently pursuing a Master of Science in Data Analytics at Kansas State University, I bring a blend of technical expertise 
-                and practical experience from my academic and professional journey. My background includes a Bachelor’s in Computer Science 
-                Engineering (AI & ML) and diverse roles, such as a Graduate Research Assistant and Data Science Intern.
-            </p>
-            <p>
-                I thrive on solving real-world problems—whether it’s optimizing soil health datasets for sustainable agriculture or building 
-                predictive models with near-perfect accuracy. Proficient in Python, SQL, and advanced ML frameworks, I’m driven by curiosity 
-                and a commitment to excellence. When I’m not coding or analyzing data, you’ll find me exploring new tech trends or refining my skills.
-            </p>
-            <h2>Skills</h2>
+            <div class="container">
+                <h1>About</h1>
+                <p>
+                    Hi, I’m Chakrapani Gajji—a data enthusiast with a knack for uncovering insights through analytics and machine learning. 
+                    Currently pursuing a Master of Science in Data Analytics at Kansas State University, I bring a blend of technical expertise 
+                    and practical experience from my academic and professional journey. My background includes a Bachelor’s in Computer Science 
+                    Engineering (AI & ML) and diverse roles, such as a Graduate Research Assistant and Data Science Intern.
+                </p>
+                <p>
+                    I thrive on solving real-world problems—whether it’s optimizing soil health datasets for sustainable agriculture or building 
+                    predictive models with near-perfect accuracy. Proficient in Python, SQL, and advanced ML frameworks, I’m driven by curiosity 
+                    and a commitment to excellence. When I’m not coding or analyzing data, you’ll find me exploring new tech trends or refining my skills.
+                </p>
+                <h2>Skills</h2>
 
-            <!-- Programming Languages -->
-            <div class="skills-category">
-                <h3>Programming Languages</h3>
-                <table class="skills-table">
-                    <tr>
-                        <td><img src="https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg" alt="Java Icon" class="skill-icon"></td>
-                        <td><img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python Icon" class="skill-icon"></td>
-                        <td><img src="https://upload.wikimedia.org/wikipedia/commons/1/19/C_Logo.png" alt="C Icon" class="skill-icon"></td>
-                    </tr>
-                    <tr>
-                        <td>Java</td>
-                        <td>Python</td>
-                        <td>C</td>
-                    </tr>
-                </table>
+                <!-- Programming Languages -->
+                <div class="skills-category">
+                    <h3>Programming Languages</h3>
+                    <table class="skills-table">
+                        <tr>
+                            <td><img src="https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg" alt="Java Icon" class="skill-icon"></td>
+                            <td><img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python Icon" class="skill-icon"></td>
+                            <td><img src="https://upload.wikimedia.org/wikipedia/commons/1/19/C_Logo.png" alt="C Icon" class="skill-icon"></td>
+                        </tr>
+                        <tr>
+                            <td>Java</td>
+                            <td>Python</td>
+                            <td>C</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <!-- Database Management -->
+                <div class="skills-category">
+                    <h3>Database Management</h3>
+                    <table class="skills-table">
+                        <tr>
+                            <td><img src="https://img.icons8.com/color/48/000000/sql.png" alt="SQL Icon" class="skill-icon"></td>
+                            <td><img src="https://img.icons8.com/color/48/000000/mysql-logo.png" alt="MySQL Icon" class="skill-icon"></td>
+                        </tr>
+                        <tr>
+                            <td>SQL</td>
+                            <td>MySQL</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <!-- Libraries & Frameworks -->
+                <div class="skills-category">
+                    <h3>Libraries & Frameworks</h3>
+                    <table class="skills-table">
+                        <tr>
+                            <td><img src="https://matplotlib.org/_static/images/logo2.svg" alt="Matplotlib Icon" class="skill-icon"></td>
+                            <td><img src="https://seaborn.pydata.org/_static/logo-wide-lightbg.svg" alt="Seaborn Icon" class="skill-icon"></td>
+                            <td><img src="https://upload.wikimedia.org/wikipedia/commons/e/ed/Pandas_logo.svg" alt="Pandas Icon" class="skill-icon"></td>
+                            <td><img src="https://upload.wikimedia.org/wikipedia/commons/3/31/NumPy_logo_2020.svg" alt="NumPy Icon" class="skill-icon"></td>
+                            <td><img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" alt="Scikit-Learn Icon" class="skill-icon"></td>
+                        </tr>
+                        <tr>
+                            <td>Matplotlib</td>
+                            <td>Seaborn</td>
+                            <td>Pandas</td>
+                            <td>NumPy</td>
+                            <td>Scikit-Learn</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <!-- Data Science & Analytics -->
+                <div class="skills-category">
+                    <h3>Data Science & Analytics</h3>
+                    <table class="skills-table">
+                        <tr>
+                            <td><img src="https://img.icons8.com/?size=100&id=fy60fytQrozs&format=png&color=000000" alt="EDA Icon" class="skill-icon"></td>
+                            <td><img src="https://img.icons8.com/color/48/000000/combo-chart.png" alt="Data Visualization Icon" class="skill-icon"></td>
+                            <td><img src="https://img.icons8.com/color/48/000000/data-configuration.png" alt="Data Processing Icon" class="skill-icon"></td>
+                            <td><img src="https://img.icons8.com/color/48/000000/statistics.png" alt="Statistical Analysis Icon" class="skill-icon"></td>
+                        </tr>
+                        <tr>
+                            <td>Exploratory Data Analysis (EDA)</td>
+                            <td>Data Visualization</td>
+                            <td>Data Processing</td>
+                            <td>Statistical Analysis</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <!-- Machine Learning -->
+                <div class="skills-category">
+                    <h3>Machine Learning</h3>
+                    <table class="skills-table">
+                        <tr>
+                            <td><img src="https://img.icons8.com/?size=100&id=d0mvB0b7Ml0f&format=png&color=000000" alt="Classification Icon" class="skill-icon"></td>
+                            <td><img src="https://img.icons8.com/color/48/000000/line-chart.png" alt="Regression Icon" class="skill-icon"></td>
+                            <td><img src="https://img.icons8.com/?size=100&id=aIClzC3iqUok&format=png&color=000000" alt="Clustering Icon" class="skill-icon"></td>
+                            <td><img src="https://img.icons8.com/color/48/000000/time-machine.png" alt="Time-Series Analysis Icon" class="skill-icon"></td>
+                        </tr>
+                        <tr>
+                            <td>Classification</td>
+                            <td>Regression</td>
+                            <td>Clustering</td>
+                            <td>Time-Series Analysis</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <!-- Tools & Platforms -->
+                <div class="skills-category">
+                    <h3>Tools & Platforms</h3>
+                    <table class="skills-table">
+                        <tr>
+                            <td><img src="https://img.icons8.com/color/48/000000/microsoft-excel-2019.png" alt="MS Excel Icon" class="skill-icon"></td>
+                            <td><img src="https://img.icons8.com/ios-filled/50/000000/github.png" alt="GitHub Icon" class="skill-icon"></td>
+                            <td><img src="https://img.icons8.com/color/48/000000/tableau-software.png" alt="Tableau Icon" class="skill-icon"></td>
+                            <td><img src="https://colab.research.google.com/img/colab_favicon_256px.png" alt="Google Colaboratory Icon" class="skill-icon"></td>
+                            <td><img src="https://img.icons8.com/?size=100&id=F4uMFPZgS0gt&format=png&color=000000" alt="Anaconda Navigator Icon" class="skill-icon"></td>
+                        </tr>
+                        <tr>
+                            <td>MS Excel</td>
+                            <td>Git & GitHub</td>
+                            <td>Tableau</td>
+                            <td>Google Colaboratory</td>
+                            <td>Anaconda Navigator</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <!-- Repeat similar structure for other categories -->
             </div>
-
-            <!-- Database Management -->
-            <div class="skills-category">
-                <h3>Database Management</h3>
-                <table class="skills-table">
-                    <tr>
-                        <td><img src="https://img.icons8.com/color/48/000000/sql.png" alt="SQL Icon" class="skill-icon"></td>
-                        <td><img src="https://img.icons8.com/color/48/000000/mysql-logo.png" alt="MySQL Icon" class="skill-icon"></td>
-                    </tr>
-                    <tr>
-                        <td>SQL</td>
-                        <td>MySQL</td>
-                    </tr>
-                </table>
-            </div>
-
-            <!-- Libraries & Frameworks -->
-            <div class="skills-category">
-                <h3>Libraries & Frameworks</h3>
-                <table class="skills-table">
-                    <tr>
-                        <td><img src="https://matplotlib.org/_static/images/logo2.svg" alt="Matplotlib Icon" class="skill-icon"></td>
-                        <td><img src="https://seaborn.pydata.org/_static/logo-wide-lightbg.svg" alt="Seaborn Icon" class="skill-icon"></td>
-                        <td><img src="https://upload.wikimedia.org/wikipedia/commons/e/ed/Pandas_logo.svg" alt="Pandas Icon" class="skill-icon"></td>
-                        <td><img src="https://upload.wikimedia.org/wikipedia/commons/3/31/NumPy_logo_2020.svg" alt="NumPy Icon" class="skill-icon"></td>
-                        <td><img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" alt="Scikit-Learn Icon" class="skill-icon"></td>
-                    </tr>
-                    <tr>
-                        <td>Matplotlib</td>
-                        <td>Seaborn</td>
-                        <td>Pandas</td>
-                        <td>NumPy</td>
-                        <td>Scikit-Learn</td>
-                    </tr>
-                </table>
-            </div>
-
-            <!-- Data Science & Analytics -->
-            <div class="skills-category">
-                <h3>Data Science & Analytics</h3>
-                <table class="skills-table">
-                    <tr>
-                        <td><img src="https://img.icons8.com/?size=100&id=fy60fytQrozs&format=png&color=000000" alt="EDA Icon" class="skill-icon"></td>
-                        <td><img src="https://img.icons8.com/color/48/000000/combo-chart.png" alt="Data Visualization Icon" class="skill-icon"></td>
-                        <td><img src="https://img.icons8.com/color/48/000000/data-configuration.png" alt="Data Processing Icon" class="skill-icon"></td>
-                        <td><img src="https://img.icons8.com/color/48/000000/statistics.png" alt="Statistical Analysis Icon" class="skill-icon"></td>
-                    </tr>
-                    <tr>
-                        <td>Exploratory Data Analysis (EDA)</td>
-                        <td>Data Visualization</td>
-                        <td>Data Processing</td>
-                        <td>Statistical Analysis</td>
-                    </tr>
-                </table>
-            </div>
-
-            <!-- Machine Learning -->
-            <div class="skills-category">
-                <h3>Machine Learning</h3>
-                <table class="skills-table">
-                    <tr>
-                        <td><img src="https://img.icons8.com/?size=100&id=d0mvB0b7Ml0f&format=png&color=000000" alt="Classification Icon" class="skill-icon"></td>
-                        <td><img src="https://img.icons8.com/color/48/000000/line-chart.png" alt="Regression Icon" class="skill-icon"></td>
-                        <td><img src="https://img.icons8.com/?size=100&id=aIClzC3iqUok&format=png&color=000000" alt="Clustering Icon" class="skill-icon"></td>
-                        <td><img src="https://img.icons8.com/color/48/000000/time-machine.png" alt="Time-Series Analysis Icon" class="skill-icon"></td>
-                    </tr>
-                    <tr>
-                        <td>Classification</td>
-                        <td>Regression</td>
-                        <td>Clustering</td>
-                        <td>Time-Series Analysis</td>
-                    </tr>
-                </table>
-            </div>
-
-            <!-- Tools & Platforms -->
-            <div class="skills-category">
-                <h3>Tools & Platforms</h3>
-                <table class="skills-table">
-                    <tr>
-                        <td><img src="https://img.icons8.com/color/48/000000/microsoft-excel-2019.png" alt="MS Excel Icon" class="skill-icon"></td>
-                        <td><img src="https://img.icons8.com/ios-filled/50/000000/github.png" alt="GitHub Icon" class="skill-icon"></td>
-                        <td><img src="https://img.icons8.com/color/48/000000/tableau-software.png" alt="Tableau Icon" class="skill-icon"></td>
-                        <td><img src="https://colab.research.google.com/img/colab_favicon_256px.png" alt="Google Colaboratory Icon" class="skill-icon"></td>
-                        <td><img src="https://img.icons8.com/?size=100&id=F4uMFPZgS0gt&format=png&color=000000" alt="Anaconda Navigator Icon" class="skill-icon"></td>
-                    </tr>
-                    <tr>
-                        <td>MS Excel</td>
-                        <td>Git & GitHub</td>
-                        <td>Tableau</td>
-                        <td>Google Colaboratory</td>
-                        <td>Anaconda Navigator</td>
-                    </tr>
-                </table>
-            </div>
-
-            <!-- Repeat similar structure for other categories -->
         </section>
         <section id="education" class="section">
-            <h1>Education</h1>
-            <div class="education-item">
-                <h2>
-                    <img src="https://static.cdnlogo.com/logos/k/67/kansas-state-university-seal.svg" alt="Kansas State University Seal" class="education-icon">
-                    Master of Science in Data Analytics
-                </h2>
-                <p>
-                    <img src="https://img.icons8.com/color/48/000000/marker.png" alt="Location Icon" class="education-icon">
-                    <strong>Kansas State University – Manhattan, KS</strong>
-                </p>
-                <p>
-                    <img src="https://img.icons8.com/color/48/000000/calendar.png" alt="Date Icon" class="education-icon">
-                    Expected 2026
-                </p>
-                <p>Focused on advanced data analytics, statistical modeling, and machine learning applications.</p>
-            </div>
-            <br>
-            <br>
-            <div class="education-item">
-                <h2>Bachelor of Technology in Computer Science Engineering (AI & ML)</h2>
-                <p>
-                    <img src="https://img.icons8.com/color/48/000000/marker.png" alt="Location Icon" class="education-icon">
-                    <strong>Sri Indu College of Engineering and Technology – Hyderabad, India</strong>
-                </p>
-                <p>
-                    <img src="https://img.icons8.com/color/48/000000/calendar.png" alt="Date Icon" class="education-icon">
-                    2020 – 2024
-                </p>
-                <p>
-                    <img src="https://img.icons8.com/?size=100&id=mdSq7crIhZXr&format=png&color=000000" alt="GPA Icon" class="education-icon">
-                    GPA: 3.4/4.0
-                </p>
-                <p>Specialized in AI, ML, and computer vision with a strong foundation in programming and data science.</p>
+            <div class="container">
+                <h1>Education</h1>
+                <div class="education-item">
+                    <h2>
+                        <img src="https://static.cdnlogo.com/logos/k/67/kansas-state-university-seal.svg" alt="Kansas State University Seal" class="education-icon">
+                        Master of Science in Data Analytics
+                    </h2>
+                    <p>
+                        <img src="https://img.icons8.com/color/48/000000/marker.png" alt="Location Icon" class="education-icon">
+                        <strong>Kansas State University – Manhattan, KS</strong>
+                    </p>
+                    <p>
+                        <img src="https://img.icons8.com/color/48/000000/calendar.png" alt="Date Icon" class="education-icon">
+                        Expected 2026
+                    </p>
+                    <p>Focused on advanced data analytics, statistical modeling, and machine learning applications.</p>
+                </div>
+                <br>
+                <br>
+                <div class="education-item">
+                    <h2>Bachelor of Technology in Computer Science Engineering (AI & ML)</h2>
+                    <p>
+                        <img src="https://img.icons8.com/color/48/000000/marker.png" alt="Location Icon" class="education-icon">
+                        <strong>Sri Indu College of Engineering and Technology – Hyderabad, India</strong>
+                    </p>
+                    <p>
+                        <img src="https://img.icons8.com/color/48/000000/calendar.png" alt="Date Icon" class="education-icon">
+                        2020 – 2024
+                    </p>
+                    <p>
+                        <img src="https://img.icons8.com/?size=100&id=mdSq7crIhZXr&format=png&color=000000" alt="GPA Icon" class="education-icon">
+                        GPA: 3.4/4.0
+                    </p>
+                    <p>Specialized in AI, ML, and computer vision with a strong foundation in programming and data science.</p>
+                </div>
             </div>
         </section>
         <section id="experience" class="section">
-            <h1>Experience</h1>
-            <div class="experience-item">
-                <h2>Graduate Research Assistant</h2>
-                <p><strong>Kansas State University – Manhattan, KS</strong></p>
-                <p>August 2024 – Present</p>
-                <ul>
-                    <li>Managed datasets of 10,000+ soil records using Python and SQL, achieving 98% data accuracy for soil health research.</li>
-                    <li>Conducted statistical analysis on soil fertility metrics, delivering actionable insights for sustainable agriculture practices.</li>
-                    <li>Streamlined data quality processes, improving workflow efficiency by 20% through advanced preprocessing techniques.</li>
-                </ul>
-            </div>
-            <div class="experience-item">
-                <h2>Data Science Intern</h2>
-                <p><strong>Oasis Infobyte – Hyderabad, India</strong></p>
-                <p>February 2023 – March 2023</p>
-                <ul>
-                    <li>Developed machine learning models (Random Forest, Logistic Regression) with 97% accuracy for email classification and sales forecasting.</li>
-                    <li>Optimized ML pipelines using Python and Scikit-Learn, reducing execution time by 30% and enhancing prediction reliability.</li>
-                </ul>
+            <div class="container">
+                <h1>Experience</h1>
+                <div class="experience-item">
+                    <h2>Graduate Research Assistant</h2>
+                    <p><strong>Kansas State University – Manhattan, KS</strong></p>
+                    <p>August 2024 – Present</p>
+                    <ul>
+                        <li>Managed datasets of 10,000+ soil records using Python and SQL, achieving 98% data accuracy for soil health research.</li>
+                        <li>Conducted statistical analysis on soil fertility metrics, delivering actionable insights for sustainable agriculture practices.</li>
+                        <li>Streamlined data quality processes, improving workflow efficiency by 20% through advanced preprocessing techniques.</li>
+                    </ul>
+                </div>
+                <div class="experience-item">
+                    <h2>Data Science Intern</h2>
+                    <p><strong>Oasis Infobyte – Hyderabad, India</strong></p>
+                    <p>February 2023 – March 2023</p>
+                    <ul>
+                        <li>Developed machine learning models (Random Forest, Logistic Regression) with 97% accuracy for email classification and sales forecasting.</li>
+                        <li>Optimized ML pipelines using Python and Scikit-Learn, reducing execution time by 30% and enhancing prediction reliability.</li>
+                    </ul>
+                </div>
             </div>
         </section>
         <section id="certifications" class="section">
-            <h1>Certifications</h1>
-            <div class="certifications-grid">
-                <!-- Certification 1 -->
-                <div class="certification-item">
-                    <img src="assets\certificates\excel.jpeg" alt="Excel Skills for Business: Essentials" class="certification-image">
-                    <h2><a href="https://coursera.org/share/5f0295cd131726e03922950248d1e6b0" target="_blank">Excel Skills for Business: Essentials</a></h2>
-                    <p><strong>Issued by:</strong> Macquarie University via Coursera | <strong>Date:</strong> 2024</p>
-                    <p><strong>Skills:</strong> Spreadsheet Software, Graphs, Data Visualization, Charts, Microsoft Excel</p>
-                </div>
-                <!-- Certification 1 -->
-                <div class="certification-item">
-                    <img src="assets\certificates\databases.jpeg" alt="Databases and SQL for Data Science with Python" class="certification-image">
-                    <h2><a href="https://coursera.org/share/494ac01f66a0af8e8e2bf641a511b377" target="_blank">Databases and SQL for Data Science with Python</a></h2>
-                    <p><strong>Issued by:</strong> IBM via Coursera | <strong>Date:</strong> 2024</p>
-                    <p><strong>Skills:</strong> Relational database Management Systems (RDBMS), Clud Databases, Jupyter Notebook, Python Programming, SQL</p>
-                </div>
-                <!-- Certification 1 -->
-                <div class="certification-item">
-                    <img src="assets\certificates\Data_Analysis_Coursera.png" alt="Data Analysis with Python" class="certification-image">
-                    <h2><a href="https://coursera.org/share/4d292cd0be2b875d96e595fac7ae74d7" target="_blank">Data Analysis with Python</a></h2>
-                    <p><strong>Issued by:</strong> IBM via Coursera | <strong>Date:</strong> 2023</p>
-                    <p><strong>Skills:</strong> Python, Pandas, NumPy, Data Visualization, Exploratory Data Analysis</p>
-                </div>
-                <!-- Certification 2 -->
-                <div class="certification-item">
-                    <img src="assets\certificates\Introduction_to_Dat_Science_Infosys_Springboard.png" alt="Introduction to Data Science" class="certification-image">
-                    <h2><a href="https://springboard.infosys.com/certificate/example" target="_blank">Introduction to Data Science</a></h2>
-                    <p><strong>Issued by:</strong> Infosys Springboard | <strong>Date:</strong> 2023</p>
-                    <p><strong>Skills:</strong> Data Processing, Statistical Analysis, Data Science Fundamentals</p>
-                </div>
+            <div class="container">
+                <h1>Certifications</h1>
+                <div class="certifications-grid">
+                    <!-- Certification 1 -->
+                    <div class="certification-item">
+                        <img src="assets\certificates\excel.jpeg" alt="Excel Skills for Business: Essentials" class="certification-image">
+                        <h2><a href="https://coursera.org/share/5f0295cd131726e03922950248d1e6b0" target="_blank">Excel Skills for Business: Essentials</a></h2>
+                        <p><strong>Issued by:</strong> Macquarie University via Coursera | <strong>Date:</strong> 2024</p>
+                        <p><strong>Skills:</strong> Spreadsheet Software, Graphs, Data Visualization, Charts, Microsoft Excel</p>
+                    </div>
+                    <!-- Certification 1 -->
+                    <div class="certification-item">
+                        <img src="assets\certificates\databases.jpeg" alt="Databases and SQL for Data Science with Python" class="certification-image">
+                        <h2><a href="https://coursera.org/share/494ac01f66a0af8e8e2bf641a511b377" target="_blank">Databases and SQL for Data Science with Python</a></h2>
+                        <p><strong>Issued by:</strong> IBM via Coursera | <strong>Date:</strong> 2024</p>
+                        <p><strong>Skills:</strong> Relational database Management Systems (RDBMS), Clud Databases, Jupyter Notebook, Python Programming, SQL</p>
+                    </div>
+                    <!-- Certification 1 -->
+                    <div class="certification-item">
+                        <img src="assets\certificates\Data_Analysis_Coursera.png" alt="Data Analysis with Python" class="certification-image">
+                        <h2><a href="https://coursera.org/share/4d292cd0be2b875d96e595fac7ae74d7" target="_blank">Data Analysis with Python</a></h2>
+                        <p><strong>Issued by:</strong> IBM via Coursera | <strong>Date:</strong> 2023</p>
+                        <p><strong>Skills:</strong> Python, Pandas, NumPy, Data Visualization, Exploratory Data Analysis</p>
+                    </div>
+                    <!-- Certification 2 -->
+                    <div class="certification-item">
+                        <img src="assets\certificates\Introduction_to_Dat_Science_Infosys_Springboard.png" alt="Introduction to Data Science" class="certification-image">
+                        <h2><a href="https://springboard.infosys.com/certificate/example" target="_blank">Introduction to Data Science</a></h2>
+                        <p><strong>Issued by:</strong> Infosys Springboard | <strong>Date:</strong> 2023</p>
+                        <p><strong>Skills:</strong> Data Processing, Statistical Analysis, Data Science Fundamentals</p>
+                    </div>
 
-                <!-- Certification 3 -->
-                <div class="certification-item">
-                    <img src="assets\certificates\HackerRank-TheHourofCode.jpg" alt="The Hour of Code" class="certification-image">
-                    <h2><a href="https://coursera.org/certificate/example" target="_blank">The Hour of Code</a></h2>
-                    <p><strong>Issued by:</strong> Code.org via HackerRank | <strong>Date:</strong> 2023</p>
-                    <p><strong>Skills:</strong> Problem Solving with Python</p>
-                </div>
+                    <!-- Certification 3 -->
+                    <div class="certification-item">
+                        <img src="assets\certificates\HackerRank-TheHourofCode.jpg" alt="The Hour of Code" class="certification-image">
+                        <h2><a href="https://coursera.org/certificate/example" target="_blank">The Hour of Code</a></h2>
+                        <p><strong>Issued by:</strong> Code.org via HackerRank | <strong>Date:</strong> 2023</p>
+                        <p><strong>Skills:</strong> Problem Solving with Python</p>
+                    </div>
 
-                <!-- Certification 4 -->
-                <div class="certification-item">
-                    <img src="assets\certificates\OOPs Python.png" alt="Python Object-Oriented Programming" class="certification-image">
-                    <h2><a href="https://www.linkedin.com/learning/certificates/9e21bcaa62f5259ad0425cd94d069c88439a242c47597492c2855550f74c6ddb?trk=share_certificate" target="_blank">Python Object-Oriented Programming</a></h2>
-                    <p><strong>Issued by:</strong> LinkedIn Learning | <strong>Date:</strong> 2022</p>
-                    <p><strong>Skills:</strong> Python, Object-Oriented Programming, Code Structuring</p>
-                </div>
-                <!-- Certification 5 -->
-                <div class="certification-item">
-                    <img src="assets\certificates\Linkedin SQL.jpg" alt="SQL Essential Training" class="certification-image">
-                    <h2><a href="https://www.linkedin.com/learning/certificates/3fbdfa1e9da3e73bde80eb438d33583544cfd0160a641b985c56e4ca0e720f63?trk=share_certificate" target="_blank">SQL Essential Training</a></h2>
-                    <p><strong>Issued by:</strong> LinkedIn Learning | <strong>Date:</strong> 2022</p>
-                    <p><strong>Skills:</strong> SQL, MySQL, Database Management, Query Optimization</p>
-                </div>
-                
-                <!-- Certification 6 -->
-                <div class="certification-item">
-                    <img src="assets\certificates\NPTEL-Python.jpg" alt="The Joy of Computing Using Python" class="certification-image">
-                    <h2><a href="https://coursera.org/certificate/example" target="_blank">The Joy of Computing using Python</a></h2>
-                    <p><strong>Issued by:</strong> Google via Coursera | <strong>Date:</strong> 2022</p>
-                    <p><strong>Skills:</strong> Variables, Data Types, Conditional Statements, Loops, Functions, Data Structures, Classes</p>
-                </div>
+                    <!-- Certification 4 -->
+                    <div class="certification-item">
+                        <img src="assets\certificates\OOPs Python.png" alt="Python Object-Oriented Programming" class="certification-image">
+                        <h2><a href="https://www.linkedin.com/learning/certificates/9e21bcaa62f5259ad0425cd94d069c88439a242c47597492c2855550f74c6ddb?trk=share_certificate" target="_blank">Python Object-Oriented Programming</a></h2>
+                        <p><strong>Issued by:</strong> LinkedIn Learning | <strong>Date:</strong> 2022</p>
+                        <p><strong>Skills:</strong> Python, Object-Oriented Programming, Code Structuring</p>
+                    </div>
+                    <!-- Certification 5 -->
+                    <div class="certification-item">
+                        <img src="assets\certificates\Linkedin SQL.jpg" alt="SQL Essential Training" class="certification-image">
+                        <h2><a href="https://www.linkedin.com/learning/certificates/3fbdfa1e9da3e73bde80eb438d33583544cfd0160a641b985c56e4ca0e720f63?trk=share_certificate" target="_blank">SQL Essential Training</a></h2>
+                        <p><strong>Issued by:</strong> LinkedIn Learning | <strong>Date:</strong> 2022</p>
+                        <p><strong>Skills:</strong> SQL, MySQL, Database Management, Query Optimization</p>
+                    </div>
+                    
+                    <!-- Certification 6 -->
+                    <div class="certification-item">
+                        <img src="assets\certificates\NPTEL-Python.jpg" alt="The Joy of Computing Using Python" class="certification-image">
+                        <h2><a href="https://coursera.org/certificate/example" target="_blank">The Joy of Computing using Python</a></h2>
+                        <p><strong>Issued by:</strong> Google via Coursera | <strong>Date:</strong> 2022</p>
+                        <p><strong>Skills:</strong> Variables, Data Types, Conditional Statements, Loops, Functions, Data Structures, Classes</p>
+                    </div>
 
-                <!-- Certification 7 -->
-                <div class="certification-item">
-                    <img src="assets\certificates\Linkedin C.jpg" alt="Learning Cu" class="certification-image">
-                    <h2><a href="https://tableau.com/certificate/example" target="_blank">Learning C</a></h2>
-                    <p><strong>Issued by:</strong> LinkedIn Learning | <strong>Date:</strong> 2022</p>
-                    <p><strong>Skills:</strong> Variables, Data Types, Conditional Statements, Loops, Functions, Data Structures</p>
-                </div>
+                    <!-- Certification 7 -->
+                    <div class="certification-item">
+                        <img src="assets\certificates\Linkedin C.jpg" alt="Learning Cu" class="certification-image">
+                        <h2><a href="https://tableau.com/certificate/example" target="_blank">Learning C</a></h2>
+                        <p><strong>Issued by:</strong> LinkedIn Learning | <strong>Date:</strong> 2022</p>
+                        <p><strong>Skills:</strong> Variables, Data Types, Conditional Statements, Loops, Functions, Data Structures</p>
+                    </div>
 
-                <!-- Certification 8 -->
-                <div class="certification-item">
-                    <img src="assets\certificates\Coursera-Python.jpg" alt="Python programming" class="certification-image">
-                    <h2><a href="https://coursera.org/share/03fefa1d01999a86b86e87dd74d23451" target="_blank">Python Basics</a></h2>
-                    <p><strong>Issued by:</strong> Universsity of Michigan via Coursera | <strong>Date:</strong> 2021</p>
-                    <p><strong>Skills:</strong> Variables, Data Types, Conditional Statements, Loops, Functions, Data Structures, Classes</p>
-                </div>
+                    <!-- Certification 8 -->
+                    <div class="certification-item">
+                        <img src="assets\certificates\Coursera-Python.jpg" alt="Python programming" class="certification-image">
+                        <h2><a href="https://coursera.org/share/03fefa1d01999a86b86e87dd74d23451" target="_blank">Python Basics</a></h2>
+                        <p><strong>Issued by:</strong> Universsity of Michigan via Coursera | <strong>Date:</strong> 2021</p>
+                        <p><strong>Skills:</strong> Variables, Data Types, Conditional Statements, Loops, Functions, Data Structures, Classes</p>
+                    </div>
 
-                <!-- Certification 8 -->
-                <div class="certification-item">
-                    <img src="assets\namma_yatri.jpg" alt="Python programming" class="certification-image">
-                    <h2><a href="#" target="_blank">Namma Yatri Open Mobility Challenge</a></h2>
-                    <p><strong>Issued by:</strong> Namma Yatri | <strong>Date:</strong> 2021</p>
+                    <!-- Certification 8 -->
+                    <div class="certification-item">
+                        <img src="assets\namma_yatri.jpg" alt="Python programming" class="certification-image">
+                        <h2><a href="#" target="_blank">Namma Yatri Open Mobility Challenge</a></h2>
+                        <p><strong>Issued by:</strong> Namma Yatri | <strong>Date:</strong> 2021</p>
+                    </div>
                 </div>
             </div>
         </section>
         <section id="projects" class="section">
-            <h1>Projects</h1>
-            <div class="projects-grid">
-                <!-- Project 1 -->
-                <div class="project-item">
-                    <img src="assets\Projects\vividtones.jpg" alt="Vivid Tones: Image Colorization with CNNs" class="project-image">
-                    <h2><a href="https://vividtones.streamlit.app/" target="_blank">Vivid Tones: Image Colorization with CNNs</a></h2>
-                    <p>Designed and implemented Convolutional Neural Networks (CNNs) using TensorFlow to colorize grayscale images, improving color accuracy by 10%.</p>
-                    <p><strong>Skills:</strong> Python, TensorFlow, CNNs, Image Processing, Data Visualization</p>
-                </div>
-                <!-- Project 2 -->
-                <div class="project-item">
-                    <img src="assets\Projects\counting.jpg" alt="Precision Object Counting System" class="project-image">
-                    <h2><a href="https://precision-object-counting.streamlit.app/" target="_blank">Precision Object Counting System</a></h2>
-                    <p>Engineered a real-time computer vision tool with OpenCV and Python, increasing object detection precision by 15% in dynamic settings.</p>
-                    <p><strong>Skills:</strong> Python, OpenCV, Computer Vision, Real-Time Processing</p>
-                </div>
-                <!-- Project 3 -->
-                <div class="project-item">
-                    <img src="assets\Projects\iris.jpg" alt="Iris Flower Species Detection" class="project-image">
-                    <h2><a href="https://iris-flower-species-recognition-project.streamlit.app/" target="_blank">Iris Flower Species Detection</a></h2>
-                    <p>Built a Support Vector Classifier (SVC) model with Scikit-Learn, achieving 97% accuracy using petal/sepal data for species prediction.</p>
-                    <p><strong>Skills:</strong> Python, Scikit-Learn, Classification, Data Analysis</p>
-                </div>
-                <!-- Project 4 -->
-                <div class="project-item">
-                    <img src="assets\Projects\spam.jpg" alt="Email Spam Detection" class="project-image">
-                    <h2><a href="https://github.com/Chakrapani2122/E-mail-Spam-Detection-Project" target="_blank">Email Spam Detection</a></h2>
-                    <p>Developed a Logistic Regression model with 98% accuracy, leveraging NLP feature extraction to enhance spam detection efficiency.</p>
-                    <p><strong>Skills:</strong> Python, Scikit-Learn, NLP, Classification, Data Preprocessing</p>
-                </div>
-                <!-- Project 5 -->
-                <div class="project-item">
-                    <img src="assets\Projects\sales.jpg" alt="Advertising Sales Prediction" class="project-image">
-                    <h2><a href="https://github.com/Chakrapani2122/Advertising-Sales-Prediction-Project/blob/main/Project.ipynb" target="_blank">Advertising Sales Prediction</a></h2>
-                    <p>Created a Random Forest model in Python, achieving 98% accuracy in sales forecasting by optimizing feature selection and hyperparameters.</p>
-                    <p><strong>Skills:</strong> Python, Scikit-Learn, Random Forest, Regression, Feature Engineering</p>
-                </div>
-                <!-- Project 6 -->
-                <div class="project-item">
-                    <img src="assets\Projects\Weather_App.png" alt="GUI-Based Weather Forecasting Application" class="project-image">
-                    <h2><a href="https://github.com/Chakrapani2122/Weather-App" target="_blank">GUI-Based Weather Forecasting Application</a></h2>
-                    <p>Programmed a Python-based GUI app with Tkinter and OpenWeatherMap API, delivering real-time weather forecasts with 95% accuracy.</p>
-                    <p><strong>Skills:</strong> Python, Tkinter, API Integration, Data Visualization</p>
+            <div class="container">
+                <h1>Projects</h1>
+                <div class="projects-grid">
+                    <!-- Project 1 -->
+                    <div class="project-item">
+                        <img src="assets\Projects\vividtones.jpg" alt="Vivid Tones: Image Colorization with CNNs" class="project-image">
+                        <h2><a href="https://vividtones.streamlit.app/" target="_blank">Vivid Tones: Image Colorization with CNNs</a></h2>
+                        <p>Designed and implemented Convolutional Neural Networks (CNNs) using TensorFlow to colorize grayscale images, improving color accuracy by 10%.</p>
+                        <p><strong>Skills:</strong> Python, TensorFlow, CNNs, Image Processing, Data Visualization</p>
+                    </div>
+                    <!-- Project 2 -->
+                    <div class="project-item">
+                        <img src="assets\Projects\counting.jpg" alt="Precision Object Counting System" class="project-image">
+                        <h2><a href="https://precision-object-counting.streamlit.app/" target="_blank">Precision Object Counting System</a></h2>
+                        <p>Engineered a real-time computer vision tool with OpenCV and Python, increasing object detection precision by 15% in dynamic settings.</p>
+                        <p><strong>Skills:</strong> Python, OpenCV, Computer Vision, Real-Time Processing</p>
+                    </div>
+                    <!-- Project 3 -->
+                    <div class="project-item">
+                        <img src="assets\Projects\iris.jpg" alt="Iris Flower Species Detection" class="project-image">
+                        <h2><a href="https://iris-flower-species-recognition-project.streamlit.app/" target="_blank">Iris Flower Species Detection</a></h2>
+                        <p>Built a Support Vector Classifier (SVC) model with Scikit-Learn, achieving 97% accuracy using petal/sepal data for species prediction.</p>
+                        <p><strong>Skills:</strong> Python, Scikit-Learn, Classification, Data Analysis</p>
+                    </div>
+                    <!-- Project 4 -->
+                    <div class="project-item">
+                        <img src="assets\Projects\spam.jpg" alt="Email Spam Detection" class="project-image">
+                        <h2><a href="https://github.com/Chakrapani2122/E-mail-Spam-Detection-Project" target="_blank">Email Spam Detection</a></h2>
+                        <p>Developed a Logistic Regression model with 98% accuracy, leveraging NLP feature extraction to enhance spam detection efficiency.</p>
+                        <p><strong>Skills:</strong> Python, Scikit-Learn, NLP, Classification, Data Preprocessing</p>
+                    </div>
+                    <!-- Project 5 -->
+                    <div class="project-item">
+                        <img src="assets\Projects\sales.jpg" alt="Advertising Sales Prediction" class="project-image">
+                        <h2><a href="https://github.com/Chakrapani2122/Advertising-Sales-Prediction-Project/blob/main/Project.ipynb" target="_blank">Advertising Sales Prediction</a></h2>
+                        <p>Created a Random Forest model in Python, achieving 98% accuracy in sales forecasting by optimizing feature selection and hyperparameters.</p>
+                        <p><strong>Skills:</strong> Python, Scikit-Learn, Random Forest, Regression, Feature Engineering</p>
+                    </div>
+                    <!-- Project 6 -->
+                    <div class="project-item">
+                        <img src="assets\Projects\Weather_App.png" alt="GUI-Based Weather Forecasting Application" class="project-image">
+                        <h2><a href="https://github.com/Chakrapani2122/Weather-App" target="_blank">GUI-Based Weather Forecasting Application</a></h2>
+                        <p>Programmed a Python-based GUI app with Tkinter and OpenWeatherMap API, delivering real-time weather forecasts with 95% accuracy.</p>
+                        <p><strong>Skills:</strong> Python, Tkinter, API Integration, Data Visualization</p>
+                    </div>
                 </div>
             </div>
         </section>
         <section id="contact" class="section">
-            <h1>Contact</h1>
-            <p>Let’s connect! I’d love to discuss opportunities, collaborations, or simply chat about data and tech.</p>
-            <table class="contact-table">
-                <tr>
-                    <td><img src="https://img.icons8.com/color/48/000000/phone.png" alt="Phone Icon" class="contact-icon"></td>
-                    <td>Phone: <a href="tel:+17853175938" style="color: #2e8bc8;">+1 (785) 317-5938</a></td>
-                </tr>
-                <tr>
-                    <td><img src="https://img.icons8.com/color/48/000000/email.png" alt="Email Icon" class="contact-icon"></td>
-                    <td>Email: <a href="mailto:cgajji@ksu.edu" style="color: #2e8bc8;">cgajji@ksu.edu</a></td>
-                </tr>
-                <tr>
-                    <td><img src="https://img.icons8.com/color/48/000000/linkedin.png" alt="LinkedIn Icon" class="contact-icon"></td>
-                    <td>LinkedIn: <a href="https://linkedin.com/in/chakrapanigajji" target="_blank" style="color: #2e8bc8;">chakrapanigajji</a></td>
-                </tr>
-                <tr>
-                    <td><img src="https://img.icons8.com/color/48/000000/github.png" alt="GitHub Icon" class="contact-icon"></td>
-                    <td>GitHub: <a href="https://github.com/chakrapani2122" target="_blank" style="color: #2e8bc8;">chakrapani2122</a></td>
-                </tr>
-                <tr>
-                    <td><img src="https://img.icons8.com/color/48/000000/marker.png" alt="Location Icon" class="contact-icon"></td>
-                    <td>Address: <a href="https://maps.app.goo.gl/E8hwEqXjJm1LzRUB9" target="_blank" style="color: #2e8bc8;">Manhattan, Kansas</a></td>
-                </tr>
-            </table>
-            <p>Feel free to drop me a message—I look forward to hearing from you!</p>
-            <div class="container contact-form-container elevated-card animate-fade">
-                <h2><img src="https://img.icons8.com/color/48/000000/email.png" alt="Email" style="vertical-align:middle;margin-right:8px;">Contact Me</h2>
-                <form action="https://formspree.io/f/myzedaon" method="POST" class="contact-form">
-                    <div class="form-row">
-                        <input type="text" name="name" placeholder="Your Name" required>
-                        <input type="email" name="email" placeholder="Your Email" required>
-                    </div>
-                    <input type="text" name="subject" placeholder="Subject" required>
-                    <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-                    <button type="submit" class="btn-primary">Send Message</button>
-                </form>
+            <div class="container">
+                <h1>Contact</h1>
+                <p>Let’s connect! I’d love to discuss opportunities, collaborations, or simply chat about data and tech.</p>
+                <table class="contact-table">
+                    <tr>
+                        <td><img src="https://img.icons8.com/color/48/000000/phone.png" alt="Phone Icon" class="contact-icon"></td>
+                        <td>Phone: <a href="tel:+17853175938" style="color: #2e8bc8;">+1 (785) 317-5938</a></td>
+                    </tr>
+                    <tr>
+                        <td><img src="https://img.icons8.com/color/48/000000/email.png" alt="Email Icon" class="contact-icon"></td>
+                        <td>Email: <a href="mailto:cgajji@ksu.edu" style="color: #2e8bc8;">cgajji@ksu.edu</a></td>
+                    </tr>
+                    <tr>
+                        <td><img src="https://img.icons8.com/color/48/000000/linkedin.png" alt="LinkedIn Icon" class="contact-icon"></td>
+                        <td>LinkedIn: <a href="https://linkedin.com/in/chakrapanigajji" target="_blank" style="color: #2e8bc8;">chakrapanigajji</a></td>
+                    </tr>
+                    <tr>
+                        <td><img src="https://img.icons8.com/color/48/000000/github.png" alt="GitHub Icon" class="contact-icon"></td>
+                        <td>GitHub: <a href="https://github.com/chakrapani2122" target="_blank" style="color: #2e8bc8;">chakrapani2122</a></td>
+                    </tr>
+                    <tr>
+                        <td><img src="https://img.icons8.com/color/48/000000/marker.png" alt="Location Icon" class="contact-icon"></td>
+                        <td>Address: <a href="https://maps.app.goo.gl/E8hwEqXjJm1LzRUB9" target="_blank" style="color: #2e8bc8;">Manhattan, Kansas</a></td>
+                    </tr>
+                </table>
+                <p>Feel free to drop me a message—I look forward to hearing from you!</p>
+                <div class="container contact-form-container elevated-card animate-fade">
+                    <h2><img src="https://img.icons8.com/color/48/000000/email.png" alt="Email" style="vertical-align:middle;margin-right:8px;">Contact Me</h2>
+                    <form action="https://formspree.io/f/myzedaon" method="POST" class="contact-form">
+                        <div class="form-row">
+                            <input type="text" name="name" placeholder="Your Name" required>
+                            <input type="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <input type="text" name="subject" placeholder="Subject" required>
+                        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                        <button type="submit" class="btn-primary">Send Message</button>
+                    </form>
+                </div>
             </div>
         </section>
 
@@ -429,6 +441,10 @@
                 <p>&copy; 2025 Chakrapani Gajji. All rights reserved.</p>
             </div>
         </footer>
+        <!-- Go to Top Button -->
+        <button id="goTopBtn" class="go-top-btn" aria-label="Go to top">
+            &#8679;
+        </button>
     </main>
     <script src="script.js"></script>
 </body>

@@ -16,15 +16,18 @@ html { scroll-behavior: smooth; }
     padding: 32px 16px;
 }
 
-/* Navigation Bar */
+/* Navigation Bar - professional, simple */
 .sticky {
-    position: sticky;
+    position: fixed;      /* Changed from sticky to fixed */
     top: 0;
+    left: 0;
+    width: 100%;
     z-index: 100;
-    background: rgba(255,255,255,0.96);
-    box-shadow: 0 4px 24px rgba(30, 64, 175, 0.09);
-    backdrop-filter: blur(10px);
-    transition: box-shadow 0.3s;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(30,64,175,0.08);
+    backdrop-filter: none;
+    border-bottom: 1px solid #e3f0ff;
+    transition: box-shadow 0.2s, border-bottom 0.2s;
 }
 .navbar {
     display: flex;
@@ -63,22 +66,22 @@ html { scroll-behavior: smooth; }
 .nav-link {
     font-weight: 600;
     font-size: 1rem;
-    color: #222;
-    text-decoration: none;
-    padding: 8px 16px;
-    border-radius: 8px;
-    transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s;
+    color: #1e40af;
+    background: none;
+    border-radius: 6px;
+    padding: 8px 14px;
+    box-shadow: none;
+    transition: background 0.2s, color 0.2s, transform 0.2s;
     position: relative;
     letter-spacing: 0.3px;
     outline: none;
     border: none;
-    background: none;
 }
 .nav-link.active, .nav-link:hover, .nav-link:focus {
-    background: #f0f0f0;    /* Remove blue gradient, use subtle gray */
-    color: #222;            /* Keep text dark */
-    box-shadow: 0 2px 8px rgba(30,64,175,0.08);
-    transform: scale(1.05);
+    background: #e3f0ff;
+    color: #176fc1;
+    box-shadow: none;
+    transform: none;
 }
 .nav-link.active::after, .nav-link:hover::after {
     content: '';
@@ -137,7 +140,7 @@ html { scroll-behavior: smooth; }
 .hero-section {
     position: relative;
     background: transparent;
-    padding-top: 64px;
+    padding-top: 0;         /* Reduced from 64px to 0 */
     padding-bottom: 64px;
     min-height: 80vh;
     overflow: hidden;
@@ -173,8 +176,8 @@ html { scroll-behavior: smooth; }
     align-items: center;
 }
 .profile-picture {
-    width: 220px;
-    height: 220px;
+    width: 320px;      /* Increased from 220px */
+    height: 320px;     /* Increased from 220px */
     border-radius: 50%;
     object-fit: cover;
     box-shadow: 0 8px 32px rgba(30,64,175,0.18);
@@ -245,7 +248,7 @@ html { scroll-behavior: smooth; }
 .social-icon {
     width: 40px;
     height: 40px;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: transform 0.3s cubic-bezier(.77,0,.175,1), box-shadow 0.3s;
     box-shadow: 0 2px 8px rgba(30,64,175,0.10);
     border-radius: 50%;
     background: #fff;
@@ -253,28 +256,35 @@ html { scroll-behavior: smooth; }
 .social-icon:hover {
     transform: scale(1.15) rotate(-8deg);
     box-shadow: 0 4px 16px rgba(30,64,175,0.18);
+    animation: bounceIcon 0.5s;
+}
+@keyframes bounceIcon {
+    0% { transform: scale(1.15) rotate(-8deg);}
+    50% { transform: scale(1.25) rotate(8deg);}
+    100% { transform: scale(1.15) rotate(-8deg);}
 }
 .resume-button-container {
     margin-top: 1rem;
 }
 .btn-primary, .download-resume-btn {
-    background: linear-gradient(90deg, #176fc1 0%, #1e40af 100%);
+    background: #176fc1;
     color: #fff;
+    border-radius: 8px;
+    font-weight: 600;
+    box-shadow: 0 1px 6px rgba(30,64,175,0.08);
+    font-size: 1rem;
+    padding: 10px 24px;
     border: none;
-    border-radius: 12px;
-    padding: 14px 36px;
-    font-size: 1.15rem;
-    font-weight: 700;
-    cursor: pointer;
-    box-shadow: 0 2px 12px rgba(30,64,175,0.10);
-    transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
-    text-decoration: none;
-    display: inline-block;
+    transition: background 0.2s, box-shadow 0.2s;
+    width: 110px;
+    min-width: unset;
+    display: block;
+    margin-left: 0;
+    text-align: center;
 }
 .btn-primary:hover, .download-resume-btn:hover {
-    background: linear-gradient(90deg, #1e40af 0%, #176fc1 100%);
-    box-shadow: 0 4px 24px rgba(30,64,175,0.18);
-    transform: scale(1.04);
+    background: #1e40af;
+    box-shadow: 0 2px 12px rgba(30,64,175,0.14);
 }
 
 /* Section */
@@ -282,34 +292,32 @@ html { scroll-behavior: smooth; }
     margin-top: 48px;
     margin-bottom: 48px;
     padding: 32px 24px;
+    animation: fadeInSection 0.8s cubic-bezier(.77,0,.175,1) both;
+    will-change: opacity, transform;
 }
 
 /* Apply home section padding/margin to all sections except #home */
 .section:not(#home) {
-    background: linear-gradient(120deg, #e3f0ff 0%, #f7f9fc 100%);
+    background: #fff;
     color: #222;
-    border-radius: 18px;
-    box-shadow: 0 8px 32px rgba(30,64,175,0.18);
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(30,64,175,0.08);
+    border: 1px solid #e3f0ff;
     padding-top: 64px;
     padding-bottom: 64px;
     margin-top: 48px;
     margin-bottom: 48px;
-    max-width: 100vw;
-    width: 100vw;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(176, 208, 255, 0.18);
 }
 
 .section:not(#home) h1,
 .section:not(#home) h2,
 .section:not(#home) h3 {
-    color: #176fc1;
-    font-family: 'Inter', 'Montserrat', Arial, sans-serif;
-    font-weight: 900;
+    color: #1e40af;
+    font-family: 'Montserrat', 'Inter', Arial, sans-serif;
+    font-weight: 700;
     margin-bottom: 0.5rem;
-    letter-spacing: 2px;
-    font-size: 2.2rem;
+    letter-spacing: 1px;
+    font-size: 2rem;
 }
 
 .section:not(#home) p,
@@ -339,38 +347,51 @@ html { scroll-behavior: smooth; }
 .section:not(#home) .certification-item,
 .section:not(#home) .project-item,
 .section:not(#home) .contact-form-container {
-    background: #fff;
-    border-radius: 14px;
-    box-shadow: 0 8px 32px rgba(30,64,175,0.18);
-    padding: 24px 18px;
-    margin-bottom: 24px;
-    width: 98%;
-    margin-left: auto;
-    margin-right: auto;
-    box-sizing: border-box;
-    font-family: 'Inter', 'Montserrat', Arial, sans-serif;
+    background: linear-gradient(135deg, #f7f9fc 60%, #e3f0ff 100%);
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(30,64,175,0.10);
+    border: 1px solid #e3f0ff;
+    padding: 22px 16px;
+    margin-bottom: 20px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: box-shadow 0.2s, transform 0.2s, background 0.2s;
+}
+
+.section:not(#home) .education-item:hover,
+.section:not(#home) .experience-item:hover,
+.section:not(#home) .certification-item:hover,
+.section:not(#home) .project-item:hover,
+.section:not(#home) .contact-form-container:hover {
+    box-shadow: 0 8px 24px rgba(30,64,175,0.18);
+    background: linear-gradient(135deg, #e3f0ff 60%, #f7f9fc 100%);
+    transform: translateY(-2px) scale(1.01);
 }
 
 .section:not(#home) .btn-primary,
 .section:not(#home) .download-resume-btn,
 .section:not(#home) .contact-form button {
-    background: linear-gradient(90deg, #176fc1 0%, #1e40af 100%);
+    background: #176fc1;
     color: #fff;
-    border-radius: 12px;
-    font-weight: 700;
-    box-shadow: 0 2px 12px rgba(30,64,175,0.10);
-    transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
-    font-size: 1.15rem;
-    font-family: 'Inter', 'Montserrat', Arial, sans-serif;
-    padding: 14px 36px;
+    border-radius: 8px;
+    font-weight: 600;
+    box-shadow: 0 1px 6px rgba(30,64,175,0.08);
+    font-size: 1rem;
+    padding: 10px 24px;
+    border: none;
+    transition: background 0.2s, box-shadow 0.2s;
+    width: 110px;
+    min-width: unset;
+    display: block;
+    margin-left: 0;
+    text-align: center;
 }
 
 .section:not(#home) .btn-primary:hover,
 .section:not(#home) .download-resume-btn:hover,
 .section:not(#home) .contact-form button:hover {
-    background: linear-gradient(90deg, #1e40af 0%, #176fc1 100%);
-    box-shadow: 0 4px 24px rgba(30,64,175,0.18);
-    transform: scale(1.04);
+    background: #1e40af;
+    box-shadow: 0 2px 12px rgba(30,64,175,0.14);
 }
 
 /* Responsive for sections */
@@ -383,8 +404,6 @@ html { scroll-behavior: smooth; }
         border-radius: 0;
     }
     .section:not(#home) > * {
-        max-width: 100vw;
-        width: 100vw;
         padding-left: 8px;
         padding-right: 8px;
     }
@@ -395,7 +414,6 @@ html { scroll-behavior: smooth; }
     .section:not(#home) .contact-form-container {
         padding: 12px 6px;
         margin-bottom: 12px;
-        width: 100vw;
         margin-left: 0;
         margin-right: 0;
     }
@@ -443,16 +461,22 @@ html { scroll-behavior: smooth; }
     outline: none;
 }
 .contact-form button {
-    background: linear-gradient(90deg, #176fc1 0%, #1e40af 100%);
+    background: #176fc1;
     color: #fff;
     border: none;
-    border-radius: 12px;
-    padding: 12px 32px;
-    font-size: 1.1rem;
-    font-weight: 700;
+    border-radius: 8px;
+    padding: 10px 24px;
+    font-size: 1rem;
+    font-weight: 600;
     cursor: pointer;
-    box-shadow: 0 2px 12px rgba(30,64,175,0.10);
+    box-shadow: 0 1px 6px rgba(30,64,175,0.08);
     transition: background 0.2s, box-shadow 0.2s;
+    width: 110px;         /* Set a fixed, smaller width */
+    min-width: unset;
+    padding: 8px 0;       /* Reduce horizontal padding */
+    display: block;
+    margin-left: 0;
+    text-align: center;   /* Center text in button */
 }
 
 /* Skills Table */
@@ -460,11 +484,11 @@ html { scroll-behavior: smooth; }
     margin-bottom: 32px;
 }
 .skills-table {
-    width: 100%;
+    width: auto;              /* Changed from 100% to auto */
     border-collapse: separate;
     border-spacing: 0 0;
     margin-bottom: 12px;
-    table-layout: fixed;
+    margin-left: 0;           /* Ensure left alignment */
 }
 
 .skills-table tr {
@@ -472,7 +496,7 @@ html { scroll-behavior: smooth; }
 }
 
 .skills-table td {
-    text-align: center;
+    text-align: left;           /* Changed from center to left */
     vertical-align: middle;
     padding: 8px 0;
     width: 120px; /* Make columns more compact */
@@ -485,7 +509,7 @@ html { scroll-behavior: smooth; }
     height: 36px;
     margin-bottom: 4px;
     display: block;
-    margin-left: auto;
+    margin-left: 0;             /* Changed from auto to 0 for left alignment */
     margin-right: auto;
 }
 
@@ -512,14 +536,25 @@ html { scroll-behavior: smooth; }
     }
 }
 
+/* Wider cells for long skill names in specific categories */
+.skills-category:nth-of-type(4) .skills-table td,   /* Data Science & Analytics */
+.skills-category:nth-of-type(5) .skills-table td,   /* Machine Learning */
+.skills-category:nth-of-type(6) .skills-table td {  /* Tools & Platforms */
+    width: 220px; /* Increased from 120px */
+    white-space: nowrap;
+}
+
 /* Education, Experience, Certifications, Projects */
 .education-item, .experience-item, .certification-item, .project-item {
-    background: rgba(247,249,252,0.95);
-    border-radius: 14px;
-    box-shadow: 0 2px 12px rgba(30,64,175,0.07);
-    padding: 24px 18px;
-    margin-bottom: 24px;
-    transition: box-shadow 0.2s, transform 0.2s;
+    background: linear-gradient(135deg, #f7f9fc 60%, #e3f0ff 100%);
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(30,64,175,0.10);
+    border: 1px solid #e3f0ff;
+    padding: 22px 16px;
+    margin-bottom: 20px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: box-shadow 0.2s, transform 0.2s, background 0.2s;
 }
 
 /* Certifications and Projects grid: only two cards per row */
@@ -558,9 +593,26 @@ html { scroll-behavior: smooth; }
     border-spacing: 0 12px;
     margin-bottom: 24px;
 }
+.contact-table td {
+    /* Remove default spacing between icon and link */
+    padding-left: 0;
+    padding-right: 0;
+}
+.contact-table tr td:first-child {
+    width: 32px;
+    padding-right: 4px; /* Minimal space between icon and link */
+    vertical-align: middle;
+}
+.contact-table tr td:last-child {
+    padding-left: 0; /* Remove extra left padding before link */
+}
 .contact-icon {
     width: 32px;
     height: 32px;
+    transition: transform 0.2s cubic-bezier(.77,0,.175,1);
+}
+.contact-icon:hover {
+    transform: scale(1.2) rotate(-8deg);
 }
 
 /* Footer */
@@ -588,6 +640,75 @@ html { scroll-behavior: smooth; }
     border-radius: 8px;
 }
 
+/* --- Enhanced Animations & Transitions --- */
+
+/* Fade-in for all sections */
+.section {
+    animation: fadeInSection 0.8s cubic-bezier(.77,0,.175,1) both;
+    will-change: opacity, transform;
+}
+@keyframes fadeInSection {
+    0% { opacity: 0; transform: translateY(30px);}
+    100% { opacity: 1; transform: translateY(0);}
+}
+
+/* Card hover effect for all cards */
+.education-item, .experience-item, .certification-item, .project-item, .contact-form-container {
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+.education-item:hover, .experience-item:hover, .certification-item:hover, .project-item:hover, .contact-form-container:hover {
+    box-shadow: 0 12px 32px rgba(30,64,175,0.22);
+    transform: translateY(-4px) scale(1.02);
+}
+
+/* Social icon hover animation */
+.social-icon {
+    transition: transform 0.3s cubic-bezier(.77,0,.175,1), box-shadow 0.3s;
+}
+.social-icon:hover {
+    animation: bounceIcon 0.5s;
+}
+@keyframes bounceIcon {
+    0% { transform: scale(1.15) rotate(-8deg);}
+    50% { transform: scale(1.25) rotate(8deg);}
+    100% { transform: scale(1.15) rotate(-8deg);}
+}
+
+/* Button press animation */
+.btn-primary:active, .download-resume-btn:active {
+    transform: scale(0.98);
+    box-shadow: 0 1px 6px rgba(30,64,175,0.10);
+}
+
+/* Skills table row hover */
+.skills-table tr:hover td {
+    background: #e3f0ff;
+    color: #1e40af;
+    transition: background 0.2s, color 0.2s;
+}
+
+/* Navbar shadow on scroll */
+.sticky.scrolled {
+    box-shadow: 0 8px 32px rgba(30,64,175,0.18);
+    transition: box-shadow 0.3s;
+}
+
+/* --- Performance Optimizations --- */
+/* Use will-change for smoother transitions */
+.hero-content, .main-title, .subtitle, .profile-picture, .section, .card, .elevated-card {
+    will-change: opacity, transform;
+}
+
+/* Reduce repaints by limiting heavy shadows and gradients on mobile */
+@media (max-width: 700px) {
+    .education-item, .experience-item, .certification-item, .project-item, .contact-form-container {
+        box-shadow: 0 2px 8px rgba(30,64,175,0.10);
+    }
+    .sticky.scrolled {
+        box-shadow: 0 4px 16px rgba(30,64,175,0.12);
+    }
+}
+
 /* Responsive */
 @media (max-width: 700px) {
     .container, .footer-content {
@@ -598,8 +719,8 @@ html { scroll-behavior: smooth; }
         gap: 24px;
     }
     .profile-picture {
-        width: 140px;
-        height: 140px;
+        width: 200px;   /* Increased from 140px */
+        height: 200px;  /* Increased from 140px */
     }
     .main-title {
         font-size: 2rem;
@@ -693,4 +814,65 @@ html { scroll-behavior: smooth; }
     height: 40px;
     vertical-align: middle;
     margin-right: 8px;
+}
+
+/* Go to Top Button */
+.go-top-btn {
+    position: fixed;
+    right: 32px;
+    bottom: 32px;
+    z-index: 999;
+    background: linear-gradient(90deg, #176fc1 0%, #1e40af 100%);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    font-size: 2rem;
+    box-shadow: 0 4px 16px rgba(30,64,175,0.18);
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s, transform 0.2s;
+}
+.go-top-btn.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1.08);
+}
+.go-top-btn:hover {
+    background: linear-gradient(90deg, #1e40af 0%, #176fc1 100%);
+    transform: scale(1.15);
+}
+
+/* Larger icons for Libraries & Frameworks skills category */
+.skills-category:nth-of-type(3) .skill-icon {
+    width: 80px;
+    height: 80px;
+}
+
+/* Blue glassy look for cards in certifications, projects, education, experience */
+.education-item,
+.experience-item,
+.certification-item,
+.project-item {
+    background: linear-gradient(135deg, #f7f9fc 60%, #e3f0ff 100%);
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(30,64,175,0.10);
+    border: 1px solid #e3f0ff;
+    padding: 22px 16px;
+    margin-bottom: 20px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: box-shadow 0.2s, transform 0.2s, background 0.2s;
+}
+
+/* Card hover: deeper blue shadow and glassy highlight */
+.education-item:hover,
+.experience-item:hover,
+.certification-item:hover,
+.project-item:hover {
+    box-shadow: 0 8px 24px rgba(30,64,175,0.18);
+    background: linear-gradient(135deg, #e3f0ff 60%, #f7f9fc 100%);
+    transform: translateY(-2px) scale(1.01);
 }
