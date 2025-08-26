@@ -1,10 +1,13 @@
 // World-Class Data Science Portfolio JavaScript
 class Portfolio {
     constructor() {
+        this.isLoading = true;
+        this.scrollProgress = 0;
         this.init();
     }
 
     init() {
+        this.showLoadingScreen();
         this.setupNavigation();
         this.setupMobileMenu();
         this.setupScrollEffects();
@@ -13,6 +16,33 @@ class Portfolio {
         this.setupScrollToTop();
         this.setupSkillBars();
         this.setupTypewriter();
+        this.setupLazyLoading();
+        this.setupParallaxEffects();
+        this.setupScrollProgress();
+        this.setupInteractiveElements();
+        this.setupPerformanceOptimizations();
+        this.hideLoadingScreen();
+    }
+
+    // Loading Screen
+    showLoadingScreen() {
+        const loadingHTML = `
+            <div class="loading-overlay" id="loadingOverlay">
+                <div class="loading-spinner"></div>
+            </div>
+        `;
+        document.body.insertAdjacentHTML('afterbegin', loadingHTML);
+    }
+
+    hideLoadingScreen() {
+        setTimeout(() => {
+            const loadingOverlay = document.getElementById('loadingOverlay');
+            if (loadingOverlay) {
+                loadingOverlay.classList.add('hidden');
+                setTimeout(() => loadingOverlay.remove(), 500);
+            }
+            this.isLoading = false;
+        }, 1000);
     }
 
     // Navigation System
@@ -141,9 +171,9 @@ class Portfolio {
         });
     }
 
-    // Animations
+    // Enhanced Animations
     setupAnimations() {
-        // Intersection Observer for fade-in animations
+        // Intersection Observer for staggered animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -152,27 +182,168 @@ class Portfolio {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
-                    
-                    // Trigger skill bar animations
-                    if (entry.target.classList.contains('skill-category')) {
-                        this.animateSkillBars(entry.target);
-                    }
+                    this.triggerElementAnimation(entry.target);
                 }
             });
         }, observerOptions);
 
         // Observe elements for animation
-        const animateElements = document.querySelectorAll('.section-header, .skill-category, .timeline-item, .project-card, .expertise-item');
+        const animateElements = document.querySelectorAll(
+            '.section-header, .skill-category, .timeline-item, .project-card, .expertise-item, .cert-card, .publication-item'
+        );
         animateElements.forEach(el => observer.observe(el));
+    }
 
-        // Parallax effect for hero background
-        window.addEventListener('scroll', () => {
+    triggerElementAnimation(element) {
+        // Add staggered animation classes
+        if (element.classList.contains('timeline-item')) {
+            element.classList.add('visible');
+        } else if (element.classList.contains('skill-category')) {
+            element.classList.add('fade-in');
+            this.animateSkillBars(element);
+        } else if (element.classList.contains('project-card')) {
+            element.classList.add('scale-in');
+            this.setupProjectHoverEffects(element);
+        } else {
+            // Determine animation type based on position
+            const rect = element.getBoundingClientRect();
+            const centerX = window.innerWidth / 2;
+            
+            if (rect.left < centerX) {
+                element.classList.add('fade-in-left');
+            } else {
+                element.classList.add('fade-in-right');
+            }
+        }
+    }
+
+    // Parallax Effects
+    setupParallaxEffects() {
+        const parallaxElements = document.querySelectorAll('.parallax-element');
+        
+        window.addEventListener('scroll', this.debounce(() => {
             const scrolled = window.pageYOffset;
+            
+            parallaxElements.forEach((element, index) => {
+                const speed = 0.5 + (index * 0.1);
+                const yPos = -(scrolled * speed);
+                element.style.transform = `translateY(${yPos}px)`;
+            });
+            
+            // Hero background parallax
             const heroBackground = document.querySelector('.hero-bg');
             if (heroBackground) {
                 heroBackground.style.transform = `translateY(${scrolled * 0.3}px)`;
             }
+        }, 10));
+    }
+
+    // Scroll Progress Indicator
+    setupScrollProgress() {
+        const progressHTML = `
+            <div class="scroll-progress">
+                <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+            </div>
+        `;
+        document.body.insertAdjacentHTML('afterbegin', progressHTML);
+        
+        const progressBar = document.getElementById('scrollProgressBar');
+        
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            
+            progressBar.style.width = scrollPercent + '%';
+            this.scrollProgress = scrollPercent;
+        });
+    }
+
+    // Lazy Loading
+    setupLazyLoading() {
+        const imageObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.classList.add('loaded');
+                    imageObserver.unobserve(img);
+                }
+            });
+        });
+
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            img.classList.add('lazy-image');
+            imageObserver.observe(img);
+        });
+    }
+
+    // Interactive Elements
+    setupInteractiveElements() {
+        // Enhanced project cards
+        document.querySelectorAll('.project-card').forEach(card => {
+            this.setupProjectHoverEffects(card);
+        });
+        
+        // Interactive timeline
+        document.querySelectorAll('.timeline-item').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                item.style.transform = 'translateX(10px)';
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                item.style.transform = 'translateX(0)';
+            });
+        });
+        
+        // Enhanced form interactions
+        this.setupEnhancedFormInteractions();
+    }
+
+    setupProjectHoverEffects(card) {
+        // Removed expand button and project insights overlay
+    }
+
+    expandProjectCard(card) {
+        // Create modal or expanded view
+        const modal = document.createElement('div');
+        modal.className = 'project-modal';
+        modal.innerHTML = `
+            <div class="modal-content">
+                <span class="modal-close">&times;</span>
+                <h2>Project Deep Dive</h2>
+                <p>Detailed project information would go here...</p>
+            </div>
+        `;
+        
+        document.body.appendChild(modal);
+        
+        modal.querySelector('.modal-close').addEventListener('click', () => {
+            modal.remove();
+        });
+    }
+
+    setupEnhancedFormInteractions() {
+        const formInputs = document.querySelectorAll('.contact-form input, .contact-form textarea');
+        
+        formInputs.forEach(input => {
+            // Add floating labels
+            const label = document.createElement('label');
+            label.className = 'form-label';
+            label.textContent = input.placeholder;
+            input.placeholder = '';
+            input.parentNode.appendChild(label);
+            
+            // Add focus effects
+            input.addEventListener('focus', () => {
+                input.parentNode.classList.add('focused');
+            });
+            
+            input.addEventListener('blur', () => {
+                if (!input.value) {
+                    input.parentNode.classList.remove('focused');
+                }
+            });
         });
     }
 
@@ -182,15 +353,24 @@ class Portfolio {
     }
 
     animateSkillBars(skillCategory) {
-        const skillBars = skillCategory.querySelectorAll('.skill-progress');
-        skillBars.forEach((bar, index) => {
+        const skillItems = skillCategory.querySelectorAll('.skill-item');
+        
+        skillItems.forEach((item, index) => {
             setTimeout(() => {
-                const width = bar.style.width;
-                bar.style.width = '0%';
+                const progressBar = item.querySelector('.skill-progress');
+                const skillFill = document.createElement('div');
+                skillFill.className = 'skill-progress-fill';
+                
+                // Get skill level from data attribute
+                const skillLevel = item.dataset.skill || 85;
+                
+                progressBar.appendChild(skillFill);
+                
+                // Animate the fill
                 setTimeout(() => {
-                    bar.style.width = width;
+                    skillFill.style.width = skillLevel + '%';
                 }, 100);
-            }, index * 200);
+            }, index * 150);
         });
     }
 
@@ -349,6 +529,24 @@ class Portfolio {
     }
 
     // Performance Optimizations
+    setupPerformanceOptimizations() {
+        // Preload critical images
+        this.preloadImages();
+        
+        // Add GPU acceleration to animated elements
+        document.querySelectorAll('.project-card, .skill-progress, .timeline-item').forEach(el => {
+            el.classList.add('gpu-accelerated');
+        });
+        
+        // Reduce motion for users who prefer it
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            document.body.classList.add('reduce-motion');
+        }
+        
+        // Optimize scroll performance
+        this.optimizeScrollPerformance();
+    }
+
     preloadImages() {
         const criticalImages = [
             'assets/photo.jpg',
@@ -357,8 +555,27 @@ class Portfolio {
         ];
         
         criticalImages.forEach(src => {
-            const img = new Image();
-            img.src = src;
+            const link = document.createElement('link');
+            link.rel = 'preload';
+            link.as = 'image';
+            link.href = src;
+            document.head.appendChild(link);
+        });
+    }
+
+    optimizeScrollPerformance() {
+        let ticking = false;
+        
+        const updateScrollEffects = () => {
+            // Update scroll-dependent effects here
+            ticking = false;
+        };
+        
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(updateScrollEffects);
+                ticking = true;
+            }
         });
     }
 
@@ -401,26 +618,66 @@ class Portfolio {
             });
         });
     }
+
+    // Setup Tooltips
+    setupTooltips() {
+        document.querySelectorAll('[data-tooltip]').forEach(element => {
+            element.classList.add('tooltip');
+        });
+    }
+
+    // Keyboard Navigation
+    setupKeyboardNavigation() {
+        document.addEventListener('keydown', (e) => {
+            // ESC key closes modals
+            if (e.key === 'Escape') {
+                const modal = document.querySelector('.project-modal');
+                if (modal) modal.remove();
+            }
+            
+            // Arrow keys for navigation
+            if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+                e.preventDefault();
+                const direction = e.key === 'ArrowDown' ? 1 : -1;
+                this.navigateWithKeyboard(direction);
+            }
+        });
+    }
+
+    navigateWithKeyboard(direction) {
+        const sections = document.querySelectorAll('.section');
+        const currentSection = Math.floor(this.scrollProgress / (100 / sections.length));
+        const nextSection = Math.max(0, Math.min(sections.length - 1, currentSection + direction));
+        
+        if (sections[nextSection]) {
+            sections[nextSection].scrollIntoView({ behavior: 'smooth' });
+        }
+    }
 }
 
 // Enhanced Loading and Initialization
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize portfolio
+    // Initialize portfolio with loading state
     const portfolio = new Portfolio();
     
     // Add loading animation
-    document.body.classList.add('loaded');
-    
-    // Preload images
-    portfolio.preloadImages();
+    setTimeout(() => {
+        document.body.classList.add('loaded');
+    }, 100);
     
     // Initialize additional features
     portfolio.initSmoothScrolling();
     portfolio.addRippleEffect();
+    
+    // Add tooltips
+    portfolio.setupTooltips();
+    
+    // Setup keyboard navigation
+    portfolio.setupKeyboardNavigation();
 });
 
-// Add CSS for ripple effect
-const rippleCSS = `
+// Enhanced CSS for all interactive effects
+const enhancedCSS = `
 .btn-primary, .btn-secondary {
     position: relative;
     overflow: hidden;
@@ -465,11 +722,62 @@ body.loaded {
         transform: translateY(0);
     }
 }
+
+.project-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    max-width: 80%;
+    max-height: 80%;
+    overflow-y: auto;
+    position: relative;
+    animation: scaleIn 0.3s ease;
+}
+
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #666;
+}
+
+.form-group.focused .form-label {
+    top: -0.5rem;
+    left: 0.75rem;
+    font-size: 0.75rem;
+    color: var(--primary);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
 `;
 
-// Inject CSS
+// Inject Enhanced CSS
 const style = document.createElement('style');
-style.textContent = rippleCSS;
+style.textContent = enhancedCSS;
 document.head.appendChild(style);
 
 // Performance monitoring
