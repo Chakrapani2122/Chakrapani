@@ -424,20 +424,40 @@ class Portfolio {
         submitBtn.disabled = true;
         
         try {
-            // Simulate form submission (replace with actual form handling)
-            await new Promise(resolve => setTimeout(resolve, 1500));
+            const formData = new FormData(form);
             
-            // Show success message
-            successMessage.style.display = 'block';
-            form.reset();
+            const response = await fetch('https://formspree.io/f/myzedaon', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
             
-            // Hide success message after 5 seconds
-            setTimeout(() => {
-                successMessage.style.display = 'none';
-            }, 5000);
+            if (response.ok) {
+                // Show success message
+                successMessage.style.display = 'block';
+                successMessage.textContent = 'Thank you! Your message has been sent successfully.';
+                successMessage.className = 'form-message form-success';
+                form.reset();
+                
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 5000);
+            } else {
+                throw new Error('Form submission failed');
+            }
             
         } catch (error) {
             console.error('Form submission error:', error);
+            successMessage.style.display = 'block';
+            successMessage.textContent = 'Sorry, there was an error sending your message. Please try again.';
+            successMessage.className = 'form-message form-error';
+            
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 5000);
         } finally {
             // Reset button
             submitBtn.innerHTML = originalText;
