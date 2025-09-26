@@ -84,6 +84,15 @@ class Portfolio {
             link.classList.remove('active');
         });
         activeLink.classList.add('active');
+        
+        // Update floating nav menu items
+        const targetId = activeLink.getAttribute('href');
+        document.querySelectorAll('.nav-menu-item').forEach(item => {
+            item.classList.remove('active');
+            if (item.getAttribute('href') === targetId) {
+                item.classList.add('active');
+            }
+        });
     }
 
     updateActiveNavOnScroll() {
@@ -108,28 +117,42 @@ class Portfolio {
         });
     }
 
-    // Mobile Menu
+    // Floating Navigation
     setupMobileMenu() {
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navLinks = document.querySelector('.nav-links');
-
-        if (menuToggle && navLinks) {
-            menuToggle.addEventListener('click', () => {
-                this.toggleMobileMenu();
+        const navToggleBtn = document.getElementById('navToggleBtn');
+        const navMenu = document.getElementById('navMenu');
+        
+        if (navToggleBtn && navMenu) {
+            navToggleBtn.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
             });
-
+            
+            // Close menu when clicking on a link and update active state
+            navMenu.addEventListener('click', (e) => {
+                if (e.target.classList.contains('nav-menu-item')) {
+                    // Remove active class from all menu items
+                    navMenu.querySelectorAll('.nav-menu-item').forEach(item => {
+                        item.classList.remove('active');
+                    });
+                    // Add active class to clicked item
+                    e.target.classList.add('active');
+                    navMenu.classList.remove('active');
+                }
+            });
+            
             // Close menu when clicking outside
             document.addEventListener('click', (e) => {
-                if (!menuToggle.contains(e.target) && !navLinks.contains(e.target)) {
-                    this.closeMobileMenu();
+                if (!navToggleBtn.contains(e.target) && !navMenu.contains(e.target)) {
+                    navMenu.classList.remove('active');
                 }
             });
-
-            // Close menu on window resize
-            window.addEventListener('resize', () => {
-                if (window.innerWidth > 768) {
-                    this.closeMobileMenu();
-                }
+            
+            // Double-click to scroll to top
+            navToggleBtn.addEventListener('dblclick', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
             });
         }
     }
@@ -140,9 +163,20 @@ class Portfolio {
         
         menuToggle.classList.toggle('active');
         navLinks.classList.toggle('open');
+        // update aria state
+        const expanded = menuToggle.classList.contains('active');
+        menuToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
         
         // Prevent body scroll when menu is open
         document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+
+        // Move focus into nav when opened (first link) and restore when closed
+        if (expanded) {
+            const firstLink = navLinks.querySelector('.nav-link');
+            if (firstLink) firstLink.focus();
+        } else {
+            menuToggle.focus();
+        }
     }
 
     closeMobileMenu() {
@@ -513,26 +547,10 @@ class Portfolio {
         field.parentNode.appendChild(messageEl);
     }
 
-    // Scroll to Top
+    // Scroll to Top (integrated with floating nav)
     setupScrollToTop() {
-        const scrollTopBtn = document.getElementById('scrollTop');
-        
-        if (scrollTopBtn) {
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 300) {
-                    scrollTopBtn.classList.add('visible');
-                } else {
-                    scrollTopBtn.classList.remove('visible');
-                }
-            });
-
-            scrollTopBtn.addEventListener('click', () => {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
-        }
+        // Scroll to top functionality is now integrated with floating nav button
+        // Double-click the floating nav button to scroll to top
     }
 
     // Utility Functions
@@ -805,18 +823,5 @@ if ('performance' in window) {
     window.addEventListener('load', () => {
         const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
         console.log(`Portfolio loaded in ${loadTime}ms`);
-    });
-}
-
-// Service Worker for offline functionality (optional)
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
-            .then(registration => {
-                console.log('SW registered: ', registration);
-            })
-            .catch(registrationError => {
-                console.log('SW registration failed: ', registrationError);
-            });
     });
 }
