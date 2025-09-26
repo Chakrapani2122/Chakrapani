@@ -207,17 +207,34 @@ class Portfolio {
     }
 
     animateSkillBars(skillCategory) {
+        if (skillCategory.dataset.animated) {
+            return;
+        }
+        skillCategory.dataset.animated = true;
+
         const skillItems = skillCategory.querySelectorAll('.skill-item');
         
         skillItems.forEach((item, index) => {
             setTimeout(() => {
                 const progressBar = item.querySelector('.skill-progress');
-                const skillLevel = item.dataset.skill || progressBar.style.width || '85%';
+                if (!progressBar) {
+                    console.debug('[animateSkillBars] no .skill-progress found for item', item, index);
+                    return;
+                }
                 
-                progressBar.style.width = '0%';
-                setTimeout(() => {
-                    progressBar.style.width = skillLevel;
-                }, 100);
+                let skillLevel = item.dataset.skill;
+
+                if (!skillLevel) {
+                    skillLevel = '85%'; // Fallback
+                }
+
+                // normalize skillLevel (ensure ends with %)
+                if (/^[0-9.]+$/.test(skillLevel)) {
+                    skillLevel = skillLevel + '%';
+                }
+                
+                progressBar.style.width = skillLevel;
+                console.debug('[animateSkillBars] animated to', skillLevel, 'for item', index);
             }, index * 150);
         });
     }
