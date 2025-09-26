@@ -972,9 +972,18 @@ img, picture, video {
   display: none;
 }
 
-@media (max-width: 1024px) {
+/* Show floating nav and hide main nav for all non-desktop devices */
+@media (max-width: 1199px) {
   .floating-nav {
     display: block;
+  }
+  
+  .nav-links {
+    display: none !important;
+  }
+  
+  .menu-toggle {
+    display: none !important;
   }
 }
 
@@ -1819,10 +1828,6 @@ img, picture, video {
     margin: 0;
     padding: 0 2rem;
   }
-  
-  .nav-links {
-    display: none;
-  }
 }
 
 /* iPad Air Portrait */
@@ -1838,10 +1843,6 @@ img, picture, video {
     width: 100%;
     margin: 0;
     padding: 0 2rem;
-  }
-  
-  .nav-links {
-    display: none;
   }
 }
 
@@ -1859,10 +1860,6 @@ img, picture, video {
     margin: 0;
     padding: 0 1.5rem;
   }
-  
-  .nav-links {
-    display: none;
-  }
 }
 
 /* iPad Mini Landscape & iPad Air Landscape */
@@ -1879,10 +1876,6 @@ img, picture, video {
     width: 100%;
     margin: 0;
     padding: 0 2rem;
-  }
-  
-  .nav-links {
-    display: none;
   }
 }
 
