@@ -19,6 +19,16 @@ class Portfolio {
         
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
+                // In macOS mode, swap window content instead of scrolling
+                if (document.body.classList.contains('macos-mode')) {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href').replace('#', '');
+                    if (window.__macOSDesktop) {
+                        window.__macOSDesktop.loadSection(targetId);
+                    }
+                    return;
+                }
+
                 e.preventDefault();
                 const targetId = link.getAttribute('href').substring(1);
                 const targetSection = document.getElementById(targetId);
@@ -36,9 +46,11 @@ class Portfolio {
             });
         });
 
-        // Update active nav on scroll
+        // Update active nav on scroll (disabled in macOS mode)
         window.addEventListener('scroll', this.debounce(() => {
-            this.updateActiveNavOnScroll();
+            if (!document.body.classList.contains('macos-mode')) {
+                this.updateActiveNavOnScroll();
+            }
         }, 10));
     }
 
@@ -46,9 +58,10 @@ class Portfolio {
         document.querySelectorAll('.nav-link, .nav-menu-item').forEach(link => {
             link.classList.remove('active');
         });
-        activeLink.classList.add('active');
+        if (activeLink) activeLink.classList.add('active');
         
-        const targetId = activeLink.getAttribute('href');
+        const targetId = activeLink ? activeLink.getAttribute('href') : null;
+        if (!targetId) return;
         document.querySelectorAll('.nav-link, .nav-menu-item').forEach(item => {
             if (item.getAttribute('href') === targetId) {
                 item.classList.add('active');
@@ -85,7 +98,7 @@ class Portfolio {
         const menuToggle = document.querySelector('.menu-toggle');
         const navLinks = document.querySelector('.nav-links');
         
-        // Floating navigation
+        // Floating navigation (disabled in macOS mode via CSS)
         if (navToggleBtn && navMenu) {
             navToggleBtn.addEventListener('click', () => {
                 navMenu.classList.toggle('active');
@@ -150,6 +163,7 @@ class Portfolio {
         const navbar = document.querySelector('.navbar');
         
         window.addEventListener('scroll', () => {
+            if (document.body.classList.contains('macos-mode')) return;
             if (window.scrollY > 50) {
                 navbar.style.background = 'rgba(255, 255, 255, 0.98)';
                 navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
@@ -365,13 +379,293 @@ class Portfolio {
     }
 }
 
-// Initialize Portfolio
+// === macOS Desktop Implementation ===
+class MacOSDesktop {
+    constructor() {
+        this.desktopEl = document.getElementById('macDesktop');
+        this.dockEl = document.getElementById('macDockItems');
+        this.clockEl = document.getElementById('menubarClock');
+        this.store = document.getElementById('main'); // hidden source of sections
+        this.zIndex = 100;
+        this.state = 'window'; // window | desktop | launchpad
+
+        // Section mapping: id -> {title, icon}
+        this.sectionMap = [
+            { id: 'home', title: 'Home', icon: '🏠' },
+            { id: 'about', title: 'About', icon: '👤' },
+            { id: 'skills', title: 'Skills', icon: '🛠️' },
+            { id: 'experience', title: 'Experience', icon: '💼' },
+            { id: 'projects', title: 'Projects', icon: '🚀' },
+            { id: 'certifications', title: 'Certifications', icon: '🎓' },
+            { id: 'publications', title: 'Publications', icon: '📚' },
+            { id: 'contact', title: 'Contact', icon: '✉️' }
+        ];
+
+        this.enable();
+    }
+
+    enable() {
+        document.body.classList.add('macos-mode');
+        this.buildDock();
+        this.buildLaunchpad();
+        this.buildWindow();
+        this.startClock();
+        // Desktop click to go to desktop when no overlays
+        if (this.desktopEl) {
+            this.desktopEl.addEventListener('click', (e) => {
+                if (e.target === this.desktopEl) {
+                    this.showDesktop();
+                }
+            });
+        }
+        // ESC to show desktop
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') this.showDesktop();
+        });
+    }
+
+    startClock() {
+        const update = () => {
+            const now = new Date();
+            const opts = { weekday: 'short', hour: 'numeric', minute: '2-digit' };
+            if (this.clockEl) this.clockEl.textContent = now.toLocaleString(undefined, opts);
+        };
+        update();
+        setInterval(update, 1000 * 30);
+    }
+
+    buildDock() {
+        // Clear dock first
+        if (this.dockEl) this.dockEl.innerHTML = '';
+
+        // Launchpad item
+        const lp = document.createElement('li');
+        lp.className = 'dock-item';
+        lp.setAttribute('role', 'tab');
+        lp.dataset.windowId = 'launchpad';
+        lp.innerHTML = `<div class="dock-icon" aria-label="App Library">⬛️</div><div class="dock-label">App Library</div>`;
+        lp.addEventListener('click', () => this.toggleLaunchpad());
+        this.dockEl.appendChild(lp);
+
+        // Section items
+        this.sectionMap.forEach(({ id, title, icon }) => {
+            const li = document.createElement('li');
+            li.className = 'dock-item';
+            li.setAttribute('role', 'tab');
+            li.dataset.windowId = id;
+            li.innerHTML = `<div class="dock-icon">${icon}</div><div class="dock-label">${title}</div>`;
+            li.addEventListener('click', () => this.loadSection(id));
+            this.dockEl.appendChild(li);
+        });
+    }
+
+    buildLaunchpad() {
+        // Create overlay
+        this.launchpadEl = document.createElement('div');
+        this.launchpadEl.className = 'mac-launchpad';
+        const grid = document.createElement('div');
+        grid.className = 'lp-grid';
+
+        this.sectionMap.forEach(({ id, title, icon }) => {
+            const item = document.createElement('button');
+            item.className = 'lp-item';
+            item.setAttribute('aria-label', `${title}`);
+            item.innerHTML = `<div class="lp-icon">${icon}</div><div class="lp-title">${title}</div>`;
+            item.addEventListener('click', () => {
+                this.loadSection(id);
+                this.toggleLaunchpad(false);
+            });
+            grid.appendChild(item);
+        });
+
+        this.launchpadEl.appendChild(grid);
+        document.body.appendChild(this.launchpadEl);
+
+        // Dismiss on backdrop click
+        this.launchpadEl.addEventListener('click', (e) => {
+            if (e.target === this.launchpadEl) this.toggleLaunchpad(false);
+        });
+    }
+
+    toggleLaunchpad(force) {
+        const active = typeof force === 'boolean' ? force : !this.launchpadEl.classList.contains('active');
+        this.launchpadEl.classList.toggle('active', active);
+        this.state = active ? 'launchpad' : (this.isWindowVisible() ? 'window' : 'desktop');
+    }
+
+    buildWindow() {
+        // Create one main window
+        const win = document.createElement('div');
+        win.className = 'mac-window fullscreen';
+        win.dataset.windowId = 'main';
+        win.dataset.focused = 'true';
+        this.mainWindowEl = win;
+
+        // Titlebar
+        const titlebar = document.createElement('div');
+        titlebar.className = 'mac-titlebar';
+
+        const lights = document.createElement('div');
+        lights.className = 'mac-traffic-lights';
+        const btnClose = document.createElement('span'); btnClose.className = 'mac-btn close';
+        const btnMin = document.createElement('span'); btnMin.className = 'mac-btn min';
+        const btnFull = document.createElement('span'); btnFull.className = 'mac-btn full';
+        lights.append(btnClose, btnMin, btnFull);
+
+        this.titleEl = document.createElement('div');
+        this.titleEl.className = 'mac-title';
+        this.titleEl.textContent = 'Portfolio';
+
+        const titleRight = document.createElement('div');
+        titleRight.style.webkitAppRegion = 'no-drag';
+
+        titlebar.append(lights, this.titleEl, titleRight);
+
+        // Content wrapper
+        this.contentWrap = document.createElement('div');
+        this.contentWrap.className = 'mac-content';
+
+        win.append(titlebar, this.contentWrap);
+        this.desktopEl.appendChild(win);
+
+        // Controls
+        btnClose.addEventListener('click', () => this.closeWindow());
+        btnMin.addEventListener('click', () => this.minimizeWindow());
+        btnFull.addEventListener('click', () => this.toggleWindowSize());
+        // Double-click titlebar to maximize/restore
+        titlebar.addEventListener('dblclick', () => this.toggleWindowSize());
+
+        // Load initial section
+        this.loadSection('home');
+    }
+
+    // State helpers
+    isWindowVisible() {
+        if (!this.mainWindowEl) return false;
+        return !this.mainWindowEl.classList.contains('closed') && !this.mainWindowEl.classList.contains('minimized');
+    }
+
+    ensureWindowVisible() {
+        if (!this.mainWindowEl) return;
+        this.toggleLaunchpad(false);
+        this.mainWindowEl.classList.remove('closed', 'minimized');
+        this.mainWindowEl.style.display = '';
+        this.state = 'window';
+        this.focusWindow();
+    }
+
+    showDesktop() {
+        // Hide launchpad and window to show wallpaper only
+        this.toggleLaunchpad(false);
+        if (this.mainWindowEl) {
+            // Prefer minimize (opacity 0 + pointer-events none) to reveal wallpaper smoothly
+            this.mainWindowEl.classList.add('minimized');
+        }
+        this.state = 'desktop';
+    }
+
+    minimizeWindow() {
+        if (!this.mainWindowEl) return;
+        this.toggleLaunchpad(false);
+        this.mainWindowEl.classList.add('minimized');
+        this.mainWindowEl.classList.remove('closed');
+        this.state = 'desktop';
+    }
+
+    closeWindow() {
+        if (!this.mainWindowEl) return;
+        this.toggleLaunchpad(false);
+        this.mainWindowEl.classList.add('closed');
+        this.mainWindowEl.classList.remove('minimized');
+        this.state = 'desktop';
+    }
+
+    // Toggle between fullscreen and windowed sizes
+    toggleWindowSize() {
+        const win = this.mainWindowEl;
+        if (!win) return;
+
+        const isFullscreen = win.classList.contains('fullscreen');
+        if (isFullscreen) {
+            // Switch to windowed size and center
+            win.classList.remove('fullscreen');
+            // Set a reasonable size (CSS already gives width/height via percentages)
+            const desiredW = Math.min(1000, Math.floor(window.innerWidth * 0.82));
+            const desiredH = Math.min(680, Math.floor(window.innerHeight * 0.78));
+            const left = Math.max(12, Math.floor((window.innerWidth - desiredW) / 2));
+            const top = Math.max(40, Math.floor((window.innerHeight - desiredH) / 2));
+            win.style.width = desiredW + 'px';
+            win.style.height = desiredH + 'px';
+            win.style.left = left + 'px';
+            win.style.top = top + 'px';
+            win.style.right = 'auto';
+            win.style.bottom = 'auto';
+        } else {
+            // Go back to fullscreen
+            win.classList.add('fullscreen');
+            // Let CSS control size/placement
+            win.style.left = '';
+            win.style.top = '';
+            win.style.right = '';
+            win.style.bottom = '';
+            win.style.width = '';
+            win.style.height = '';
+        }
+        this.focusWindow();
+    }
+
+    loadSection(id) {
+        const sectionMeta = this.sectionMap.find(s => s.id === id);
+        if (!sectionMeta) return;
+
+        const target = document.getElementById(id);
+        if (!target) return;
+
+        // Ensure window is visible when loading a section
+        this.ensureWindowVisible();
+
+        // Move current content back to store
+        if (this.contentWrap.firstElementChild) {
+            this.store.appendChild(this.contentWrap.firstElementChild);
+        }
+        // Move target section into window
+        this.contentWrap.appendChild(target);
+        // Update title
+        this.titleEl.textContent = `${sectionMeta.title}`;
+
+        // Focus window
+        this.focusWindow();
+    }
+
+    focusWindow() {
+        // Single window focus; ensure it's on top
+        const win = this.desktopEl.querySelector('.mac-window');
+        if (win) {
+            this.zIndex += 1;
+            win.style.zIndex = String(1000 + this.zIndex);
+        }
+    }
+
+    // Utility
+    debounce(fn, wait) {
+        let t;
+        return (...args) => { clearTimeout(t); t = setTimeout(() => fn.apply(this, args), wait); };
+    }
+}
+
+// Initialize Portfolio and macOS Desktop
 document.addEventListener('DOMContentLoaded', () => {
-    new Portfolio();
+    const app = new Portfolio();
+    try {
+        window.__macOSDesktop = new MacOSDesktop();
+    } catch (e) {
+        console.error('macOS desktop init failed', e);
+    }
     
-    // Add smooth scrolling for all internal links
+    // Add smooth scrolling for all internal links (disabled in macOS mode)
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
+            if (document.body.classList.contains('macos-mode')) return; // handled by nav logic
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {

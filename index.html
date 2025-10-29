@@ -14,6 +14,27 @@
     <meta property="og:type" content="website">
 </head>
 <body>
+    <!-- macOS Menu Bar -->
+    <div class="mac-menubar" id="macMenuBar" role="menubar" aria-label="macOS menu bar">
+        <div class="menubar-left">
+            <button class="menubar-apple" aria-label="Apple menu"></button>
+            <span class="menubar-appname">Portfolio</span>
+            <div class="menubar-menu" role="menu">File</div>
+            <div class="menubar-menu" role="menu">Edit</div>
+            <div class="menubar-menu" role="menu">View</div>
+            <div class="menubar-menu" role="menu">Window</div>
+            <div class="menubar-menu" role="menu">Help</div>
+        </div>
+        <div class="menubar-right">
+            <span class="menubar-status" id="menubarStatus">🔋100%</span>
+            <span class="menubar-clock" id="menubarClock" aria-live="polite">--:--</span>
+        </div>
+    </div>
+
+    <!-- Desktop surface for windows -->
+    <div id="macDesktop" class="mac-desktop" aria-label="Desktop" role="application"></div>
+
+    <!-- Existing navigation (hidden via CSS in macOS mode) -->
     <nav class="navbar" role="navigation" aria-label="Main Navigation">
         <div class="nav-container">
             <div class="logo">
@@ -29,11 +50,6 @@
                 <li><a href="#publications" class="nav-link">Publications</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
-            <button class="menu-toggle" aria-label="Toggle Menu" aria-expanded="false" aria-controls="main-navigation" type="button" role="button">
-                <span class="hamburger"></span>
-                <span class="hamburger"></span>
-                <span class="hamburger"></span>
-            </button>
             <button class="menu-toggle" aria-label="Toggle Menu" aria-expanded="false" aria-controls="main-navigation" type="button" role="button">
                 <span class="hamburger"></span>
                 <span class="hamburger"></span>
@@ -788,6 +804,11 @@
             </div>
         </section>
     </main>
+
+    <!-- macOS Dock -->
+    <div class="mac-dock" id="macDock" aria-label="Dock">
+        <ul class="dock-items" id="macDockItems" role="tablist" aria-orientation="horizontal"></ul>
+    </div>
 
     <footer class="footer">
         <div class="container">
