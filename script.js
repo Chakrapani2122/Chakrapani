@@ -93,9 +93,7 @@ class Portfolio {
             
             navMenu.addEventListener('click', (e) => {
                 if (e.target.classList.contains('nav-menu-item')) {
-                    navMenu.querySelectorAll('.nav-menu-item').forEach(item => {
-                        item.classList.remove('active');
-                    });
+                    navMenu.querySelectorAll('.nav-menu-item').forEach(item => item.classList.remove('active'));
                     e.target.classList.add('active');
                     navMenu.classList.remove('active');
                 }
@@ -108,22 +106,17 @@ class Portfolio {
             });
             
             navToggleBtn.addEventListener('dblclick', () => {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         }
         
-        // Mobile menu toggle
+        // Mobile menu toggle (guarded - menu-toggle removed in HTML)
         if (menuToggle && navLinks) {
             menuToggle.addEventListener('click', () => {
                 menuToggle.classList.toggle('active');
                 navLinks.classList.toggle('open');
-                
                 const expanded = menuToggle.classList.contains('active');
                 menuToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-                
                 document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
             });
             
@@ -140,39 +133,33 @@ class Portfolio {
 
     closeFloatingNav() {
         const navMenu = document.getElementById('navMenu');
-        if (navMenu) {
-            navMenu.classList.remove('active');
-        }
+        if (navMenu) navMenu.classList.remove('active');
     }
 
     // Scroll Effects
     setupScrollEffects() {
         const navbar = document.querySelector('.navbar');
+        if (!navbar) return;
         
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
-                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-                navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+                navbar.style.background = 'rgba(0, 0, 0, 0.95)';
+                navbar.style.boxShadow = '0 0 20px rgba(0, 255, 0, 0.2)';
+                navbar.style.borderBottom = '2px solid rgba(0,255,0,0.6)';
             } else {
-                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-                navbar.style.boxShadow = 'none';
+                navbar.style.background = 'var(--terminal-bg)';
+                navbar.style.boxShadow = '0 0 0 rgba(0,0,0,0)';
+                navbar.style.borderBottom = '2px solid var(--terminal-green)';
             }
         });
     }
 
     // Animations
     setupAnimations() {
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
 
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    this.triggerElementAnimation(entry.target);
-                }
-            });
+            entries.forEach(entry => { if (entry.isIntersecting) this.triggerElementAnimation(entry.target); });
         }, observerOptions);
 
         const animateElements = document.querySelectorAll(
@@ -193,23 +180,16 @@ class Portfolio {
             const rect = element.getBoundingClientRect();
             const centerX = window.innerWidth / 2;
             
-            if (rect.left < centerX) {
-                element.classList.add('fade-in-left');
-            } else {
-                element.classList.add('fade-in-right');
-            }
+            if (rect.left < centerX) element.classList.add('fade-in-left');
+            else element.classList.add('fade-in-right');
         }
     }
 
     // Skill Bars Animation
-    setupSkillBars() {
-        // Triggered by intersection observer
-    }
+    setupSkillBars() { /* Triggered by intersection observer */ }
 
     animateSkillBars(skillCategory) {
-        if (skillCategory.dataset.animated) {
-            return;
-        }
+        if (skillCategory.dataset.animated) return;
         skillCategory.dataset.animated = true;
 
         const skillItems = skillCategory.querySelectorAll('.skill-item');
@@ -217,24 +197,12 @@ class Portfolio {
         skillItems.forEach((item, index) => {
             setTimeout(() => {
                 const progressBar = item.querySelector('.skill-progress');
-                if (!progressBar) {
-                    console.debug('[animateSkillBars] no .skill-progress found for item', item, index);
-                    return;
-                }
+                if (!progressBar) return;
                 
-                let skillLevel = item.dataset.skill;
-
-                if (!skillLevel) {
-                    skillLevel = '85%'; // Fallback
-                }
-
-                // normalize skillLevel (ensure ends with %)
-                if (/^[0-9.]+$/.test(skillLevel)) {
-                    skillLevel = skillLevel + '%';
-                }
+                let skillLevel = item.dataset.skill || '85%';
+                if (/^[0-9.]+$/.test(skillLevel)) skillLevel = skillLevel + '%';
                 
                 progressBar.style.width = skillLevel;
-                console.debug('[animateSkillBars] animated to', skillLevel, 'for item', index);
             }, index * 150);
         });
     }
@@ -271,33 +239,29 @@ class Portfolio {
             const response = await fetch('https://formspree.io/f/myzedaon', {
                 method: 'POST',
                 body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
+                headers: { 'Accept': 'application/json' }
             });
             
             if (response.ok) {
-                successMessage.style.display = 'block';
-                successMessage.textContent = 'Thank you! Your message has been sent successfully.';
-                successMessage.className = 'form-message form-success';
+                if (successMessage) {
+                    successMessage.style.display = 'block';
+                    successMessage.textContent = 'Thank you! Your message has been sent successfully.';
+                    successMessage.className = 'form-message form-success';
+                }
                 form.reset();
-                
-                setTimeout(() => {
-                    successMessage.style.display = 'none';
-                }, 5000);
+                setTimeout(() => { if (successMessage) successMessage.style.display = 'none'; }, 5000);
             } else {
                 throw new Error('Form submission failed');
             }
             
         } catch (error) {
             console.error('Form submission error:', error);
-            successMessage.style.display = 'block';
-            successMessage.textContent = 'Sorry, there was an error sending your message. Please try again.';
-            successMessage.className = 'form-message form-error';
-            
-            setTimeout(() => {
-                successMessage.style.display = 'none';
-            }, 5000);
+            if (successMessage) {
+                successMessage.style.display = 'block';
+                successMessage.textContent = 'Sorry, there was an error sending your message. Please try again.';
+                successMessage.className = 'form-message form-error';
+                setTimeout(() => { successMessage.style.display = 'none'; }, 5000);
+            }
         } finally {
             submitBtn.innerHTML = originalText;
             submitBtn.disabled = false;
@@ -323,17 +287,17 @@ class Portfolio {
         }
 
         if (!isValid) {
-            field.style.borderColor = 'var(--danger)';
+            field.style.borderColor = 'var(--terminal-red)';
             this.showValidationMessage(field, message);
         } else {
-            field.style.borderColor = 'var(--success)';
+            field.style.borderColor = 'var(--terminal-green)';
         }
 
         return isValid;
     }
 
     clearValidation(field) {
-        field.style.borderColor = 'var(--gray-200)';
+        field.style.borderColor = 'var(--terminal-dark-gray)';
         const existingMessage = field.parentNode.querySelector('.validation-message');
         if (existingMessage) {
             existingMessage.remove();
@@ -344,7 +308,7 @@ class Portfolio {
         const messageEl = document.createElement('div');
         messageEl.className = 'validation-message';
         messageEl.textContent = message;
-        messageEl.style.color = 'var(--danger)';
+        messageEl.style.color = 'var(--terminal-red)';
         messageEl.style.fontSize = '0.875rem';
         messageEl.style.marginTop = '0.5rem';
         
@@ -374,12 +338,7 @@ document.addEventListener('DOMContentLoaded', () => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
+            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
     });
 });
@@ -387,110 +346,33 @@ document.addEventListener('DOMContentLoaded', () => {
 // Add CSS animations
 const animationCSS = `
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
-
 @keyframes fadeInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
 }
-
 @keyframes fadeInRight {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
 }
-
 @keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
 }
-
-.fade-in {
-  animation: fadeInUp 0.6s ease-out;
-}
-
-.fade-in-left {
-  animation: fadeInLeft 0.6s ease-out;
-}
-
-.fade-in-right {
-  animation: fadeInRight 0.6s ease-out;
-}
-
-.scale-in {
-  animation: scaleIn 0.5s ease-out;
-}
-
-.timeline-item {
-  opacity: 0;
-  transform: translateX(-50px);
-  transition: all 0.6s ease;
-}
-
-.timeline-item.visible {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.timeline-item:nth-child(even) {
-  transform: translateX(50px);
-}
-
-.timeline-item:nth-child(even).visible {
-  transform: translateX(0);
-}
-
-.form-success {
-  background: rgba(16, 185, 129, 0.1);
-  border: 1px solid var(--success);
-  color: var(--success);
-}
-
-.form-error {
-  background: rgba(239, 68, 68, 0.1);
-  border: 1px solid var(--danger);
-  color: var(--danger);
-}
-
-.validation-message {
-  animation: slideDown 0.3s ease-out;
-}
-
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+.fade-in { animation: fadeInUp 0.6s ease-out; }
+.fade-in-left { animation: fadeInLeft 0.6s ease-out; }
+.fade-in-right { animation: fadeInRight 0.6s ease-out; }
+.scale-in { animation: scaleIn 0.5s ease-out; }
+.timeline-item { opacity: 0; transform: translateX(-50px); transition: all 0.6s ease; }
+.timeline-item.visible { opacity: 1; transform: translateX(0); }
+.timeline-item:nth-child(even) { transform: translateX(50px); }
+.timeline-item:nth-child(even).visible { transform: translateX(0); }
+.form-success { background: rgba(0, 255, 0, 0.08); border: 1px solid var(--terminal-green); color: var(--terminal-green); }
+.form-error { background: rgba(255, 0, 0, 0.08); border: 1px solid var(--terminal-red); color: var(--terminal-red); }
+.validation-message { animation: slideDown 0.3s ease-out; }
+@keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 `;
 
 const style = document.createElement('style');
