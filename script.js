@@ -11,6 +11,7 @@ class Portfolio {
         this.setupAnimations();
         this.setupContactForm();
         this.setupSkillBars();
+        this.setupCounters();
     }
 
     // Navigation System
@@ -349,6 +350,71 @@ class Portfolio {
         messageEl.style.marginTop = '0.5rem';
         
         field.parentNode.appendChild(messageEl);
+    }
+
+    // Animated Counter System
+    setupCounters() {
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.dataset.counted) {
+                    this.animateCounter(entry.target);
+                    entry.target.dataset.counted = 'true';
+                }
+            });
+        }, observerOptions);
+
+        const statNumbers = document.querySelectorAll('.stat-number');
+        statNumbers.forEach(stat => observer.observe(stat));
+    }
+
+    animateCounter(element) {
+        const text = element.textContent;
+        const hasPercent = text.includes('%');
+        const hasPlus = text.includes('+');
+        const hasK = text.includes('K');
+        
+        // Extract the number
+        let targetValue = parseFloat(text.replace(/[^\d.]/g, ''));
+        
+        if (isNaN(targetValue)) {
+            return;
+        }
+
+        const duration = 2000; // 2 seconds
+        const steps = 60;
+        const stepDuration = duration / steps;
+        const increment = targetValue / steps;
+        let current = 0;
+
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= targetValue) {
+                current = targetValue;
+                clearInterval(timer);
+            }
+
+            let displayValue = current;
+            
+            // Format based on original text
+            if (hasK) {
+                displayValue = (current / 1).toFixed(0) + 'K+';
+            } else if (Number.isInteger(targetValue)) {
+                displayValue = Math.round(current);
+            } else {
+                displayValue = current.toFixed(2);
+            }
+
+            if (hasPercent && !hasK) {
+                displayValue = Math.round(current) + '%';
+            }
+            
+            element.textContent = displayValue;
+        }, stepDuration);
     }
 
     // Utility Functions
