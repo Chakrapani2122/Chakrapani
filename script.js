@@ -402,7 +402,7 @@ class Portfolio {
             
             // Format based on original text
             if (hasK) {
-                displayValue = (current / 1).toFixed(0) + 'K+';
+                displayValue = current.toFixed(0) + 'K+';
             } else if (Number.isInteger(targetValue)) {
                 displayValue = Math.round(current);
             } else {
