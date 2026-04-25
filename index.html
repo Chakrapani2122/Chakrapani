@@ -1,0 +1,1955 @@
+<!doctype html>
+<html lang="en" class="h-full dark">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Chakrapani Gajji - Portfolio</title>
+        <script src="/_sdk/element_sdk.js"></script>
+        <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Manrope:wght@300;400;500;600;700&amp;display=swap"
+            rel="stylesheet">
+        <style>
+            :root {
+                --bg: #F4F1EA;
+                --surface: #FFFFFF;
+                --text: #1A1D24;
+                --muted: #6B7280;
+                --accent: #D97757;
+                --border: rgba(26, 29, 36, 0.08);
+                --grid: rgba(26, 29, 36, 0.04);
+                --chart-1: #D97757;
+                --chart-2: #5B8FB9;
+                --chart-3: #8B9D83;
+                --chart-4: #C9A961;
+            }
+            html.dark {
+                --bg: #0E1014;
+                --surface: #15181E;
+                --text: #E8E6E1;
+                --muted: #8A8F9A;
+                --accent: #E89070;
+                --border: rgba(232, 230, 225, 0.08);
+                --grid: rgba(232, 230, 225, 0.04);
+                --chart-1: #E89070;
+                --chart-2: #7AAAD1;
+                --chart-3: #A5B89D;
+                --chart-4: #D9BE7E;
+            }
+            * {
+                transition: background-color 0.5s ease, color 0.4s ease, border-color 0.5s ease, fill 0.5s ease, stroke 0.5s ease;
+            }
+            body {
+                font-family: 'Manrope', system-ui, sans-serif;
+                background: var(--bg);
+                color: var(--text);
+                font-feature-settings: "ss01", "cv11";
+            }
+            .font-serif {
+                font-family: 'Fraunces', Georgia, serif;
+                font-optical-sizing: auto;
+            }
+            .font-mono {
+                font-family: 'JetBrains Mono', monospace;
+            }
+            .bg-surface {
+                background-color: var(--surface);
+            }
+            .bg-base {
+                background-color: var(--bg);
+            }
+            .text-main {
+                color: var(--text);
+            }
+            .text-muted {
+                color: var(--muted);
+            }
+            .text-accent {
+                color: var(--accent);
+            }
+            .bg-accent {
+                background-color: var(--accent);
+            }
+            .border-subtle {
+                border-color: var(--border);
+            }
+
+            .grid-bg {
+                background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+                background-size: 40px 40px;
+            }
+
+            #contentScroller {
+                scroll-behavior: smooth;
+                scroll-snap-type: none;
+            }
+
+            .section-container {
+                scroll-snap-align: none;
+                scroll-snap-stop: none;
+            }
+
+            .nav-item {
+                position: relative;
+                transition: color 0.3s ease;
+            }
+            .nav-item .nav-dot {
+                position: absolute;
+                left: -14px;
+                top: 50%;
+                transform: translateY(-50%) scale(0);
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
+                background: var(--accent);
+                transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            }
+            .nav-item.active .nav-dot {
+                transform: translateY(-50%) scale(1);
+            }
+            .nav-item.active {
+                color: var(--text);
+            }
+            .nav-item:not(.active) {
+                color: var(--muted);
+            }
+            .nav-item:hover {
+                color: var(--text);
+            }
+
+            .nav-horizontal {
+                position: relative;
+                color: var(--muted);
+            }
+            .nav-horizontal.active {
+                color: var(--text);
+            }
+            .nav-horizontal:hover {
+                color: var(--text);
+            }
+            .nav-horizontal.active::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 12px;
+                right: 12px;
+                height: 2px;
+                background: var(--accent);
+                border-radius: 1px;
+            }
+
+            .nav-item-mobile {
+                color: var(--muted);
+            }
+            .nav-item-mobile.active {
+                color: var(--text);
+                background: var(--bg);
+            }
+            .nav-item-mobile:hover {
+                color: var(--text);
+            }
+
+            .stagger > * {
+                opacity: 1;
+            }
+
+            .theme-toggle {
+                width: 48px;
+                height: 26px;
+                border-radius: 999px;
+                background: var(--border);
+                position: relative;
+                cursor: pointer;
+                border: 1px solid var(--border);
+            }
+            .theme-toggle::after {
+                content: '';
+                position: absolute;
+                top: 2px;
+                left: 2px;
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                background: var(--accent);
+                transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            }
+            html.dark .theme-toggle::after {
+                transform: translateX(22px);
+            }
+
+            ::-webkit-scrollbar {
+                width: 6px;
+                height: 6px;
+            }
+            ::-webkit-scrollbar-track {
+                background: transparent;
+            }
+            ::-webkit-scrollbar-thumb {
+                background: var(--border);
+                border-radius: 3px;
+            }
+            ::-webkit-scrollbar-thumb:hover {
+                background: var(--muted);
+            }
+
+            .project-card {
+                transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease;
+            }
+            .project-card:hover {
+                transform: translateY(-4px);
+                border-color: var(--accent);
+            }
+
+            .card-media-image {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+            }
+
+            .cert-badge img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 10px;
+                display: block;
+            }
+
+            .card-link {
+                display: block;
+                text-decoration: none;
+                color: inherit;
+            }
+
+            .timeline-dot::before {
+                content: '';
+                position: absolute;
+                left: -5px;
+                top: 6px;
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background: var(--accent);
+                box-shadow: 0 0 0 4px var(--bg);
+            }
+
+            .timeline-dot {
+                padding-left: 8px;
+            }
+
+            .chip {
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                padding: 4px 10px;
+                font-size: 11px;
+                font-family: 'JetBrains Mono', monospace;
+                background: var(--bg);
+                border: 1px solid var(--border);
+                border-radius: 4px;
+                color: var(--muted);
+            }
+            html.dark .chip {
+                background: rgba(255,255,255,0.02);
+            }
+
+            a:focus-visible,
+            button:focus-visible {
+                outline: 2px solid var(--accent);
+                outline-offset: 2px;
+                border-radius: 2px;
+            }
+
+            .section-container > div {
+                width: 100%;
+            }
+
+            .status-dot {
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: #8B9D83;
+                box-shadow: 0 0 0 3px rgba(139,157,131,0.2);
+                animation: blink 2s ease-in-out infinite;
+            }
+            @keyframes blink {
+                0%,
+                100% {
+                    opacity: 1;
+                }
+                50% {
+                    opacity: 0.5;
+                }
+            }
+
+            .cert-badge {
+                width: 128px;
+                height: 128px;
+                border-radius: 12px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: var(--bg);
+                border: 2px solid var(--border);
+                flex-shrink: 0;
+                font-size: 32px;
+            }
+
+            @media (min-width: 768px) {
+                .cert-badge {
+                    width: 220px;
+                    height: 160px;
+                }
+            }
+
+            .profile-image {
+                width: 100%;
+                max-width: 420px;
+                height: auto;
+                aspect-ratio: 1;
+                border-radius: 50%;
+                object-fit: cover;
+                border: 2px solid var(--accent);
+            }
+
+            .form-input {
+                background: var(--surface);
+                border: 1px solid var(--border);
+                color: var(--text);
+                padding: 12px;
+                border-radius: 6px;
+                font-family: 'Manrope', system-ui, sans-serif;
+                font-size: 14px;
+            }
+            .form-input::placeholder {
+                color: var(--muted);
+            }
+            .form-input:focus {
+                outline: none;
+                border-color: var(--accent);
+            }
+
+            .form-button {
+                background: var(--accent);
+                color: white;
+                border: none;
+                padding: 12px 24px;
+                border-radius: 6px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: opacity 0.3s ease;
+                font-family: 'Manrope', system-ui, sans-serif;
+            }
+            .form-button:hover {
+                opacity: 0.9;
+            }
+            .form-button:disabled {
+                opacity: 0.5;
+                cursor: not-allowed;
+            }
+
+            .form-status {
+                margin-top: 8px;
+                font-size: 13px;
+                line-height: 1.4;
+                min-height: 18px;
+                color: var(--muted);
+            }
+            .form-status.success {
+                color: #16a34a;
+            }
+            .form-status.error {
+                color: #dc2626;
+            }
+
+            .resume-btn {
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                padding: 8px 10px;
+                border-radius: 6px;
+                border: 1px solid var(--border);
+                background: var(--surface);
+                color: var(--text);
+                font-size: 12px;
+                font-weight: 600;
+                line-height: 1;
+                transition: border-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+            }
+            .resume-btn:hover {
+                border-color: var(--accent);
+                color: var(--accent);
+            }
+            .resume-btn:active {
+                transform: translateY(1px);
+            }
+        </style>
+        <style>
+            body {
+                box-sizing: border-box;
+            }
+        </style>
+        <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+    </head>
+    <body class="h-full">
+        <!-- TOP NAVIGATION -->
+        <nav
+            id="topNav"
+            class="sticky top-0 z-40 w-full bg-surface border-b border-subtle transition-colors duration-300">
+            <div class="grid-bg absolute inset-0 opacity-60 pointer-events-none"></div>
+            <div
+                class="relative px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+                <!-- Logo/Identity -->
+                <div class="flex items-center gap-3 shrink-0">
+                    <div class="w-8 h-8 rounded bg-accent flex items-center justify-center">
+                        <span class="font-serif text-white text-sm font-semibold" id="initials">CG</span>
+                    </div>
+                    <div
+                        class="font-serif text-sm sm:text-base font-bold text-text hidden sm:block"
+                        id="navName">
+                        Chakrapani Gajji
+                    </div>
+                </div>
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center gap-1" aria-label="Primary">
+                    <button
+                        data-nav="profile"
+                        class="nav-item active nav-horizontal px-3 py-2 text-xs font-medium transition-colors">Profile</button>
+                    <button
+                        data-nav="experience"
+                        class="nav-item nav-horizontal px-3 py-2 text-xs font-medium transition-colors">Experience</button>
+                    <button
+                        data-nav="education"
+                        class="nav-item nav-horizontal px-3 py-2 text-xs font-medium transition-colors">Education</button>
+                    <button
+                        data-nav="projects"
+                        class="nav-item nav-horizontal px-3 py-2 text-xs font-medium transition-colors">Projects</button>
+                    <button
+                        data-nav="certifications"
+                        class="nav-item nav-horizontal px-3 py-2 text-xs font-medium transition-colors">Certifications</button>
+                    <button
+                        data-nav="contact"
+                        class="nav-item nav-horizontal px-3 py-2 text-xs font-medium transition-colors">Contact</button>
+                </nav>
+                <!-- Theme Toggle & Mobile Menu -->
+                <div class="flex items-center gap-2 sm:gap-3">
+                    <a
+                        href="assets/Chakrapani_Gajji_Resume.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="resume-btn"
+                        aria-label="Download resume">
+                        <i data-lucide="download" class="w-3.5 h-3.5"></i>
+                        <span class="sm:inline">Resume</span>
+                    </a>
+                    <button id="themeToggleNav" class="theme-toggle" aria-label="Toggle theme"></button>
+                    <button
+                        id="mobileMenuToggle"
+                        class="md:hidden text-muted hover:text-text transition-colors p-2">
+                        <i data-lucide="menu" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile Navigation Dropdown -->
+            <div
+                id="mobileNav"
+                class="hidden md:hidden border-t border-subtle bg-surface max-h-0 overflow-hidden transition-all duration-300">
+                <nav class="flex flex-col gap-px p-4" aria-label="Mobile navigation">
+                    <button
+                        data-nav="profile"
+                        class="nav-item-mobile active text-left px-3 py-2 text-sm font-medium rounded transition-colors">Profile</button>
+                    <button
+                        data-nav="experience"
+                        class="nav-item-mobile text-left px-3 py-2 text-sm font-medium rounded transition-colors">Experience</button>
+                    <button
+                        data-nav="education"
+                        class="nav-item-mobile text-left px-3 py-2 text-sm font-medium rounded transition-colors">Education</button>
+                    <button
+                        data-nav="projects"
+                        class="nav-item-mobile text-left px-3 py-2 text-sm font-medium rounded transition-colors">Projects</button>
+                    <button
+                        data-nav="certifications"
+                        class="nav-item-mobile text-left px-3 py-2 text-sm font-medium rounded transition-colors">Certifications</button>
+                    <button
+                        data-nav="contact"
+                        class="nav-item-mobile text-left px-3 py-2 text-sm font-medium rounded transition-colors">Contact</button>
+                </nav>
+            </div>
+        </nav>
+        <main class="h-full w-full flex flex-col">
+            <!-- CONTENT -->
+            <section
+                id="contentScroller"
+                class="flex-1 relative overflow-y-auto h-full scroll-smooth">
+                <div class="grid-bg absolute inset-0 opacity-40 pointer-events-none"></div>
+                <!-- PROFILE -->
+                <div
+                    data-section="profile"
+                    class="section-container w-full flex items-start">
+                    <div class="max-w-6xl mx-auto px-6 md:px-14 py-10 md:py-12">
+                        <!-- Profile Layout: Two columns on desktop, stacked on mobile -->
+                        <div class="grid md:grid-cols-2 gap-8 items-start mb-12">
+                            <!-- Left: Text Content -->
+                            <div>
+                                <div class="flex items-center gap-2 mb-3">
+                                    <br>
+                                    <br>
+                                    <span class="status-dot"></span>
+                                    <span class="font-mono text-[10px] uppercase tracking-wider text-muted">Available for work</span>
+                                </div>
+                                <h1 id="sidebarName" class="font-serif text-4xl md:text-5xl leading-tight mb-2">Chakrapani Gajji</h1>
+                                <p id="sidebarRole" class="text-lg text-muted">Research Data Analyst</p>
+                                <br>
+                                <br>
+                                <h2 class="font-serif text-5xl md:text-6xl leading-[0.95] mb-8 tracking-tight">I turn messy data<br>
+                                    into
+                                    <em id="tagline" class="text-accent font-light italic">insights that drive impact</em>.</h2>
+                            </div>
+                            <!-- Right: Profile Image -->
+                            <div class="hidden md:flex self-stretch items-center justify-center">
+                                <img
+                                    id="profileImage"
+                                    src="Chakrapani_Gajji.jpg"
+                                    alt="Profile"
+                                    class="profile-image"
+                                    onerror="this.onerror=null; this.src='Chakrapani_Gajji.png';">
+                            </div>
+                        </div>
+                        <!-- Full width text below -->
+                        <p
+                            id="aboutText"
+                            class="text-lg md:text-xl text-muted leading-relaxed max-w-4xl mb-12">Data
+                            professional with hands-on expertise in data governance, institutional research
+                            analytics, and reproducible research pipelines. Skilled in Python, SQL, R, and
+                            BI tools. Analyzed 50,000+ records, supported 20+ stakeholders, and drove 15%
+                            operational efficiency gains across higher education settings.</p>
+                        <!-- Stats -->
+                        <div
+                            class="grid grid-cols-2 md:grid-cols-4 gap-px bg-[var(--border)] border border-subtle rounded-lg overflow-hidden mb-12">
+                            <div class="bg-surface p-5">
+                                <div class="font-serif text-3xl mb-1">
+                                    50K<span class="text-accent">+</span>
+                                </div>
+                                <div class="font-mono text-[10px] uppercase tracking-wider text-muted">
+                                    Records analyzed
+                                </div>
+                            </div>
+                            <div class="bg-surface p-5">
+                                <div class="font-serif text-3xl mb-1">
+                                    20<span class="text-accent">+</span>
+                                </div>
+                                <div class="font-mono text-[10px] uppercase tracking-wider text-muted">
+                                    Stakeholders served
+                                </div>
+                            </div>
+                            <div class="bg-surface p-5">
+                                <div class="font-serif text-3xl mb-1">
+                                    15%
+                                </div>
+                                <div class="font-mono text-[10px] uppercase tracking-wider text-muted">
+                                    Efficiency gains
+                                </div>
+                            </div>
+                            <div class="bg-surface p-5">
+                                <div class="font-serif text-3xl mb-1">
+                                    98%
+                                </div>
+                                <div class="font-mono text-[10px] uppercase tracking-wider text-muted">
+                                    Avg accuracy
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Skill grid -->
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <h2 class="font-serif text-4xl md:text-5xl mb-12 tracking-tight">Technical
+                                <em class="text-accent italic font-light">skills</em>.</h2>
+                            <br>
+                            <div class="bg-surface border border-subtle rounded-lg p-5">
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+                                        Programming &amp; Data
+                                    </div>
+                                    <i data-lucide="code" class="w-3.5 h-3.5 text-muted"></i>
+                                </div>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="chip">Python</span><span class="chip">SQL</span><span class="chip">R</span><span class="chip">Java</span><span class="chip">Git</span>
+                                </div>
+                            </div>
+                            <div class="bg-surface border border-subtle rounded-lg p-5">
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+                                        ML &amp; Statistical
+                                    </div>
+                                    <i data-lucide="brain" class="w-3.5 h-3.5 text-muted"></i>
+                                </div>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="chip">scikit-learn</span><span class="chip">TensorFlow</span><span class="chip">NLP</span><span class="chip">Forecasting</span><span class="chip">Modeling</span>
+                                </div>
+                            </div>
+                            <div class="bg-surface border border-subtle rounded-lg p-5">
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+                                        BI &amp; Visualization
+                                    </div>
+                                    <i data-lucide="bar-chart-3" class="w-3.5 h-3.5 text-muted"></i>
+                                </div>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="chip">Tableau</span><span class="chip">Power BI</span><span class="chip">Streamlit</span><span class="chip">Matplotlib</span><span class="chip">Excel</span>
+                                </div>
+                            </div>
+                            <div class="bg-surface border border-subtle rounded-lg p-5">
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+                                        Platforms &amp; Tools
+                                    </div>
+                                    <i data-lucide="server" class="w-3.5 h-3.5 text-muted"></i>
+                                </div>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="chip">Databricks</span><span class="chip">AWS</span><span class="chip">Docker</span><span class="chip">Jupyter</span><span class="chip">SAS/SPSS</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- EXPERIENCE -->
+            <div
+                data-section="experience"
+                class="section-container w-full flex items-start">
+                <div class="max-w-6xl mx-auto px-6 md:px-14 py-10 md:py-12">
+                    <div class="stagger"></div>
+                    <h2 class="font-serif text-4xl md:text-5xl mb-12 tracking-tight">A timeline of
+                        <em class="text-accent italic font-light">impact</em>.</h2>
+                    <div class="relative pl-8 border-l border-subtle space-y-10">
+                        <div class="timeline-dot relative">
+                            <div class="flex flex-wrap items-baseline gap-3 mb-2">
+                                <span class="font-mono text-[10px] uppercase tracking-wider text-accent">Aug 2024 — Present</span>
+                                <span class="font-mono text-[10px] text-muted">· Manhattan, KS</span>
+                            </div>
+                            <h3 class="font-serif text-2xl mb-1">Research Data Analyst &amp; Data Manager</h3>
+                            <div class="text-sm text-muted mb-3">
+                                Kansas State University · Higher Education
+                            </div>
+                            <p class="text-muted leading-relaxed mb-3">Engineered reproducible research
+                                pipelines handling 50,000+ records with Git and Docker, reducing processing time
+                                by 20%. Established data governance framework with validation routines achieving
+                                peer-reviewed grant reporting standards.</p>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="chip">Python</span><span class="chip">R</span><span class="chip">Docker</span><span class="chip">Git</span>
+                            </div>
+                        </div>
+                        <div class="timeline-dot relative">
+                            <div class="flex flex-wrap items-baseline gap-3 mb-2">
+                                <span class="font-mono text-[10px] uppercase tracking-wider text-accent">Jan 2025 — May 2025</span>
+                                <span class="font-mono text-[10px] text-muted">· Manhattan, KS</span>
+                            </div>
+                            <h3 class="font-serif text-2xl mb-1">Institutional Research Analyst: Data Governance &amp; Analytics</h3>
+                            <div class="text-sm text-muted mb-3">
+                                Kansas State University · Analytics &amp; Insights
+                            </div>
+                            <p class="text-muted leading-relaxed mb-3">Spearheaded NLP classification models
+                                on 5,000+ survey responses, surfacing 8+ policy themes. Developed 5 interactive
+                                Power BI dashboards and directed cross-functional team of 3 analysts producing
+                                12+ prioritized recommendations.</p>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="chip">NLP</span><span class="chip">Power BI</span><span class="chip">Python</span><span class="chip">Survey Analysis</span>
+                            </div>
+                        </div>
+                        <div class="timeline-dot relative">
+                            <div class="flex flex-wrap items-baseline gap-3 mb-2">
+                                <span class="font-mono text-[10px] uppercase tracking-wider text-accent">Jan 2023 — May 2023</span>
+                                <span class="font-mono text-[10px] text-muted">· Hyderabad, India</span>
+                            </div>
+                            <h3 class="font-serif text-2xl mb-1">Data Analyst Intern</h3>
+                            <div class="text-sm text-muted mb-3">
+                                Oasis Infobyte · FinTech Operations
+                            </div>
+                            <p class="text-muted leading-relaxed mb-3">Developed ML models for email
+                                classification and sales forecasting using TensorFlow achieving 97% accuracy.
+                                Optimized pipelines cutting model runtime by 30%, enabling production deployment
+                                across 3 business units.</p>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="chip">TensorFlow</span><span class="chip">scikit-learn</span><span class="chip">Tableau</span><span class="chip">Feature Engineering</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- EDUCATION -->
+        <div
+            data-section="education"
+            class="section-container w-full flex items-start">
+            <div class="max-w-6xl mx-auto px-6 md:px-14 py-10 md:py-12">
+                <div class="stagger"></div>
+                <h2 class="font-serif text-4xl md:text-5xl mb-12 tracking-tight">Degrees &amp;
+                    <em class="text-accent italic font-light">continuous learning</em>.</h2>
+                <div class="grid md:grid-cols-2 gap-5">
+                    <div class="bg-surface border border-subtle rounded-lg p-6">
+                        <div class="flex items-start justify-between mb-4">
+                            <i data-lucide="graduation-cap" class="w-6 h-6 text-accent"></i>
+                            <span class="font-mono text-[10px] uppercase tracking-wider text-muted">Aug 2024 - May 2026</span>
+                        </div>
+                        <h3 class="font-serif text-xl mb-1">M.S., Data Analytics</h3>
+                        <div class="text-sm text-muted mb-2">
+                            Kansas State University
+                        </div>
+                        <div class="text-sm text-accent font-mono mb-3">
+                            GPA:
+                            <span id="gpaDisplay">3.89/4.0</span>
+                        </div>
+                        <p class="text-sm text-muted leading-relaxed">Advanced coursework in statistical
+                            modeling, machine learning, and data governance for higher education
+                            institutions.</p>
+                    </div>
+                    <div class="bg-surface border border-subtle rounded-lg p-6">
+                        <div class="flex items-start justify-between mb-4">
+                            <i data-lucide="book-open" class="w-6 h-6 text-accent"></i>
+                            <span class="font-mono text-[10px] uppercase tracking-wider text-muted">Oct 2020 - Apr 2024</span>
+                        </div>
+                        <h3 class="font-serif text-xl mb-1">B.Tech, Computer Science Engineering (AI/ML)</h3>
+                        <div class="text-sm text-muted mb-2">
+                            Sri Indu College of Engineering and Technology
+                        </div>
+                        <div class="text-sm text-muted mb-3">
+                            GPA: 3.4/4.0
+                        </div>
+                        <p class="text-sm text-muted leading-relaxed">Specialized in artificial
+                            intelligence and machine learning with focus on practical data applications.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- PROJECTS -->
+    <div
+        data-section="projects"
+        class="section-container w-full flex items-start">
+        <div class="max-w-6xl mx-auto px-6 md:px-14 py-10 md:py-12">
+            <div class="stagger"></div>
+            <h2 class="font-serif text-4xl md:text-5xl mb-12 tracking-tight">Work I'm
+                <em class="text-accent italic font-light">passionate</em>
+                about.</h2>
+            <div class="space-y-5">
+                <!-- Project 1 -->
+                <a
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="card-link">
+                    <article
+                        class="project-card bg-surface border border-subtle rounded-lg overflow-hidden cursor-pointer group">
+                        <div class="grid md:grid-cols-3 gap-0">
+                            <div
+                                class="md:col-span-1 aspect-square md:aspect-auto bg-gradient-to-br from-[var(--chart-2)] to-[var(--chart-1)] relative overflow-hidden border-r border-subtle flex items-center justify-center">
+                                <img src='assets/projects/IRKSU.jpg' alt="Project 1" class="card-media-image"/>
+                            </div>
+                            <div class="md:col-span-2 p-6 flex flex-col justify-between">
+                                <div>
+                                    <div
+                                        class="flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider text-muted mb-3">
+                                        <span class="text-accent">Research</span>
+                                        ·
+                                        <span>Jan 2025 – May 2025</span>
+                                    </div>
+                                    <h3 class="font-serif text-2xl mb-2">Institutional Research: KSU</h3>
+                                    <p class="text-muted leading-relaxed mb-4">Conducted institutional research on
+                                        5,000+ student survey responses, applying statistical and NLP techniques to
+                                        identify trends and key drivers supporting strategic decision-making. Built
+                                        Tableau dashboards and executive-level reports, delivering 10+ actionable
+                                        recommendations to improve operational efficiency.</p>
+                                </div>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="chip">Tableau</span><span class="chip">Power BI</span><span class="chip">Python</span><span class="chip">NLP</span><span class="chip">Statistical Analysis</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </a>
+                <!-- Project 2 -->
+                <a
+                    href="https://public.tableau.com/app/profile/chakrapani.gajji/viz/AnInflationStoryADeepDiveintoFoodPricesinUSA/AnInflationStoryADeepDiveintoFoodPrices_"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="card-link">
+                    <article
+                        class="project-card bg-surface border border-subtle rounded-lg overflow-hidden cursor-pointer group">
+                        <div class="grid md:grid-cols-3 gap-0">
+                            <div
+                                class="md:col-span-1 aspect-square md:aspect-auto bg-gradient-to-br from-[var(--chart-4)] to-[var(--chart-2)] relative overflow-hidden border-r border-subtle flex items-center justify-center">
+                                <img
+                                    src='assets/projects/food_prices.jpeg'
+                                    alt="Project 2"
+                                    class="card-media-image"/>
+                            </div>
+                            <div class="md:col-span-2 p-6 flex flex-col justify-between">
+                                <div>
+                                    <div
+                                        class="flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider text-muted mb-3">
+                                        <span class="text-accent">Visualization</span>
+                                        ·
+                                        <span>Aug 2025 – Sep 2025</span>
+                                    </div>
+                                    <h3 class="font-serif text-2xl mb-2">Food Price Inflation Dashboard</h3>
+                                    <p class="text-muted leading-relaxed mb-4">Developed 6 interactive Tableau
+                                        dashboards analyzing U.S. food price inflation with regional and commodity-level
+                                        drill-downs. Applied time-series and trend analysis to identify seasonal and
+                                        long-term patterns for stakeholder decision-making.</p>
+                                </div>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="chip">Tableau</span><span class="chip">Power BI</span><span class="chip">Python</span><span class="chip">Excel</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </a>
+                <!-- Project 3 -->
+                <a
+                    href="https://public.tableau.com/app/profile/chakrapani.gajji/viz/AnatomyofaTremorAGlobalLookatRecentEarthquakes/AnatomyofaTremorAGlobalLookatRecentEarthquakes"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="card-link">
+                    <article
+                        class="project-card bg-surface border border-subtle rounded-lg overflow-hidden cursor-pointer group">
+                        <div class="grid md:grid-cols-3 gap-0">
+                            <div
+                                class="md:col-span-1 aspect-square md:aspect-auto bg-gradient-to-br from-[var(--chart-3)] to-[var(--chart-4)] relative overflow-hidden border-r border-subtle flex items-center justify-center">
+                                <img
+                                    src='assets/projects/earthquakes.jpeg'
+                                    alt="Project 3"
+                                    class="card-media-image"/>
+                            </div>
+                            <div class="md:col-span-2 p-6 flex flex-col justify-between">
+                                <div>
+                                    <div
+                                        class="flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider text-muted mb-3">
+                                        <span class="text-accent">Visualization</span>
+                                        ·
+                                        <span>Jun 2025 – Jul 2025</span>
+                                    </div>
+                                    <h3 class="font-serif text-2xl mb-2">EarthQuake Analysis Dashboard</h3>
+                                    <p class="text-muted leading-relaxed mb-4">Built Tableau dashboards with
+                                        geospatial maps to analyze 5,000+ seismic events. Improved interpretability of
+                                        risk patterns through interactive filtering and aggregation for emergency
+                                        management teams.</p>
+                                </div>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="chip">Tableau</span><span class="chip">Power BI</span><span class="chip">Excel</span><span class="chip">Python</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </a>
+                <!-- Project 4 -->
+                <a
+                    href="https://github.com/Chakrapani2122/Iris-Flower-Species-Recognition-Project"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="card-link">
+                    <article
+                        class="project-card bg-surface border border-subtle rounded-lg overflow-hidden cursor-pointer group">
+                        <div class="grid md:grid-cols-3 gap-0">
+                            <div
+                                class="md:col-span-1 aspect-square md:aspect-auto bg-gradient-to-br from-[var(--chart-1)] to-[var(--chart-3)] relative overflow-hidden border-r border-subtle flex items-center justify-center">
+                                <img src='assets/projects/iris.jpg' alt="Project 4" class="card-media-image"/>
+                            </div>
+                            <div class="md:col-span-2 p-6 flex flex-col justify-between">
+                                <div>
+                                    <div
+                                        class="flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider text-muted mb-3">
+                                        <span class="text-accent">Machine Learning</span>
+                                        ·
+                                        <span>Mar 2024 – Apr 2024</span>
+                                    </div>
+                                    <h3 class="font-serif text-2xl mb-2">Iris Flower Classification</h3>
+                                    <p class="text-muted leading-relaxed mb-4">Developed classification models to
+                                        identify iris species, achieving 98% accuracy. Performed feature analysis,
+                                        visualization, and model evaluation using scikit-learn and Streamlit for
+                                        interactive deployment.</p>
+                                </div>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="chip">Python</span><span class="chip">Scikit-Learn</span><span class="chip">Streamlit</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </a>
+                <!-- Project 5 -->
+                <a
+                    href="https://vividtones.streamlit.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="card-link">
+                    <article
+                        class="project-card bg-surface border border-subtle rounded-lg overflow-hidden cursor-pointer group">
+                        <div class="grid md:grid-cols-3 gap-0">
+                            <div
+                                class="md:col-span-1 aspect-square md:aspect-auto bg-gradient-to-br from-[var(--chart-2)] to-[var(--chart-4)] relative overflow-hidden border-r border-subtle flex items-center justify-center">
+                                <img
+                                    src='assets/projects/vividtones.jpg'
+                                    alt="Project 5"
+                                    class="card-media-image"/>
+                            </div>
+                            <div class="md:col-span-2 p-6 flex flex-col justify-between">
+                                <div>
+                                    <div
+                                        class="flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider text-muted mb-3">
+                                        <span class="text-accent">Development</span>
+                                        ·
+                                        <span>Dec 2023 – Apr 2024</span>
+                                    </div>
+                                    <h3 class="font-serif text-2xl mb-2">VividTones - Image Colorization</h3>
+                                    <p class="text-muted leading-relaxed mb-4">Engineered a CNN-based TensorFlow
+                                        pipeline for image colorization with multiple artistic modes. Improved
+                                        processing efficiency by 25% and deployed a demo application with GPU
+                                        acceleration.</p>
+                                </div>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="chip">Python</span><span class="chip">OpenCV</span><span class="chip">TensorFlow</span><span class="chip">Streamlit</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </a>
+                <!-- Project 6 -->
+                <a
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="card-link">
+                    <article
+                        class="project-card bg-surface border border-subtle rounded-lg overflow-hidden cursor-pointer group">
+                        <div class="grid md:grid-cols-3 gap-0">
+                            <div
+                                class="md:col-span-1 aspect-square md:aspect-auto bg-gradient-to-br from-[var(--chart-4)] to-[var(--chart-3)] relative overflow-hidden border-r border-subtle flex items-center justify-center">
+                                <img src='assets/projects/sales.jpg' alt="Project 6" class="card-media-image"/>
+                            </div>
+                            <div class="md:col-span-2 p-6 flex flex-col justify-between">
+                                <div>
+                                    <div
+                                        class="flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider text-muted mb-3">
+                                        <span class="text-accent">Analytics</span>
+                                        ·
+                                        <span>Sep 2024 – Nov 2024</span>
+                                    </div>
+                                    <h3 class="font-serif text-2xl mb-2">Sales Analytics Dashboard</h3>
+                                    <p class="text-muted leading-relaxed mb-4">Built sales performance dashboards
+                                        with forecasting and NLP-based insights. Identified key revenue drivers and
+                                        supported strategic planning across multiple business units.</p>
+                                </div>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="chip">Power BI</span><span class="chip">Python</span><span class="chip">Forecasting</span><span class="chip">Excel</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </a>
+                <!-- Project 7 -->
+                <a
+                    href="https://github.com/Chakrapani2122/E-mail-Spam-Detection-Project"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="card-link">
+                    <article
+                        class="project-card bg-surface border border-subtle rounded-lg overflow-hidden cursor-pointer group">
+                        <div class="grid md:grid-cols-3 gap-0">
+                            <div
+                                class="md:col-span-1 aspect-square md:aspect-auto bg-gradient-to-br from-[var(--chart-3)] to-[var(--chart-1)] relative overflow-hidden border-r border-subtle flex items-center justify-center">
+                                <img src='assets/projects/spam.jpg' alt="Project 7" class="card-media-image"/>
+                            </div>
+                            <div class="md:col-span-2 p-6 flex flex-col justify-between">
+                                <div>
+                                    <div
+                                        class="flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider text-muted mb-3">
+                                        <span class="text-accent">Machine Learning</span>
+                                        ·
+                                        <span>Mar 2024 – May 2024</span>
+                                    </div>
+                                    <h3 class="font-serif text-2xl mb-2">Spam Email Detection</h3>
+                                    <p class="text-muted leading-relaxed mb-4">Implemented NLP-based classification
+                                        models achieving 96% accuracy in spam detection. Applied text preprocessing,
+                                        feature extraction, and model evaluation techniques for production deployment.</p>
+                                </div>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="chip">Python</span><span class="chip">NLP</span><span class="chip">Scikit-Learn</span><span class="chip">Streamlit</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </a>
+                <!-- Project 8 -->
+                <a
+                    href="https://precision-object-counting.streamlit.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="card-link">
+                    <article
+                        class="project-card bg-surface border border-subtle rounded-lg overflow-hidden cursor-pointer group">
+                        <div class="grid md:grid-cols-3 gap-0">
+                            <div
+                                class="md:col-span-1 aspect-square md:aspect-auto bg-gradient-to-br from-[var(--chart-1)] to-[var(--chart-2)] relative overflow-hidden border-r border-subtle flex items-center justify-center">
+                                <img
+                                    src='assets/projects/counting.jpg'
+                                    alt="Project 8"
+                                    class="card-media-image"/>
+                            </div>
+                            <div class="md:col-span-2 p-6 flex flex-col justify-between">
+                                <div>
+                                    <div
+                                        class="flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider text-muted mb-3">
+                                        <span class="text-accent">Computer Vision</span>
+                                        ·
+                                        <span>Jan 2024 – Feb 2024</span>
+                                    </div>
+                                    <h3 class="font-serif text-2xl mb-2">Object Detection &amp; Counting</h3>
+                                    <p class="text-muted leading-relaxed mb-4">Built an automated object detection
+                                        and counting system using YOLO-based models. Achieved 94% accuracy in real-time
+                                        image processing for inventory and monitoring applications.</p>
+                                </div>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="chip">Python</span><span class="chip">OpenCV</span><span class="chip">TensorFlow</span><span class="chip">Image Processing</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </a>
+                <!-- Project 9 -->
+                <a
+                    href="https://github.com/Chakrapani2122/Billing-System-using-Python"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="card-link">
+                    <article
+                        class="project-card bg-surface border border-subtle rounded-lg overflow-hidden cursor-pointer group">
+                        <div class="grid md:grid-cols-3 gap-0">
+                            <div
+                                class="md:col-span-1 aspect-square md:aspect-auto bg-gradient-to-br from-[var(--chart-2)] to-[var(--chart-3)] relative overflow-hidden border-r border-subtle flex items-center justify-center">
+                                <img
+                                    src='assets/projects/Billing_System.png'
+                                    alt="Project 9"
+                                    class="card-media-image"/>
+                            </div>
+                            <div class="md:col-span-2 p-6 flex flex-col justify-between">
+                                <div>
+                                    <div
+                                        class="flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider text-muted mb-3">
+                                        <span class="text-accent">Software Development</span>
+                                        ·
+                                        <span>Nov 2023 – Dec 2023</span>
+                                    </div>
+                                    <h3 class="font-serif text-2xl mb-2">Automated Billing System</h3>
+                                    <p class="text-muted leading-relaxed mb-4">Designed and implemented a billing
+                                        system supporting invoice generation, payment tracking, and customer
+                                        management.</p>
+                                </div>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="chip">Python</span><span class="chip">MySQL</span><span class="chip">Tkinter</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </a>
+                <!-- Project 10 -->
+                <a
+                    href="https://github.com/Chakrapani2122/Weather-App"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="card-link">
+                    <article
+                        class="project-card bg-surface border border-subtle rounded-lg overflow-hidden cursor-pointer group">
+                        <div class="grid md:grid-cols-3 gap-0">
+                            <div
+                                class="md:col-span-1 aspect-square md:aspect-auto bg-gradient-to-br from-[var(--chart-4)] to-[var(--chart-1)] relative overflow-hidden border-r border-subtle flex items-center justify-center">
+                                <img
+                                    src='assets/projects/Weather_App.png'
+                                    alt="Project 10"
+                                    class="card-media-image"/>
+                            </div>
+                            <div class="md:col-span-2 p-6 flex flex-col justify-between">
+                                <div>
+                                    <div
+                                        class="flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider text-muted mb-3">
+                                        <span class="text-accent">Application Development</span>
+                                        ·
+                                        <span>Oct 2023 – Nov 2023</span>
+                                    </div>
+                                    <h3 class="font-serif text-2xl mb-2">Weather Desktop Application</h3>
+                                    <p class="text-muted leading-relaxed mb-4">Developed a desktop application with
+                                        API-based weather forecasting, offline caching, and interactive displays.</p>
+                                </div>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="chip">Python</span><span class="chip">Tkinter</span><span class="chip">API Integration</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- CERTIFICATIONS -->
+<div
+    data-section="certifications"
+    class="section-container w-full flex items-start">
+    <div class="max-w-6xl mx-auto px-6 md:px-14 py-10 md:py-12">
+        <div class="stagger"></div>
+        <h2 class="font-serif text-4xl md:text-5xl mb-12 tracking-tight">Professional
+            <em class="text-accent italic font-light">credentials</em>.</h2>
+        <!-- Certifications Section -->
+        <div class="mb-14">
+            <h3 class="font-serif text-2xl mb-8">Certifications &amp; Achievements</h3>
+            <div class="grid grid-cols-1 gap-6">
+                <!-- Cert 1 -->
+                <a
+                    href="#"
+                    rel="noopener noreferrer"
+                    class="card-link bg-surface border border-subtle rounded-lg p-6 hover:border-[var(--accent)] transition-colors">
+                    <div class="flex gap-4 mb-4">
+                        <div class="cert-badge">
+                            <img
+                                src='assets/certificates/Data_Analysis_Coursera.png'
+                                alt="Certification 1"/>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-serif text-lg mb-1">Data Analysis with Python</h4>
+                            <div class="text-sm text-muted">
+                                IBM via Coursera
+                            </div>
+                            <div class="text-xs text-accent font-mono mt-1">
+                                Issued 2024
+                            </div>
+                            <p class="text-sm text-muted leading-relaxed">Comprehensive certification
+                        covering data manipulation, visualization, and analysis using Python libraries
+                        including Pandas, NumPy, and Matplotlib.</p>
+                        </div>
+                    </div>
+                    
+                </a>
+                <!-- Cert 2 -->
+                <a
+                    href="#"
+                    rel="noopener noreferrer"
+                    class="card-link bg-surface border border-subtle rounded-lg p-6 hover:border-[var(--accent)] transition-colors">
+                    <div class="flex gap-4 mb-4">
+                        <div class="cert-badge">
+                            <img
+                                src='assets/certificates/Introduction_to_Dat_Science_Infosys_Springboard.png'
+                                alt="Certification 2"/>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-serif text-lg mb-1">Introduction to Data Science</h4>
+                            <div class="text-sm text-muted">
+                                Infosys Springboard
+                            </div>
+                            <div class="text-xs text-accent font-mono mt-1">
+                                Issued 2023
+                            </div>
+                            <p class="text-sm text-muted leading-relaxed">Foundational certification in data
+                        science concepts, statistical analysis, and machine learning fundamentals with
+                        hands-on projects.</p>
+                        </div>
+                    </div>
+                    
+                </a>
+                <!-- Cert 3 -->
+                <a
+                    href="#"
+                    rel="noopener noreferrer"
+                    class="card-link bg-surface border border-subtle rounded-lg p-6 hover:border-[var(--accent)] transition-colors">
+                    <div class="flex gap-4 mb-4">
+                        <div class="cert-badge">
+                            <img src='assets/certificates/Linkedin SQL.jpg' alt="Certification 3"/>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-serif text-lg mb-1">SQL Essential Training</h4>
+                            <div class="text-sm text-muted">
+                                LinkedIn Learning
+                            </div>
+                            <div class="text-xs text-accent font-mono mt-1">
+                                Issued 2024
+                            </div>
+                            <p class="text-sm text-muted leading-relaxed">Advanced SQL certification
+                        covering complex queries, database design, and performance optimization for data
+                        analysis workflows.</p>
+                        </div>
+                    </div>
+                    
+                </a>
+                <!-- Cert 4 -->
+                <a
+                    href="#"
+                    rel="noopener noreferrer"
+                    class="card-link bg-surface border border-subtle rounded-lg p-6 hover:border-[var(--accent)] transition-colors">
+                    <div class="flex gap-4 mb-4">
+                        <div class="cert-badge">
+                            <img src='assets/certificates/LSSYB.jpg' alt="Certification 4"/>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-serif text-lg mb-1">Lean Six Sigma Yellow Belt</h4>
+                            <div class="text-sm text-muted">
+                                Kansas State University
+                            </div>
+                            <div class="text-xs text-accent font-mono mt-1">
+                                Issued 2024
+                            </div>
+                            <p class="text-sm text-muted leading-relaxed">Process improvement methodology
+                        certification focusing on data-driven decision making and operational excellence
+                        in business environments.</p>
+                        </div>
+                    </div>
+                    
+                </a>
+                <!-- Cert 5 -->
+                <a
+                    href="#"
+                    rel="noopener noreferrer"
+                    class="card-link bg-surface border border-subtle rounded-lg p-6 hover:border-[var(--accent)] transition-colors">
+                    <div class="flex gap-4 mb-4">
+                        <div class="cert-badge">
+                            <img src='assets/certificates/OOPs Python.png' alt="Certification 5"/>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-serif text-lg mb-1">Python OOP</h4>
+                            <div class="text-sm text-muted">
+                                LinkedIn Learning
+                            </div>
+                            <div class="text-xs text-accent font-mono mt-1">
+                                Issued 2023
+                            </div>
+                            <p class="text-sm text-muted leading-relaxed">Advanced Python programming
+                        certification focusing on object-oriented design patterns and software
+                        development best practices.</p>
+                        </div>
+                    </div>
+                    
+                </a>
+                <!-- Cert 6 -->
+                <a
+                    href="#"
+                    rel="noopener noreferrer"
+                    class="card-link bg-surface border border-subtle rounded-lg p-6 hover:border-[var(--accent)] transition-colors">
+                    <div class="flex gap-4 mb-4">
+                        <div class="cert-badge">
+                            <img src='assets/certificates/Coursera-Python.jpg' alt="Certification 6"/>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-serif text-lg mb-1">Python Basics</h4>
+                            <div class="text-sm text-muted">
+                                IBM via Coursera
+                            </div>
+                            <div class="text-xs text-accent font-mono mt-1">
+                                Issued 2023
+                            </div>
+                            <p class="text-sm text-muted leading-relaxed">Fundamental Python programming
+                        certification covering syntax, data structures, control flow, and basic
+                        programming concepts.</p>
+                        </div>
+                    </div>
+                    
+                </a>
+                <!-- Cert 7 -->
+                <a
+                    href="#"
+                    rel="noopener noreferrer"
+                    class="card-link bg-surface border border-subtle rounded-lg p-6 hover:border-[var(--accent)] transition-colors">
+                    <div class="flex gap-4 mb-4">
+                        <div class="cert-badge">
+                            <img src='assets/certificates/excel.jpeg' alt="Certification 7"/>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-serif text-lg mb-1">Advanced Excel for Analytics</h4>
+                            <div class="text-sm text-muted">
+                                Professional Development
+                            </div>
+                            <div class="text-xs text-accent font-mono mt-1">
+                                Issued 2024
+                            </div>
+                            <p class="text-sm text-muted leading-relaxed">Advanced Excel certification
+                        covering pivot tables, complex formulas, data analysis tools, and dashboard
+                        creation for business intelligence.</p>
+                        </div>
+                    </div>
+                    
+                </a>
+                <!-- Cert 8 -->
+                <a
+                    href="#"
+                    rel="noopener noreferrer"
+                    class="card-link bg-surface border border-subtle rounded-lg p-6 hover:border-[var(--accent)] transition-colors">
+                    <div class="flex gap-4 mb-4">
+                        <div class="cert-badge">
+                            <img src='assets/certificates/databases.jpeg' alt="Certification 8"/>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-serif text-lg mb-1">Database Management Systems</h4>
+                            <div class="text-sm text-muted">
+                                Professional Certification
+                            </div>
+                            <div class="text-xs text-accent font-mono mt-1">
+                                Issued 2024
+                            </div>
+                            <p class="text-sm text-muted leading-relaxed">Comprehensive database management
+                        certification covering SQL, NoSQL, database design, optimization, and data
+                        warehousing principles.</p>
+                        </div>
+                    </div>
+                    
+                </a>
+                <!-- Cert 9 -->
+                <a
+                    href="#"
+                    rel="noopener noreferrer"
+                    class="card-link bg-surface border border-subtle rounded-lg p-6 hover:border-[var(--accent)] transition-colors">
+                    <div class="flex gap-4 mb-4">
+                        <div class="cert-badge">
+                            <img src='assets/certificates/Skillup-AI.jpg' alt="Certification 1"/>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-serif text-lg mb-1">AI Fundamentals</h4>
+                            <div class="text-sm text-muted">
+                                SkillUp by Simplilearn
+                            </div>
+                            <div class="text-xs text-accent font-mono mt-1">
+                                Issued 2024
+                            </div>
+                            <p class="text-sm text-muted leading-relaxed">Comprehensive AI certification
+                        covering machine learning algorithms, neural networks, deep learning, and
+                        practical AI implementation strategies.</p>
+                        </div>
+                    </div>
+                    
+                </a>
+                <!-- Cert 10 -->
+                <a
+                    href="#"
+                    rel="noopener noreferrer"
+                    class="card-link bg-surface border border-subtle rounded-lg p-6 hover:border-[var(--accent)] transition-colors">
+                    <div class="flex gap-4 mb-4">
+                        <div class="cert-badge">
+                            <img
+                                src='assets/certificates/HackerRank-TheHourofCode.jpg'
+                                alt="Certification 10"/>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-serif text-lg mb-1">The Hour of Code</h4>
+                            <div class="text-sm text-muted">
+                                HackerRank
+                            </div>
+                            <div class="text-xs text-accent font-mono mt-1">
+                                Issued 2023
+                            </div>
+                            <p class="text-sm text-muted leading-relaxed">Programming challenge completion
+                        certificate demonstrating problem-solving skills and algorithmic thinking in
+                        competitive programming.</p>
+                        </div>
+                    </div>
+                    
+                </a>
+                <!-- Cert 11 -->
+                <a
+                    href="#"
+                    rel="noopener noreferrer"
+                    class="card-link bg-surface border border-subtle rounded-lg p-6 hover:border-[var(--accent)] transition-colors">
+                    <div class="flex gap-4 mb-4">
+                        <div class="cert-badge">
+                            <img src='assets/certificates/NPTEL-Python.jpg' alt="Certification 11"/>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-serif text-lg mb-1">Programming in Python</h4>
+                            <div class="text-sm text-muted">
+                                NPTEL (IIT)
+                            </div>
+                            <div class="text-xs text-accent font-mono mt-1">
+                                Issued 2023
+                            </div>
+                            <p class="text-sm text-muted leading-relaxed">Advanced Python programming
+                        certification from Indian Institute of Technology covering OOP, data structures,
+                        and algorithms.</p>
+                        </div>
+                    </div>
+                    
+                </a>
+                <!-- Cert 12 -->
+                <a
+                    href="#"
+                    rel="noopener noreferrer"
+                    class="card-link bg-surface border border-subtle rounded-lg p-6 hover:border-[var(--accent)] transition-colors">
+                    <div class="flex gap-4 mb-4">
+                        <div class="cert-badge">
+                            <img src='assets/certificates/Linkedin C.jpg' alt="Certification 12"/>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-serif text-lg mb-1">C Programming Fundamentals</h4>
+                            <div class="text-sm text-muted">
+                                LinkedIn Learning
+                            </div>
+                            <div class="text-xs text-accent font-mono mt-1">
+                                Issued 2023
+                            </div>
+                            <p class="text-sm text-muted leading-relaxed">Foundational C programming
+                        certification covering memory management, pointers, data structures, and
+                        system-level programming concepts.</p>
+                        </div>
+                    </div>
+                    
+                </a>
+            </div>
+        </div>
+        <!-- Publications Section -->
+        <h3 class="font-serif text-2xl mb-8">Publications &amp; Research</h3>
+        <a
+            href="https://www.irjet.net/archives/V11/i6/IRJET-V11I6149.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="card-link bg-surface border border-subtle rounded-lg p-8 hover:border-[var(--accent)] transition-colors">
+            <div class="flex items-start gap-4 mb-4">
+
+                <div class="flex-1">
+                    <h4 class="font-serif text-xl mb-1">A Survey on Large Language Models: Overview and Applications</h4>
+                    <div class="text-sm text-muted mb-2">
+                        International Research Journal of Engineering and Technology (IRJET)
+                    </div>
+                    <div class="flex gap-3 text-xs text-accent font-mono mb-3">
+                        <span>Published June 2024</span>
+                        <span>·</span>
+                        <span>Research Paper</span>
+                    </div>
+                </div>
+            </div>
+            <p class="text-muted leading-relaxed mb-4">Authored a comprehensive introduction
+                to Large Language Models and Generative AI, detailing evolution, transformer
+                architecture, and providing a practical guide for domain-specific LLMs like
+                Llama 2. The paper covers fundamental concepts, applications, and implementation
+                strategies for modern AI systems.</p>
+            <div class="flex flex-wrap gap-1.5">
+                <span class="chip">LLM</span><span class="chip">Transformers</span><span class="chip">AI Research</span><span class="chip">Survey Paper</span>
+            </div>
+        </a>
+    </div>
+</div>
+</div>
+</div>
+<!-- CONTACT -->
+<div
+data-section="contact"
+class="section-container w-full flex items-start">
+<div class="max-w-6xl mx-auto px-6 md:px-14 py-10 md:py-12">
+<div class="stagger"></div>
+<h2 class="font-serif text-5xl md:text-7xl leading-[0.95] mb-8 tracking-tight">Let's build
+    <br>
+    something
+    <em class="text-accent italic font-light">meaningful</em>.</h2>
+<p class="text-lg text-muted leading-relaxed max-w-xl mb-10">Open to full-time opportunities, research collaborations, and consulting engagements. I reply to every thoughtful message within 24 hours.</p>
+<!-- Contact Links -->
+<div class="grid md:grid-cols-2 gap-4 mb-12">
+    <a
+        id="emailLink"
+        href="mailto:cgajji@ksu.edu"
+        class="group bg-surface border border-subtle rounded-lg p-5 flex items-center gap-4 hover:border-[var(--accent)]">
+        <div
+            class="w-10 h-10 rounded-lg bg-[var(--bg)] flex items-center justify-center shrink-0">
+            <i data-lucide="mail" class="w-4 h-4 text-accent"></i>
+        </div>
+        <div class="flex-1 min-w-0">
+            <div class="font-mono text-[10px] uppercase tracking-wider text-muted mb-0.5">
+                Email
+            </div>
+            <div id="emailText" class="text-sm truncate">
+                cgajji@ksu.edu
+            </div>
+        </div>
+        <i
+            data-lucide="arrow-up-right"
+            class="w-4 h-4 text-muted group-hover:text-accent transition-colors"></i>
+    </a>
+    <a
+        id="phoneLink"
+        href="tel:+17853175938"
+        class="group bg-surface border border-subtle rounded-lg p-5 flex items-center gap-4 hover:border-[var(--accent)]">
+        <div
+            class="w-10 h-10 rounded-lg bg-[var(--bg)] flex items-center justify-center shrink-0">
+            <i data-lucide="phone" class="w-4 h-4 text-accent"></i>
+        </div>
+        <div class="flex-1 min-w-0">
+            <div class="font-mono text-[10px] uppercase tracking-wider text-muted mb-0.5">
+                Phone
+            </div>
+            <div id="phoneText" class="text-sm truncate">
+                (785) 317-5938
+            </div>
+        </div>
+        <i
+            data-lucide="arrow-up-right"
+            class="w-4 h-4 text-muted group-hover:text-accent transition-colors"></i>
+    </a>
+    <a
+        id="linkedinLink"
+        href="https://linkedin.com/in/chakrapanigajji"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group bg-surface border border-subtle rounded-lg p-5 flex items-center gap-4 hover:border-[var(--accent)]">
+        <div
+            class="w-10 h-10 rounded-lg bg-[var(--bg)] flex items-center justify-center shrink-0">
+            <i data-lucide="linkedin" class="w-4 h-4 text-accent"></i>
+        </div>
+        <div class="flex-1 min-w-0">
+            <div class="font-mono text-[10px] uppercase tracking-wider text-muted mb-0.5">
+                LinkedIn
+            </div>
+            <div id="linkedinText" class="text-sm truncate">
+                /in/chakrapanigajji
+            </div>
+        </div>
+        <i
+            data-lucide="arrow-up-right"
+            class="w-4 h-4 text-muted group-hover:text-accent transition-colors"></i>
+    </a>
+    <a
+        id="githubLink"
+        href="https://github.com/Chakrapani2122"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group bg-surface border border-subtle rounded-lg p-5 flex items-center gap-4 hover:border-[var(--accent)]">
+        <div
+            class="w-10 h-10 rounded-lg bg-[var(--bg)] flex items-center justify-center shrink-0">
+            <i data-lucide="github" class="w-4 h-4 text-accent"></i>
+        </div>
+        <div class="flex-1 min-w-0">
+            <div class="font-mono text-[10px] uppercase tracking-wider text-muted mb-0.5">
+                GitHub
+            </div>
+            <div id="githubText" class="text-sm truncate">
+                Chakrapani2122
+            </div>
+        </div>
+        <i
+            data-lucide="arrow-up-right"
+            class="w-4 h-4 text-muted group-hover:text-accent transition-colors"></i>
+    </a>
+</div>
+<!-- Contact Form -->
+<div class="bg-surface border border-subtle rounded-lg p-8">
+    <h3 class="font-serif text-2xl mb-6">Send me a message</h3>
+    <form
+        id="contactForm"
+        action="https://formspree.io/f/myzedaon"
+        method="POST"
+        class="space-y-5">
+        <div class="grid md:grid-cols-2 gap-5">
+            <div>
+                <label
+                    for="firstName"
+                    class="font-mono text-[10px] uppercase tracking-wider text-muted mb-2 block">First Name</label>
+                <input
+                    type="text"
+                    id="firstName"
+                    name="first_name"
+                    required="required"
+                    class="form-input w-full"
+                    placeholder="Your first name">
+            </div>
+            <div>
+                <label
+                    for="lastName"
+                    class="font-mono text-[10px] uppercase tracking-wider text-muted mb-2 block">Last Name</label>
+                <input
+                    type="text"
+                    id="lastName"
+                    name="last_name"
+                    required="required"
+                    class="form-input w-full"
+                    placeholder="Your last name">
+            </div>
+        </div>
+        <div>
+            <label
+                for="email"
+                class="font-mono text-[10px] uppercase tracking-wider text-muted mb-2 block">Email</label>
+            <input
+                type="email"
+                id="email"
+                name="email"
+                required="required"
+                class="form-input w-full"
+                placeholder="your.email@example.com">
+        </div>
+        <div>
+            <label
+                for="message"
+                class="font-mono text-[10px] uppercase tracking-wider text-muted mb-2 block">Message</label>
+            <textarea
+                id="message"
+                name="message"
+                required="required"
+                rows="5"
+                class="form-input w-full"
+                placeholder="Your message here..."></textarea>
+        </div>
+            <button type="submit" class="form-button">Send Message</button>
+            <p id="contactFormStatus" class="form-status" role="status" aria-live="polite"></p>
+    </form>
+</div>
+<div class="flex items-center gap-3 pt-6 border-t border-subtle">
+    <i data-lucide="map-pin" class="w-3.5 h-3.5 text-muted"></i>
+    <span id="locationText" class="text-sm text-muted">Manhattan, KS 66502</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<script>
+const defaultConfig = {
+full_name: "Chakrapani Gajji",
+role_title: "Research Data Analyst & Data Manager",
+tagline: "insights that drive impact",
+about_text: "Data professional with hands-on expertise in data governance, institutional re" +
+"search analytics, and reproducible research pipelines. Skilled in Python, SQL," +
+" R, and BI tools. Analyzed 50,000+ records, supported 20+ stakeholders, and dr" +
+"ove 15% operational efficiency gains across higher education settings.",
+location: "Manhattan, KS 66502",
+gpa: "3.89/4.0",
+email_address: "cgajji@ksu.edu",
+phone_number: "(785) 317-5938",
+linkedin_handle: "/in/chakrapanigajji",
+github_handle: "Chakrapani2122",
+profile_image_url: "Chakrapani_Gajji.jpg",
+formspree_id: "myzedaon"
+};
+
+const root = document.documentElement;
+const savedTheme = localStorage.getItem('da-theme');
+if (savedTheme === 'light') {
+root.classList.remove('dark');
+} else {
+root.classList.add('dark');
+}
+
+const themeToggle = document.getElementById('themeToggleNav');
+const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+const mobileNav = document.getElementById('mobileNav');
+
+themeToggle.addEventListener('click', (e) => {
+e.preventDefault();
+e.stopPropagation();
+root
+.classList
+.toggle('dark');
+localStorage.setItem(
+'da-theme',
+root.classList.contains('dark')
+? 'dark'
+: 'light'
+);
+});
+
+mobileMenuToggle.addEventListener('click', (e) => {
+e.preventDefault();
+e.stopPropagation();
+const isOpen = mobileNav
+.classList
+.contains('hidden');
+if (isOpen) {
+mobileNav
+.classList
+.remove('hidden');
+setTimeout(() => {
+mobileNav.style.maxHeight = mobileNav.scrollHeight + 'px';
+}, 10);
+} else {
+mobileNav.style.maxHeight = '0';
+setTimeout(() => mobileNav.classList.add('hidden'), 300);
+}
+});
+
+// Close mobile menu when nav item is clicked
+const allNavButtons = document.querySelectorAll('[data-nav]');
+allNavButtons.forEach(btn => {
+btn.addEventListener('click', () => {
+if (window.innerWidth < 768) {
+mobileNav.style.maxHeight = '0';
+setTimeout(() => mobileNav.classList.add('hidden'), 300);
+}
+});
+});
+
+// Update both desktop and mobile nav items
+function updateNav(target) {
+const desktopNavs = document.querySelectorAll('.nav-horizontal');
+const mobileNavs = document.querySelectorAll('.nav-item-mobile');
+
+desktopNavs.forEach(nav => {
+nav
+.classList
+.toggle('active', nav.dataset.nav === target);
+});
+
+mobileNavs.forEach(nav => {
+nav
+.classList
+.toggle('active', nav.dataset.nav === target);
+});
+}
+
+// Update active nav on theme toggle
+document
+.getElementById('themeToggleNav')
+.addEventListener('click', () => {
+const themeToggle = document.getElementById('themeToggleNav');
+const isDark = root
+.classList
+.contains('dark');
+themeToggle
+.classList
+.toggle('dark', isDark);
+});
+
+// Navigation click handlers
+allNavButtons.forEach(btn => {
+btn.addEventListener('click', () => {
+const target = btn.dataset.nav;
+updateNav(target);
+
+const targetSection = document.querySelector(`[data-section="${target}"]`);
+if (targetSection) {
+targetSection.scrollIntoView({behavior: 'smooth', block: 'start'});
+}
+});
+});
+
+function applyConfig(config) {
+const c = {
+...defaultConfig,
+...config
+};
+const name = c.full_name || defaultConfig.full_name;
+const parts = name
+.trim()
+.split(/\s+/);
+const initials = (
+parts[0]
+?.[0] || ''
+) + (
+parts[parts.length - 1]
+?.[0] || ''
+);
+document
+.getElementById('initials')
+.textContent = initials.toUpperCase() || 'CG';
+document
+.getElementById('sidebarName')
+.textContent = name;
+document
+.getElementById('sidebarRole')
+.textContent = c.role_title || defaultConfig.role_title;
+document
+.getElementById('tagline')
+.textContent = c.tagline || defaultConfig.tagline;
+document
+.getElementById('aboutText')
+.textContent = c.about_text || defaultConfig.about_text;
+document
+.getElementById('locationText')
+.textContent = c.location || defaultConfig.location;
+document
+.getElementById('gpaDisplay')
+.textContent = c.gpa || defaultConfig.gpa;
+document
+.getElementById('emailText')
+.textContent = c.email_address || defaultConfig.email_address;
+document
+.getElementById('emailLink')
+.href = `mailto:${c.email_address || defaultConfig.email_address}`;
+document
+.getElementById('phoneText')
+.textContent = c.phone_number || defaultConfig.phone_number;
+document
+.getElementById('phoneLink')
+.href = `tel:${ (c.phone_number || defaultConfig.phone_number).replace(
+/\s/g,
+''
+)}`;
+document
+.getElementById('linkedinText')
+.textContent = c.linkedin_handle || defaultConfig.linkedin_handle;
+document
+.getElementById('githubText')
+.textContent = c.github_handle || defaultConfig.github_handle;
+
+const imgUrl = c.profile_image_url || defaultConfig.profile_image_url;
+document
+.getElementById('profileImage')
+.src = imgUrl;
+
+const formId = c.formspree_id || defaultConfig.formspree_id;
+document
+.getElementById('contactForm')
+.action = `https://formspree.io/f/${formId}`;
+}
+
+const contactForm = document.getElementById('contactForm');
+const contactFormStatus = document.getElementById('contactFormStatus');
+
+if (contactForm && contactFormStatus) {
+contactForm.addEventListener('submit', async (e) => {
+e.preventDefault();
+
+const submitButton = contactForm.querySelector('button[type="submit"]');
+const originalButtonText = submitButton
+? submitButton.textContent
+: 'Send Message';
+
+if (submitButton) {
+submitButton.disabled = true;
+submitButton.textContent = 'Sending...';
+}
+
+contactFormStatus.className = 'form-status';
+contactFormStatus.textContent = 'Sending your message...';
+
+try {
+const response = await fetch(contactForm.action, {
+method: 'POST',
+body: new FormData(contactForm),
+headers: {
+Accept: 'application/json'
+}
+});
+
+if (response.ok) {
+contactFormStatus.className = 'form-status success';
+contactFormStatus.textContent = 'Message sent successfully.';
+contactForm.reset();
+} else {
+let errorMessage = 'Failed to send message. Please try again.';
+try {
+const errorData = await response.json();
+if (errorData && Array.isArray(errorData.errors) && errorData.errors.length > 0) {
+errorMessage = errorData.errors
+.map(err => err.message)
+.filter(Boolean)
+.join(' ');
+}
+} catch (_) {}
+
+contactFormStatus.className = 'form-status error';
+contactFormStatus.textContent = errorMessage;
+}
+} catch (_) {
+contactFormStatus.className = 'form-status error';
+contactFormStatus.textContent = 'Network error. Please check your connection and try again.';
+} finally {
+if (submitButton) {
+submitButton.disabled = false;
+submitButton.textContent = originalButtonText;
+}
+}
+});
+}
+
+applyConfig(defaultConfig);
+
+if (window.elementSdk) {
+window
+.elementSdk
+.init({
+defaultConfig,
+onConfigChange: async (config) => applyConfig(config),
+mapToCapabilities: () => (
+{recolorables: [], borderables: [], fontEditable: undefined, fontSizeable: undefined}
+),
+mapToEditPanelValues: (config) => {
+const c = {
+    ...defaultConfig,
+    ...config
+};
+return new Map([
+    [
+        'full_name', c.full_name
+    ],
+    [
+        'role_title', c.role_title
+    ],
+    [
+        'tagline', c.tagline
+    ],
+    [
+        'about_text', c.about_text
+    ],
+    [
+        'location', c.location
+    ],
+    [
+        'gpa', c.gpa
+    ],
+    [
+        'email_address', c.email_address
+    ],
+    [
+        'phone_number', c.phone_number
+    ],
+    [
+        'linkedin_handle', c.linkedin_handle
+    ],
+    [
+        'github_handle', c.github_handle
+    ],
+    [
+        'profile_image_url', c.profile_image_url
+    ],
+    [
+        'formspree_id', c.formspree_id
+    ]
+]);
+}
+});
+}
+
+lucide.createIcons();
+</script>
+<script>
+(function () {
+function c() {
+var b = a.contentDocument || a.contentWindow.document;
+if (b) {
+var d = b.createElement('script');
+d.innerHTML = "window.__CF$cv$params={r:'9f192afc454dd1a6',t:'MTc3NzA3NjI3OS4wMDAwMDA='};var " +
+    "a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platfo" +
+    "rm/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a" +
+    ");";
+b
+.getElementsByTagName('head')[0]
+.appendChild(d)
+}
+}
+if (document.body) {
+var a = document.createElement('iframe');
+a.height = 1;
+a.width = 1;
+a.style.position = 'absolute';
+a.style.top = 0;
+a.style.left = 0;
+a.style.border = 'none';
+a.style.visibility = 'hidden';
+document
+.body
+.appendChild(a);
+if ('loading' !== document.readyState) 
+c();
+else if (window.addEventListener) 
+document.addEventListener('DOMContentLoaded', c);
+else {
+var e = document.onreadystatechange || function () {};
+document.onreadystatechange = function (b) {
+e(b);
+'loading' !== document.readyState && (document.onreadystatechange = e, c())
+}
+}
+}
+})();
+</script>
+</body>
+</html>
