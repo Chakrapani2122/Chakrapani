@@ -1,1307 +1,1955 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chakrapani Gajji | Data Analyst</title>
-    <meta name="description" content="Portfolio of Chakrapani Gajji - Data Analytics Graduate specialized in Python, ML, and Business Intelligence.">
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
-    
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        heading: ['Outfit', 'sans-serif'],
-                    },
-                    colors: {
-                        navy: {
-                            900: '#0B1020',
-                            800: '#151e32',
-                            700: '#232d4b',
-                        },
-                        teal: {
-                            400: '#00D4C8',
-                            500: '#00b8ad',
-                        },
-                        magenta: {
-                            500: '#FF4DA6',
-                        }
-                    },
-                    animation: {
-                        'blob': 'blob 7s infinite',
-                        'float': 'float 6s ease-in-out infinite',
-                        'fade-in': 'fadeIn 0.8s ease-out',
-                        'slide-in-left': 'slideInLeft 0.8s ease-out',
-                        'slide-in-right': 'slideInRight 0.8s ease-out',
-                    },
-                    keyframes: {
-                        blob: {
-                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
-                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
-                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
-                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
-                        },
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' },
-                        },
-                        fadeIn: {
-                            '0%': { opacity: '0' },
-                            '100%': { opacity: '1' },
-                        },
-                        slideInLeft: {
-                            '0%': { opacity: '0', transform: 'translateX(-50px)' },
-                            '100%': { opacity: '1', transform: 'translateX(0)' },
-                        },
-                        slideInRight: {
-                            '0%': { opacity: '0', transform: 'translateX(50px)' },
-                            '100%': { opacity: '1', transform: 'translateX(0)' },
-                        }
-                    }
+<!doctype html>
+<html lang="en" class="h-full dark">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Chakrapani Gajji - Portfolio</title>
+        <script src="/_sdk/element_sdk.js"></script>
+        <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Manrope:wght@300;400;500;600;700&amp;display=swap"
+            rel="stylesheet">
+        <style>
+            :root {
+                --bg: #F4F1EA;
+                --surface: #FFFFFF;
+                --text: #1A1D24;
+                --muted: #6B7280;
+                --accent: #D97757;
+                --border: rgba(26, 29, 36, 0.08);
+                --grid: rgba(26, 29, 36, 0.04);
+                --chart-1: #D97757;
+                --chart-2: #5B8FB9;
+                --chart-3: #8B9D83;
+                --chart-4: #C9A961;
+            }
+            html.dark {
+                --bg: #0E1014;
+                --surface: #15181E;
+                --text: #E8E6E1;
+                --muted: #8A8F9A;
+                --accent: #E89070;
+                --border: rgba(232, 230, 225, 0.08);
+                --grid: rgba(232, 230, 225, 0.04);
+                --chart-1: #E89070;
+                --chart-2: #7AAAD1;
+                --chart-3: #A5B89D;
+                --chart-4: #D9BE7E;
+            }
+            * {
+                transition: background-color 0.5s ease, color 0.4s ease, border-color 0.5s ease, fill 0.5s ease, stroke 0.5s ease;
+            }
+            body {
+                font-family: 'Manrope', system-ui, sans-serif;
+                background: var(--bg);
+                color: var(--text);
+                font-feature-settings: "ss01", "cv11";
+            }
+            .font-serif {
+                font-family: 'Fraunces', Georgia, serif;
+                font-optical-sizing: auto;
+            }
+            .font-mono {
+                font-family: 'JetBrains Mono', monospace;
+            }
+            .bg-surface {
+                background-color: var(--surface);
+            }
+            .bg-base {
+                background-color: var(--bg);
+            }
+            .text-main {
+                color: var(--text);
+            }
+            .text-muted {
+                color: var(--muted);
+            }
+            .text-accent {
+                color: var(--accent);
+            }
+            .bg-accent {
+                background-color: var(--accent);
+            }
+            .border-subtle {
+                border-color: var(--border);
+            }
+
+            .grid-bg {
+                background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+                background-size: 40px 40px;
+            }
+
+            #contentScroller {
+                scroll-behavior: smooth;
+                scroll-snap-type: none;
+            }
+
+            .section-container {
+                scroll-snap-align: none;
+                scroll-snap-stop: none;
+            }
+
+            .nav-item {
+                position: relative;
+                transition: color 0.3s ease;
+            }
+            .nav-item .nav-dot {
+                position: absolute;
+                left: -14px;
+                top: 50%;
+                transform: translateY(-50%) scale(0);
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
+                background: var(--accent);
+                transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            }
+            .nav-item.active .nav-dot {
+                transform: translateY(-50%) scale(1);
+            }
+            .nav-item.active {
+                color: var(--text);
+            }
+            .nav-item:not(.active) {
+                color: var(--muted);
+            }
+            .nav-item:hover {
+                color: var(--text);
+            }
+
+            .nav-horizontal {
+                position: relative;
+                color: var(--muted);
+            }
+            .nav-horizontal.active {
+                color: var(--text);
+            }
+            .nav-horizontal:hover {
+                color: var(--text);
+            }
+            .nav-horizontal.active::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 12px;
+                right: 12px;
+                height: 2px;
+                background: var(--accent);
+                border-radius: 1px;
+            }
+
+            .nav-item-mobile {
+                color: var(--muted);
+            }
+            .nav-item-mobile.active {
+                color: var(--text);
+                background: var(--bg);
+            }
+            .nav-item-mobile:hover {
+                color: var(--text);
+            }
+
+            .stagger > * {
+                opacity: 1;
+            }
+
+            .theme-toggle {
+                width: 48px;
+                height: 26px;
+                border-radius: 999px;
+                background: var(--border);
+                position: relative;
+                cursor: pointer;
+                border: 1px solid var(--border);
+            }
+            .theme-toggle::after {
+                content: '';
+                position: absolute;
+                top: 2px;
+                left: 2px;
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                background: var(--accent);
+                transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            }
+            html.dark .theme-toggle::after {
+                transform: translateX(22px);
+            }
+
+            ::-webkit-scrollbar {
+                width: 6px;
+                height: 6px;
+            }
+            ::-webkit-scrollbar-track {
+                background: transparent;
+            }
+            ::-webkit-scrollbar-thumb {
+                background: var(--border);
+                border-radius: 3px;
+            }
+            ::-webkit-scrollbar-thumb:hover {
+                background: var(--muted);
+            }
+
+            .project-card {
+                transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease;
+            }
+            .project-card:hover {
+                transform: translateY(-4px);
+                border-color: var(--accent);
+            }
+
+            .card-media-image {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+            }
+
+            .cert-badge img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 10px;
+                display: block;
+            }
+
+            .card-link {
+                display: block;
+                text-decoration: none;
+                color: inherit;
+            }
+
+            .timeline-dot::before {
+                content: '';
+                position: absolute;
+                left: -5px;
+                top: 6px;
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background: var(--accent);
+                box-shadow: 0 0 0 4px var(--bg);
+            }
+
+            .timeline-dot {
+                padding-left: 8px;
+            }
+
+            .chip {
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                padding: 4px 10px;
+                font-size: 11px;
+                font-family: 'JetBrains Mono', monospace;
+                background: var(--bg);
+                border: 1px solid var(--border);
+                border-radius: 4px;
+                color: var(--muted);
+            }
+            html.dark .chip {
+                background: rgba(255,255,255,0.02);
+            }
+
+            a:focus-visible,
+            button:focus-visible {
+                outline: 2px solid var(--accent);
+                outline-offset: 2px;
+                border-radius: 2px;
+            }
+
+            .section-container > div {
+                width: 100%;
+            }
+
+            .status-dot {
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: #8B9D83;
+                box-shadow: 0 0 0 3px rgba(139,157,131,0.2);
+                animation: blink 2s ease-in-out infinite;
+            }
+            @keyframes blink {
+                0%,
+                100% {
+                    opacity: 1;
+                }
+                50% {
+                    opacity: 0.5;
                 }
             }
-        }
-    </script>
-    
-    <!-- Custom JavaScript -->
-    <script src="script.js"></script>
-    
-    <style>
-        body {
-            background-color: #0B1020;
-            color: #e2e8f0;
-            overflow-x: hidden;
-        }
-        
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0B1020;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #232d4b;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #00D4C8;
-        }
-        
-        .animation-delay-2000 {
-            animation-delay: 2s;
-        }
-        .animation-delay-4000 {
-            animation-delay: 4s;
-        }
-        
-        .skill-card {
-            transition: all 0.3s ease;
-        }
-        .skill-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .project-card {
-            transition: all 0.3s ease;
-        }
-        .project-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .tech-tag {
-            transition: all 0.2s ease;
-        }
-        .tech-tag:hover {
-            transform: scale(1.05);
-        }
-    </style>
-</head>
-<body>
-    <div class="min-h-screen relative flex flex-col font-sans text-slate-200">
-        <!-- Animated Background -->
-        <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
-            <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-teal-500/10 rounded-full mix-blend-screen filter blur-3xl opacity-30 animate-blob"></div>
-            <div class="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-magenta-500/10 rounded-full mix-blend-screen filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
-            <div class="absolute -bottom-32 left-20 w-[600px] h-[600px] bg-blue-900/10 rounded-full mix-blend-screen filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
-            <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150"></div>
-        </div>
 
-        <!-- Navigation -->
-        <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b bg-transparent border-transparent py-6">
-            <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
-                <a href="#" class="text-xl font-heading font-bold text-white tracking-tight flex items-center gap-2">
-                    <span class="text-teal-400">&lt;</span>
-                    Chakrapani Gajji
-                    <span class="text-teal-400">/&gt;</span>
-                </a>
+            .cert-badge {
+                width: 128px;
+                height: 128px;
+                border-radius: 12px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: var(--bg);
+                border: 2px solid var(--border);
+                flex-shrink: 0;
+                font-size: 32px;
+            }
 
-                <!-- Desktop Nav -->
-                <div class="hidden md:flex items-center gap-8">
-                    <a href="#about" class="nav-link relative text-sm font-medium transition-colors duration-300 hover:text-teal-400 group text-slate-300">
-                        About
-                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-400 transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                    <a href="#experience" class="nav-link relative text-sm font-medium transition-colors duration-300 hover:text-teal-400 group text-slate-300">
-                        Experience
-                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-400 transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                    <a href="#projects" class="nav-link relative text-sm font-medium transition-colors duration-300 hover:text-teal-400 group text-slate-300">
-                        Projects
-                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-400 transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                    <a href="#certifications" class="nav-link relative text-sm font-medium transition-colors duration-300 hover:text-teal-400 group text-slate-300">
-                        Certifications
-                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-400 transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                    <a href="#contact" class="nav-link relative text-sm font-medium transition-colors duration-300 hover:text-teal-400 group text-slate-300">
-                        Contact
-                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-400 transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                    
-                    <!-- Social Icons -->
-                    <div class="flex items-center gap-3 pl-4 border-l border-white/10">
-                        <a href="https://linkedin.com/in/chakrapanigajji" target="_blank" rel="noreferrer" class="text-slate-400 hover:text-teal-400 transition-colors p-2 hover:bg-white/5 rounded-lg">
-                            <i data-lucide="linkedin" class="w-5 h-5"></i>
-                        </a>
-                        <a href="https://github.com/Chakrapani2122" target="_blank" rel="noreferrer" class="text-slate-400 hover:text-teal-400 transition-colors p-2 hover:bg-white/5 rounded-lg">
-                            <i data-lucide="github" class="w-5 h-5"></i>
-                        </a>
-                        <a href="mailto:cgajji@ksu.edu" class="text-slate-400 hover:text-teal-400 transition-colors p-2 hover:bg-white/5 rounded-lg">
-                            <i data-lucide="mail" class="w-5 h-5"></i>
-                        </a>
+            @media (min-width: 768px) {
+                .cert-badge {
+                    width: 220px;
+                    height: 160px;
+                }
+            }
+
+            .profile-image {
+                width: 100%;
+                max-width: 420px;
+                height: auto;
+                aspect-ratio: 1;
+                border-radius: 50%;
+                object-fit: cover;
+                border: 2px solid var(--accent);
+            }
+
+            .form-input {
+                background: var(--surface);
+                border: 1px solid var(--border);
+                color: var(--text);
+                padding: 12px;
+                border-radius: 6px;
+                font-family: 'Manrope', system-ui, sans-serif;
+                font-size: 14px;
+            }
+            .form-input::placeholder {
+                color: var(--muted);
+            }
+            .form-input:focus {
+                outline: none;
+                border-color: var(--accent);
+            }
+
+            .form-button {
+                background: var(--accent);
+                color: white;
+                border: none;
+                padding: 12px 24px;
+                border-radius: 6px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: opacity 0.3s ease;
+                font-family: 'Manrope', system-ui, sans-serif;
+            }
+            .form-button:hover {
+                opacity: 0.9;
+            }
+            .form-button:disabled {
+                opacity: 0.5;
+                cursor: not-allowed;
+            }
+
+            .form-status {
+                margin-top: 8px;
+                font-size: 13px;
+                line-height: 1.4;
+                min-height: 18px;
+                color: var(--muted);
+            }
+            .form-status.success {
+                color: #16a34a;
+            }
+            .form-status.error {
+                color: #dc2626;
+            }
+
+            .resume-btn {
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                padding: 8px 10px;
+                border-radius: 6px;
+                border: 1px solid var(--border);
+                background: var(--surface);
+                color: var(--text);
+                font-size: 12px;
+                font-weight: 600;
+                line-height: 1;
+                transition: border-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+            }
+            .resume-btn:hover {
+                border-color: var(--accent);
+                color: var(--accent);
+            }
+            .resume-btn:active {
+                transform: translateY(1px);
+            }
+        </style>
+        <style>
+            body {
+                box-sizing: border-box;
+            }
+        </style>
+        <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+    </head>
+    <body class="h-full">
+        <!-- TOP NAVIGATION -->
+        <nav
+            id="topNav"
+            class="sticky top-0 z-40 w-full bg-surface border-b border-subtle transition-colors duration-300">
+            <div class="grid-bg absolute inset-0 opacity-60 pointer-events-none"></div>
+            <div
+                class="relative px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+                <!-- Logo/Identity -->
+                <div class="flex items-center gap-3 shrink-0">
+                    <div class="w-8 h-8 rounded bg-accent flex items-center justify-center">
+                        <span class="font-serif text-white text-sm font-semibold" id="initials">CG</span>
                     </div>
-                    
-                    <a href="assets/Chakrapani_Gajji_Resume.pdf" target="_blank" class="px-4 py-2 text-sm font-medium text-navy-900 bg-teal-400 rounded-full hover:bg-teal-500 transition-colors flex items-center gap-2">
-                        <i data-lucide="download" class="w-4 h-4"></i> Resume
-                    </a>
+                    <div
+                        class="font-serif text-sm sm:text-base font-bold text-text hidden sm:block"
+                        id="navName">
+                        Chakrapani Gajji
+                    </div>
                 </div>
-
-                <!-- Mobile Toggle -->
-                <button id="mobile-menu-toggle" class="md:hidden text-white">
-                    <i data-lucide="menu" class="w-6 h-6"></i>
-                </button>
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center gap-1" aria-label="Primary">
+                    <button
+                        data-nav="profile"
+                        class="nav-item active nav-horizontal px-3 py-2 text-xs font-medium transition-colors">Profile</button>
+                    <button
+                        data-nav="experience"
+                        class="nav-item nav-horizontal px-3 py-2 text-xs font-medium transition-colors">Experience</button>
+                    <button
+                        data-nav="education"
+                        class="nav-item nav-horizontal px-3 py-2 text-xs font-medium transition-colors">Education</button>
+                    <button
+                        data-nav="projects"
+                        class="nav-item nav-horizontal px-3 py-2 text-xs font-medium transition-colors">Projects</button>
+                    <button
+                        data-nav="certifications"
+                        class="nav-item nav-horizontal px-3 py-2 text-xs font-medium transition-colors">Certifications</button>
+                    <button
+                        data-nav="contact"
+                        class="nav-item nav-horizontal px-3 py-2 text-xs font-medium transition-colors">Contact</button>
+                </nav>
+                <!-- Theme Toggle & Mobile Menu -->
+                <div class="flex items-center gap-2 sm:gap-3">
+                    <a
+                        href="assets/Chakrapani_Gajji_Resume.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="resume-btn"
+                        aria-label="Download resume">
+                        <i data-lucide="download" class="w-3.5 h-3.5"></i>
+                        <span class="sm:inline">Resume</span>
+                    </a>
+                    <button id="themeToggleNav" class="theme-toggle" aria-label="Toggle theme"></button>
+                    <button
+                        id="mobileMenuToggle"
+                        class="md:hidden text-muted hover:text-text transition-colors p-2">
+                        <i data-lucide="menu" class="w-5 h-5"></i>
+                    </button>
+                </div>
             </div>
-
-            <!-- Mobile Nav -->
-            <div id="mobile-menu" class="hidden md:hidden bg-navy-900/95 backdrop-blur-xl border-b border-white/10 overflow-hidden">
-                <div class="p-6 flex flex-col gap-4">
-                    <a href="#about" class="mobile-nav-link block text-lg py-2 text-slate-300 hover:text-teal-400 transition-colors">About</a>
-                    <a href="#experience" class="mobile-nav-link block text-lg py-2 text-slate-300 hover:text-teal-400 transition-colors">Experience</a>
-                    <a href="#projects" class="mobile-nav-link block text-lg py-2 text-slate-300 hover:text-teal-400 transition-colors">Projects</a>
-                    <a href="#certifications" class="mobile-nav-link block text-lg py-2 text-slate-300 hover:text-teal-400 transition-colors">Certifications</a>
-                    <a href="#contact" class="mobile-nav-link block text-lg py-2 text-slate-300 hover:text-teal-400 transition-colors">Contact</a>
-                    
-                    <!-- Social Icons for Mobile -->
-                    <div class="flex items-center justify-center gap-4 py-4 border-t border-white/10 mt-2">
-                        <a href="https://linkedin.com/in/chakrapanigajji" target="_blank" rel="noreferrer" class="text-slate-400 hover:text-teal-400 transition-colors p-3 hover:bg-white/5 rounded-lg">
-                            <i data-lucide="linkedin" class="w-6 h-6"></i>
-                        </a>
-                        <a href="https://github.com/Chakrapani2122" target="_blank" rel="noreferrer" class="text-slate-400 hover:text-teal-400 transition-colors p-3 hover:bg-white/5 rounded-lg">
-                            <i data-lucide="github" class="w-6 h-6"></i>
-                        </a>
-                        <a href="mailto:cgajji@ksu.edu" class="text-slate-400 hover:text-teal-400 transition-colors p-3 hover:bg-white/5 rounded-lg">
-                            <i data-lucide="mail" class="w-6 h-6"></i>
-                        </a>
-                    </div>
-                    
-                    <a href="assets/Chakrapani_Gajji_Resume.pdf" target="_blank" class="flex items-center justify-center gap-2 w-full py-3 bg-teal-400 text-navy-900 font-bold rounded-xl">
-                        <i data-lucide="download" class="w-4 h-4"></i> Download Resume
-                    </a>
-                </div>
+            <!-- Mobile Navigation Dropdown -->
+            <div
+                id="mobileNav"
+                class="hidden md:hidden border-t border-subtle bg-surface max-h-0 overflow-hidden transition-all duration-300">
+                <nav class="flex flex-col gap-px p-4" aria-label="Mobile navigation">
+                    <button
+                        data-nav="profile"
+                        class="nav-item-mobile active text-left px-3 py-2 text-sm font-medium rounded transition-colors">Profile</button>
+                    <button
+                        data-nav="experience"
+                        class="nav-item-mobile text-left px-3 py-2 text-sm font-medium rounded transition-colors">Experience</button>
+                    <button
+                        data-nav="education"
+                        class="nav-item-mobile text-left px-3 py-2 text-sm font-medium rounded transition-colors">Education</button>
+                    <button
+                        data-nav="projects"
+                        class="nav-item-mobile text-left px-3 py-2 text-sm font-medium rounded transition-colors">Projects</button>
+                    <button
+                        data-nav="certifications"
+                        class="nav-item-mobile text-left px-3 py-2 text-sm font-medium rounded transition-colors">Certifications</button>
+                    <button
+                        data-nav="contact"
+                        class="nav-item-mobile text-left px-3 py-2 text-sm font-medium rounded transition-colors">Contact</button>
+                </nav>
             </div>
         </nav>
-
-        <!-- Main Content -->
-        <main class="relative z-10 flex-grow pt-20">
-            <!-- Hero Section -->
-            <section id="about" class="min-h-[90vh] flex items-center justify-center relative px-6">
-                <div class="max-w-7xl w-full mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                    <!-- Text Content -->
-                    <div class="space-y-6 animate-slide-in-left">
-                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-400/10 border border-teal-400/20 text-teal-400 text-sm font-medium">
-                            <span class="relative flex h-2 w-2">
-                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
-                                <span class="relative inline-flex rounded-full h-2 w-2 bg-teal-500"></span>
-                            </span>
-                            Available for Opportunities
-                        </div>
-
-                        <h1 class="text-5xl md:text-7xl font-heading font-bold leading-tight text-white">
-                            Hi, I'm <br>
-                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-500">
-                                Chakrapani
-                            </span>
-                        </h1>
-
-                        <p class="text-xl md:text-2xl text-slate-300 font-light max-w-lg">
-                            Data Analytics Graduate | ML & BI Specialist | Software Developer
-                        </p>
-                        
-                        <p class="text-slate-400 leading-relaxed max-w-xl">
-                            Data Analytics graduate with hands‑on experience in Python, SQL, Machine Learning, Statistical Analysis, and Business Intelligence. Experienced in building data pipelines, interactive dashboards, analytical models, and data‑driven applications using Tableau, Power BI, Databricks, Streamlit, and Scikit‑Learn. Open to relocation and entry‑level roles across analytics and software development.
-                        </p>
-
-                        <div class="flex flex-wrap gap-4 pt-4">
-                            <a href="#projects" class="px-8 py-3 bg-teal-400 text-navy-900 rounded-full font-bold hover:bg-teal-500 hover:shadow-[0_0_20px_rgba(0,212,200,0.3)] transition-all flex items-center gap-2">
-                                View Work <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                            </a>
-                            <a href="#contact" class="px-8 py-3 bg-white/5 text-white border border-white/10 rounded-full font-medium hover:bg-white/10 transition-all backdrop-blur-sm">
-                                Get In Touch
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Visual Elements -->
-                    <div class="relative">
-                        <div class="relative w-full max-w-lg mx-auto">
-                            <!-- Main Visual with Full Background Image -->
-                            <div class="relative aspect-square">
-                                <!-- Outer Border Ring -->
-                                <div class="absolute inset-0 rounded-full bg-gradient-to-r from-teal-400 via-purple-400 to-blue-400 p-1">
-                                    <!-- Inner Container with Gap -->
-                                    <div class="w-full h-full bg-navy-900 rounded-full p-3">
-                                        <!-- Image Container -->
-                                        <div class="w-full h-full rounded-full overflow-hidden shadow-2xl">
-                                            <img src="assets/photo.png" alt="Chakrapani Gajji" class="w-full h-full object-cover" loading="lazy">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Skills Section -->
-            <section id="skills" class="py-20 px-6">
-                <div class="max-w-6xl mx-auto">
-                    <div class="text-center mb-16">
-                        <h2 class="text-4xl font-heading font-bold text-white mb-4">Skills & Technologies</h2>
-                        <p class="text-slate-400 max-w-2xl mx-auto">
-                            A comprehensive toolkit for data analysis, machine learning, and software development
-                        </p>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <!-- Programming & Database -->
-                        <div class="skill-card bg-gradient-to-br from-navy-800 to-navy-900 border border-white/10 rounded-2xl p-6">
-                            <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mb-4">
-                                <i data-lucide="code" class="w-6 h-6 text-blue-400"></i>
-                            </div>
-                            <h3 class="text-white font-semibold mb-3">Programming & Database</h3>
-                            <div class="space-y-2">
-                                <span class="inline-block bg-blue-500/10 text-blue-300 px-3 py-1 rounded-full text-sm">Python</span>
-                                <span class="inline-block bg-blue-500/10 text-blue-300 px-3 py-1 rounded-full text-sm">SQL (MySQL)</span>
-                                <span class="inline-block bg-blue-500/10 text-blue-300 px-3 py-1 rounded-full text-sm">R</span>
-                                <span class="inline-block bg-blue-500/10 text-blue-300 px-3 py-1 rounded-full text-sm">C</span>
-                            </div>
-                        </div>
-
-                        <!-- Machine Learning & Stats -->
-                        <div class="skill-card bg-gradient-to-br from-navy-800 to-navy-900 border border-white/10 rounded-2xl p-6">
-                            <div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center mb-4">
-                                <i data-lucide="brain" class="w-6 h-6 text-green-400"></i>
-                            </div>
-                            <h3 class="text-white font-semibold mb-3">Machine Learning & Stats</h3>
-                            <div class="space-y-2">
-                                <span class="inline-block bg-green-500/10 text-green-300 px-3 py-1 rounded-full text-sm">TensorFlow</span>
-                                <span class="inline-block bg-green-500/10 text-green-300 px-3 py-1 rounded-full text-sm">Scikit-Learn</span>
-                                <span class="inline-block bg-green-500/10 text-green-300 px-3 py-1 rounded-full text-sm">NLP</span>
-                                <span class="inline-block bg-green-500/10 text-green-300 px-3 py-1 rounded-full text-sm">Time-Series</span>
-                                <span class="inline-block bg-green-500/10 text-green-300 px-3 py-1 rounded-full text-sm">Predictive Modeling</span>
-                            </div>
-                        </div>
-
-                        <!-- BI & Visualization -->
-                        <div class="skill-card bg-gradient-to-br from-navy-800 to-navy-900 border border-white/10 rounded-2xl p-6">
-                            <div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center mb-4">
-                                <i data-lucide="bar-chart-3" class="w-6 h-6 text-purple-400"></i>
-                            </div>
-                            <h3 class="text-white font-semibold mb-3">BI & Visualization</h3>
-                            <div class="space-y-2">
-                                <span class="inline-block bg-purple-500/10 text-purple-300 px-3 py-1 rounded-full text-sm">Tableau</span>
-                                <span class="inline-block bg-purple-500/10 text-purple-300 px-3 py-1 rounded-full text-sm">Power BI</span>
-                                <span class="inline-block bg-purple-500/10 text-purple-300 px-3 py-1 rounded-full text-sm">Matplotlib</span>
-                                <span class="inline-block bg-purple-500/10 text-purple-300 px-3 py-1 rounded-full text-sm">Seaborn</span>
-                            </div>
-                        </div>
-
-                        <!-- Platforms & Tools -->
-                        <div class="skill-card bg-gradient-to-br from-navy-800 to-navy-900 border border-white/10 rounded-2xl p-6">
-                            <div class="w-12 h-12 bg-teal-500/20 rounded-lg flex items-center justify-center mb-4">
-                                <i data-lucide="settings" class="w-6 h-6 text-teal-400"></i>
-                            </div>
-                            <h3 class="text-white font-semibold mb-3">Platforms & Tools</h3>
-                            <div class="space-y-2">
-                                <span class="inline-block bg-teal-500/10 text-teal-300 px-3 py-1 rounded-full text-sm">Databricks</span>
-                                <span class="inline-block bg-teal-500/10 text-teal-300 px-3 py-1 rounded-full text-sm">AWS</span>
-                                <span class="inline-block bg-teal-500/10 text-teal-300 px-3 py-1 rounded-full text-sm">Docker</span>
-                                <span class="inline-block bg-teal-500/10 text-teal-300 px-3 py-1 rounded-full text-sm">Git</span>
-                                <span class="inline-block bg-teal-500/10 text-teal-300 px-3 py-1 rounded-full text-sm">GitHub</span>
-                                <span class="inline-block bg-teal-500/10 text-teal-300 px-3 py-1 rounded-full text-sm">Streamlit</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Experience Section -->
-            <section id="experience" class="py-20 px-6">
-                <div class="max-w-6xl mx-auto">
-                    <div class="text-center mb-16">
-                        <h2 class="text-4xl font-heading font-bold text-white mb-4">Experience</h2>
-                        <p class="text-slate-400 max-w-2xl mx-auto">
-                            Professional experience in data analytics and research
-                        </p>
-                    </div>
-
-                    <div class="space-y-8">
-                        <!-- Experience Item 1 -->
-                        <div class="bg-gradient-to-br from-navy-800 to-navy-900 border border-white/10 rounded-3xl p-8 relative overflow-hidden">
-                            <div class="absolute top-0 right-0 w-32 h-32 bg-teal-500/10 rounded-full blur-2xl"></div>
-                            <div class="relative">
-                                <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
-                                    <div>
-                                        <h3 class="text-xl font-bold text-white">Data Manager (RA)</h3>
-                                        <p class="text-teal-400 font-medium">Kansas State University</p>
-                                        <p class="text-slate-400 text-sm">Manhattan, KS, USA</p>
-                                    </div>
-                                    <div class="text-slate-400 text-sm mt-2 md:mt-0">
-                                        August 2024 – Present
-                                    </div>
-                                </div>
-                                <ul class="space-y-3 text-slate-300">
-                                    <li class="flex items-start gap-3">
-                                        <i data-lucide="chevron-right" class="w-4 h-4 text-teal-400 mt-1 flex-shrink-0"></i>
-                                        Designed and deployed interactive Streamlit dashboards enabling over 20 faculty and research staff to access analytical insights efficiently.
-                                    </li>
-                                    <li class="flex items-start gap-3">
-                                        <i data-lucide="chevron-right" class="w-4 h-4 text-teal-400 mt-1 flex-shrink-0"></i>
-                                        Analyzed and validated 50,000+ data records across multi‑year research projects, ensuring accuracy, consistency, and reproducibility.
-                                    </li>
-                                    <li class="flex items-start gap-3">
-                                        <i data-lucide="chevron-right" class="w-4 h-4 text-teal-400 mt-1 flex-shrink-0"></i>
-                                        Collaborated with cross‑functional research teams to analyze agricultural and forecasting datasets, identifying trends and performance indicators.
-                                    </li>
-                                    <li class="flex items-start gap-3">
-                                        <i data-lucide="chevron-right" class="w-4 h-4 text-teal-400 mt-1 flex-shrink-0"></i>
-                                        Built structured data workflows using Python and SQL to reduce manual reporting effort.
-                                    </li>
-                                    <li class="flex items-start gap-3">
-                                        <i data-lucide="chevron-right" class="w-4 h-4 text-teal-400 mt-1 flex-shrink-0"></i>
-                                        Prepared analytical summaries, tables, and visualizations for research publications and internal reporting.
-                                    </li>
-                                    <li class="flex items-start gap-3">
-                                        <i data-lucide="chevron-right" class="w-4 h-4 text-teal-400 mt-1 flex-shrink-0"></i>
-                                        Documented data definitions and analytical processes to support reuse and long‑term research continuity.
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <!-- Experience Item 2 -->
-                        <div class="bg-gradient-to-br from-navy-800 to-navy-900 border border-white/10 rounded-3xl p-8 relative overflow-hidden">
-                            <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl"></div>
-                            <div class="relative">
-                                <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
-                                    <div>
-                                        <h3 class="text-xl font-bold text-white">Team Leader (Institutional Research)</h3>
-                                        <p class="text-teal-400 font-medium">Kansas State University</p>
-                                        <p class="text-slate-400 text-sm">Manhattan, KS, USA</p>
-                                    </div>
-                                    <div class="text-slate-400 text-sm mt-2 md:mt-0">
-                                        January 2025 – May 2025
-                                    </div>
-                                </div>
-                                <ul class="space-y-3 text-slate-300">
-                                    <li class="flex items-start gap-3">
-                                        <i data-lucide="chevron-right" class="w-4 h-4 text-teal-400 mt-1 flex-shrink-0"></i>
-                                        Led an end‑to‑end analytics project, coordinating milestones and deliverables for a cross‑functional team of three.
-                                    </li>
-                                    <li class="flex items-start gap-3">
-                                        <i data-lucide="chevron-right" class="w-4 h-4 text-teal-400 mt-1 flex-shrink-0"></i>
-                                        Conducted exploratory and statistical analysis to generate 10+ actionable recommendations for clients.
-                                    </li>
-                                    <li class="flex items-start gap-3">
-                                        <i data-lucide="chevron-right" class="w-4 h-4 text-teal-400 mt-1 flex-shrink-0"></i>
-                                        Developed dashboards and executive‑level reports supporting ~15% improvement in operational efficiency.
-                                    </li>
-                                    <li class="flex items-start gap-3">
-                                        <i data-lucide="chevron-right" class="w-4 h-4 text-teal-400 mt-1 flex-shrink-0"></i>
-                                        Translated complex datasets into clear visual narratives and presentations for non‑technical stakeholders.
-                                    </li>
-                                    <li class="flex items-start gap-3">
-                                        <i data-lucide="chevron-right" class="w-4 h-4 text-teal-400 mt-1 flex-shrink-0"></i>
-                                        Managed project documentation, timelines, and stakeholder communication throughout the engagement.
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- Experience Item 3 -->
-                        <div class="bg-gradient-to-br from-navy-800 to-navy-900 border border-white/10 rounded-3xl p-8 relative overflow-hidden">
-                            <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl"></div>
-                            <div class="relative">
-                                <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
-                                    <div>
-                                        <h3 class="text-xl font-bold text-white">Data Science Intern</h3>
-                                        <p class="text-teal-400 font-medium">Oasis Infobyte</p>
-                                        <p class="text-slate-400 text-sm">Hyderabad, Telangana, India (Remote)</p>
-                                    </div>
-                                    <div class="text-slate-400 text-sm mt-2 md:mt-0">
-                                        February 2023 – March 2023
-                                    </div>
-                                </div>
-                                <ul class="space-y-3 text-slate-300">
-                                    <li class="flex items-start gap-3">
-                                        <i data-lucide="chevron-right" class="w-4 h-4 text-teal-400 mt-1 flex-shrink-0"></i>
-                                        Developed machine learning models for automated email classification and sales forecasting, achieving up to 97% accuracy.
-                                    </li>
-                                    <li class="flex items-start gap-3">
-                                        <i data-lucide="chevron-right" class="w-4 h-4 text-teal-400 mt-1 flex-shrink-0"></i>
-                                        Optimized end‑to‑end ML pipelines, reducing model run‑time by 30% and improving reliability.
-                                    </li>
-                                    <li class="flex items-start gap-3">
-                                        <i data-lucide="chevron-right" class="w-4 h-4 text-teal-400 mt-1 flex-shrink-0"></i>
-                                        Performed data preprocessing, feature engineering, and model evaluation using Python and TensorFlow.
-                                    </li>
-                                    <li class="flex items-start gap-3">
-                                        <i data-lucide="chevron-right" class="w-4 h-4 text-teal-400 mt-1 flex-shrink-0"></i>
-                                        Delivered analytical insights that supported marketing and operations decision‑making.
-                                    </li>
-                                    <li class="flex items-start gap-3">
-                                        <i data-lucide="chevron-right" class="w-4 h-4 text-teal-400 mt-1 flex-shrink-0"></i>
-                                        Diagnosed workflow inefficiencies and implemented performance optimizations.
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Projects Section -->
-            <section id="projects" class="py-20 px-6">
-                <div class="max-w-7xl mx-auto">
-                    <div class="text-center mb-16">
-                        <h2 class="text-4xl font-heading font-bold text-white mb-4">Featured Projects</h2>
-                        <p class="text-slate-400 max-w-2xl mx-auto">
-                            A selection of analytics, machine learning, and development projects
-                        </p>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <!-- Project 0 -->
-                        <div class="project-card bg-gradient-to-br from-navy-800 to-navy-900 border border-white/10 rounded-2xl overflow-hidden relative">
-                            <div class="absolute top-0 right-0 w-24 h-24 bg-teal-500/10 rounded-full blur-2xl"></div>
-                            <!-- Project Image -->
-                            <div class="h-48 bg-gradient-to-r from-teal-500/20 to-blue-500/20 relative overflow-hidden">
-                                <img src="assets/Projects/IRKSU.jpg" alt="Institutional Research: KSU" class="w-full h-full object-cover opacity-90">
-                                <div class="absolute inset-0 bg-gradient-to-t from-navy-900/40 to-transparent"></div>
-                            </div>
-                            <div class="p-6 relative">
-                                <div class="flex items-center justify-between mb-4">
-                                    <span class="bg-teal-500/10 text-teal-400 px-3 py-1 rounded-full text-sm font-medium">Institutional Research / Analytics</span>
-                                    <a href="#" rel="noopener noreferrer" class="text-slate-400 hover:text-teal-400 transition-colors">
-                                        <i data-lucide="external-link" class="w-4 h-4"></i>
-                                    </a>
-                                </div>
-                                <h3 class="text-xl font-bold text-white mb-2">Institutional Research: KSU</h3>
-                                <p class="text-slate-400 text-sm mb-4">January 2025 – May 2025</p>
-                                <p class="text-slate-300 mb-6 line-clamp-3">
-                                    Conducted institutional research on 5,000+ student survey responses, applying statistical and NLP techniques to identify trends and key drivers supporting strategic decision‑making. Built Tableau dashboards and executive‑level reports, delivering 10+ actionable recommendations to improve operational efficiency and reporting clarity.
-                                </p>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="tech-tag bg-blue-500/10 text-blue-300 px-2 py-1 rounded text-xs">Tableau</span>
-                                    <span class="tech-tag bg-purple-500/10 text-purple-300 px-2 py-1 rounded text-xs">Power BI</span>
-                                    <span class="tech-tag bg-green-500/10 text-green-300 px-2 py-1 rounded text-xs">Python</span>
-                                    <span class="tech-tag bg-green-500/10 text-orange-300 px-2 py-1 rounded text-xs">Excel</span>
-                                    <span class="tech-tag bg-green-500/10 text-orange-300 px-2 py-1 rounded text-xs">NLP</span>
-                                    <span class="tech-tag bg-green-500/10 text-orange-300 px-2 py-1 rounded text-xs">Statistical Analysis</span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Project 1 -->
-                        <div class="project-card bg-gradient-to-br from-navy-800 to-navy-900 border border-white/10 rounded-2xl overflow-hidden relative">
-                            <div class="absolute top-0 right-0 w-24 h-24 bg-teal-500/10 rounded-full blur-2xl"></div>
-                            <!-- Project Image -->
-                            <div class="h-48 bg-gradient-to-r from-teal-500/20 to-blue-500/20 relative overflow-hidden">
-                                <img src="assets/Projects/food_prices.jpeg" alt="Food Price Inflation Dashboard" class="w-full h-full object-cover opacity-90">
-                                <div class="absolute inset-0 bg-gradient-to-t from-navy-900/40 to-transparent"></div>
-                            </div>
-                            <div class="p-6 relative">
-                                <div class="flex items-center justify-between mb-4">
-                                    <span class="bg-teal-500/10 text-teal-400 px-3 py-1 rounded-full text-sm font-medium">Visualization</span>
-                                    <a href="https://public.tableau.com/views/AnInflationStoryADeepDiveintoFoodPricesinUSA/AnInflationStoryADeepDiveintoFoodPrices_?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-teal-400 transition-colors">
-                                        <i data-lucide="external-link" class="w-4 h-4"></i>
-                                    </a>
-                                </div>
-                                <h3 class="text-xl font-bold text-white mb-2">Food Price Inflation (USA)</h3>
-                                <p class="text-slate-400 text-sm mb-4">August 2025 – September 2025</p>
-                                <p class="text-slate-300 mb-6 line-clamp-3">
-                                    Developed 6 interactive Tableau dashboards analyzing U.S. food price inflation with regional and commodity‑level drill‑downs. Applied time‑series and trend analysis to identify seasonal and long‑term patterns.
-                                </p>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="tech-tag bg-blue-500/10 text-blue-300 px-2 py-1 rounded text-xs">Tableau</span>
-                                    <span class="tech-tag bg-purple-500/10 text-purple-300 px-2 py-1 rounded text-xs">Power BI</span>
-                                    <span class="tech-tag bg-green-500/10 text-green-300 px-2 py-1 rounded text-xs">Python</span>
-                                    <span class="tech-tag bg-green-500/10 text-orange-300 px-2 py-1 rounded text-xs">Excel</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Project 2 -->
-                        <div class="project-card bg-gradient-to-br from-navy-800 to-navy-900 border border-white/10 rounded-2xl overflow-hidden relative">
-                            <div class="absolute top-0 right-0 w-24 h-24 bg-purple-500/10 rounded-full blur-2xl"></div>
-                            <!-- Project Image -->
-                            <div class="h-48 bg-gradient-to-r from-purple-500/20 to-blue-500/20 relative overflow-hidden">
-                                <img src="assets/Projects/earthquakes.jpeg" alt="Earthquake Analysis Dashboard" class="w-full h-full object-cover opacity-90">
-                                <div class="absolute inset-0 bg-gradient-to-t from-navy-900/40 to-transparent"></div>
-                            </div>
-                            <div class="p-6 relative">
-                                <div class="flex items-center justify-between mb-4">
-                                    <span class="bg-purple-500/10 text-purple-400 px-3 py-1 rounded-full text-sm font-medium">Visualization</span>
-                                    <a href="https://public.tableau.com/views/AnatomyofaTremorAGlobalLookatRecentEarthquakes/AnatomyofaTremorAGlobalLookatRecentEarthquakes?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-purple-400 transition-colors">
-                                        <i data-lucide="external-link" class="w-4 h-4"></i>
-                                    </a>
-                                </div>
-                                <h3 class="text-xl font-bold text-white mb-2">EarthQuake Analysis</h3>
-                                <p class="text-slate-400 text-sm mb-4">June 2025 – July 2025</p>
-                                <p class="text-slate-300 mb-6 line-clamp-3">
-                                    Built Tableau dashboards with geospatial maps to analyze 5,000+ seismic events. Improved interpretability of risk patterns through interactive filtering and aggregation.
-                                </p>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="tech-tag bg-blue-500/10 text-blue-300 px-2 py-1 rounded text-xs">Tableau</span>
-                                    <span class="tech-tag bg-purple-500/10 text-purple-300 px-2 py-1 rounded text-xs">Power BI</span>
-                                    <span class="tech-tag bg-orange-500/10 text-orange-300 px-2 py-1 rounded text-xs">Excel</span>
-                                    <span class="tech-tag bg-green-500/10 text-green-300 px-2 py-1 rounded text-xs">Python</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Project 3 -->
-                        <div class="project-card bg-gradient-to-br from-navy-800 to-navy-900 border border-white/10 rounded-2xl overflow-hidden relative">
-                            <div class="absolute top-0 right-0 w-24 h-24 bg-green-500/10 rounded-full blur-2xl"></div>
-                            <!-- Project Image -->
-                            <div class="h-48 bg-gradient-to-r from-green-500/20 to-blue-500/20 relative overflow-hidden">
-                                <img src="assets/Projects/iris.jpg" alt="Iris Flower Classification" class="w-full h-full object-cover opacity-90">
-                                <div class="absolute inset-0 bg-gradient-to-t from-navy-900/40 to-transparent"></div>
-                            </div>
-                            <div class="p-6 relative">
-                                <div class="flex items-center justify-between mb-4">
-                                    <span class="bg-green-500/10 text-green-400 px-3 py-1 rounded-full text-sm font-medium">Machine Learning</span>
-                                    <a href="https://github.com/Chakrapani2122/Iris-Flower-Species-Recognition-Project" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-green-400 transition-colors">
-                                        <i data-lucide="external-link" class="w-4 h-4"></i>
-                                    </a>
-                                </div>
-                                <h3 class="text-xl font-bold text-white mb-2">Iris Flower Classification</h3>
-                                <p class="text-slate-400 text-sm mb-4">March 2024 – April 2024</p>
-                                <p class="text-slate-300 mb-6 line-clamp-3">
-                                    Developed classification models to identify iris species, achieving 98% accuracy. Performed feature analysis, visualization, and model evaluation.
-                                </p>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="tech-tag bg-green-500/10 text-green-300 px-2 py-1 rounded text-xs">Python</span>
-                                    <span class="tech-tag bg-blue-500/10 text-blue-300 px-2 py-1 rounded text-xs">Scikit-Learn</span>
-                                    <span class="tech-tag bg-green-500/10 text-orange-300 px-2 py-1 rounded text-xs">Streamlit</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Project 4 -->
-                        <div class="project-card bg-gradient-to-br from-navy-800 to-navy-900 border border-white/10 rounded-2xl overflow-hidden relative">
-                            <div class="absolute top-0 right-0 w-24 h-24 bg-blue-500/10 rounded-full blur-2xl"></div>
-                            <!-- Project Image -->
-                            <div class="h-48 bg-gradient-to-r from-blue-500/20 to-purple-500/20 relative overflow-hidden">
-                                <img src="assets/Projects/vividtones.jpg" alt="VividTones Image Colorization" class="w-full h-full object-cover opacity-90">
-                                <div class="absolute inset-0 bg-gradient-to-t from-navy-900/40 to-transparent"></div>
-                            </div>
-                            <div class="p-6 relative">
-                                <div class="flex items-center justify-between mb-4">
-                                    <span class="bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full text-sm font-medium">Development</span>
-                                    <a href="https://vividtones.streamlit.app/" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-blue-400 transition-colors">
-                                        <i data-lucide="external-link" class="w-4 h-4"></i>
-                                    </a>
-                                </div>
-                                <h3 class="text-xl font-bold text-white mb-2">VividTones - Image Colorization</h3>
-                                <p class="text-slate-400 text-sm mb-4">December 2023 – April 2024</p>
-                                <p class="text-slate-300 mb-6 line-clamp-3">
-                                    Engineered a CNN‑based TensorFlow pipeline for image colorization with multiple artistic modes. Improved processing efficiency by 25% and deployed a demo application.
-                                </p>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="tech-tag bg-green-500/10 text-green-300 px-2 py-1 rounded text-xs">Python</span>
-                                    <span class="tech-tag bg-blue-500/10 text-blue-300 px-2 py-1 rounded text-xs">OpenCV</span>
-                                    <span class="tech-tag bg-purple-500/10 text-purple-300 px-2 py-1 rounded text-xs">TensorFlow</span>
-                                    <span class="tech-tag bg-teal-500/10 text-teal-300 px-2 py-1 rounded text-xs">Streamlit</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Project 5 -->
-                        <div class="project-card bg-gradient-to-br from-navy-800 to-navy-900 border border-white/10 rounded-2xl overflow-hidden relative">
-                            <div class="absolute top-0 right-0 w-24 h-24 bg-orange-500/10 rounded-full blur-2xl"></div>
-                            <!-- Project Image -->
-                            <div class="h-48 bg-gradient-to-r from-orange-500/20 to-red-500/20 relative overflow-hidden">
-                                <img src="assets/Projects/sales.jpg" alt="Sales Analytics Dashboard" class="w-full h-full object-cover opacity-90">
-                                <div class="absolute inset-0 bg-gradient-to-t from-navy-900/40 to-transparent"></div>
-                            </div>
-                            <div class="p-6 relative">
-                                <div class="flex items-center justify-between mb-4">
-                                    <span class="bg-orange-500/10 text-orange-400 px-3 py-1 rounded-full text-sm font-medium">Analytics</span>
-                                    <a href="#" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-orange-400 transition-colors">
-                                        <i data-lucide="external-link" class="w-4 h-4"></i>
-                                    </a>
-                                </div>
-                                <h3 class="text-xl font-bold text-white mb-2">Sales Analytics Dashboard</h3>
-                                <p class="text-slate-400 text-sm mb-4">September 2024 – November 2024</p>
-                                <p class="text-slate-300 mb-6 line-clamp-3">
-                                    Built sales performance dashboards with forecasting and NLP‑based insights. Identified key revenue drivers and supported strategic planning.
-                                </p>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="tech-tag bg-blue-500/10 text-blue-300 px-2 py-1 rounded text-xs">Power BI</span>
-                                    <span class="tech-tag bg-green-500/10 text-green-300 px-2 py-1 rounded text-xs">Python</span>
-                                    <span class="tech-tag bg-purple-500/10 text-purple-300 px-2 py-1 rounded text-xs">Forecasting</span>
-                                    <span class="tech-tag bg-green-500/10 text-orange-300 px-2 py-1 rounded text-xs">MS Excel</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Project 6 -->
-                        <div class="project-card bg-gradient-to-br from-navy-800 to-navy-900 border border-white/10 rounded-2xl overflow-hidden relative">
-                            <div class="absolute top-0 right-0 w-24 h-24 bg-pink-500/10 rounded-full blur-2xl"></div>
-                            <!-- Project Image -->
-                            <div class="h-48 bg-gradient-to-r from-pink-500/20 to-purple-500/20 relative overflow-hidden">
-                                <img src="assets/Projects/spam.jpg" alt="Spam Email Detection" class="w-full h-full object-cover opacity-90">
-                                <div class="absolute inset-0 bg-gradient-to-t from-navy-900/40 to-transparent"></div>
-                            </div>
-                            <div class="p-6 relative">
-                                <div class="flex items-center justify-between mb-4">
-                                    <span class="bg-pink-500/10 text-pink-400 px-3 py-1 rounded-full text-sm font-medium">Machine Learning</span>
-                                    <a href="https://github.com/Chakrapani2122/E-mail-Spam-Detection-Project" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-pink-400 transition-colors">
-                                        <i data-lucide="external-link" class="w-4 h-4"></i>
-                                    </a>
-                                </div>
-                                <h3 class="text-xl font-bold text-white mb-2">Spam Email Detection</h3>
-                                <p class="text-slate-400 text-sm mb-4">March 2024 – May 2024</p>
-                                <p class="text-slate-300 mb-6 line-clamp-3">
-                                    Implemented NLP‑based classification models achieving 96% accuracy in spam detection. Applied text preprocessing, feature extraction, and model evaluation techniques.
-                                </p>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="tech-tag bg-green-500/10 text-green-300 px-2 py-1 rounded text-xs">Python</span>
-                                    <span class="tech-tag bg-blue-500/10 text-blue-300 px-2 py-1 rounded text-xs">NLP</span>
-                                    <span class="tech-tag bg-purple-500/10 text-purple-300 px-2 py-1 rounded text-xs">Scikit-Learn</span>
-                                    <span class="tech-tag bg-green-500/10 text-green-300 px-2 py-1 rounded text-xs">Streamlit</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Project 7 -->
-                        <div class="project-card bg-gradient-to-br from-navy-800 to-navy-900 border border-white/10 rounded-2xl overflow-hidden relative">
-                            <div class="absolute top-0 right-0 w-24 h-24 bg-indigo-500/10 rounded-full blur-2xl"></div>
-                            <!-- Project Image -->
-                            <div class="h-48 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 relative overflow-hidden">
-                                <img src="assets/Projects/counting.jpg" alt="Computer Vision Object Detection" class="w-full h-full object-cover opacity-90">
-                                <div class="absolute inset-0 bg-gradient-to-t from-navy-900/40 to-transparent"></div>
-                            </div>
-                            <div class="p-6 relative">
-                                <div class="flex items-center justify-between mb-4">
-                                    <span class="bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full text-sm font-medium">Computer Vision</span>
-                                    <a href="https://precision-object-counting.streamlit.app/" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-indigo-400 transition-colors">
-                                        <i data-lucide="external-link" class="w-4 h-4"></i>
-                                    </a>
-                                </div>
-                                <h3 class="text-xl font-bold text-white mb-2">Object Detection & Counting</h3>
-                                <p class="text-slate-400 text-sm mb-4">January 2024 – February 2024</p>
-                                <p class="text-slate-300 mb-6 line-clamp-3">
-                                    Built an automated object detection and counting system using YOLO‑based models. Achieved 94% accuracy in real‑time image processing.
-                                </p>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="tech-tag bg-green-500/10 text-green-300 px-2 py-1 rounded text-xs">Python</span>
-                                    <span class="tech-tag bg-blue-500/10 text-blue-300 px-2 py-1 rounded text-xs">OpenCV</span>
-                                    <span class="tech-tag bg-orange-500/10 text-orange-300 px-2 py-1 rounded text-xs">TensorFlow</span>
-                                    <span class="tech-tag bg-red-500/10 text-red-300 px-2 py-1 rounded text-xs">Image Processing</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Project 8 -->
-                        <div class="project-card bg-gradient-to-br from-navy-800 to-navy-900 border border-white/10 rounded-2xl overflow-hidden relative">
-                            <div class="absolute top-0 right-0 w-24 h-24 bg-cyan-500/10 rounded-full blur-2xl"></div>
-                            <!-- Project Image -->
-                            <div class="h-48 bg-gradient-to-r from-cyan-500/20 to-teal-500/20 relative overflow-hidden">
-                                <img src="assets/Projects/Billing_System.png" alt="Automated Billing System" class="w-full h-full object-cover opacity-90">
-                                <div class="absolute inset-0 bg-gradient-to-t from-navy-900/40 to-transparent"></div>
-                            </div>
-                            <div class="p-6 relative">
-                                <div class="flex items-center justify-between mb-4">
-                                    <span class="bg-cyan-500/10 text-cyan-400 px-3 py-1 rounded-full text-sm font-medium">Software Development</span>
-                                    <a href="https://github.com/Chakrapani2122/Billing-System-using-Python" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-cyan-400 transition-colors">
-                                        <i data-lucide="external-link" class="w-4 h-4"></i>
-                                    </a>
-                                </div>
-                                <h3 class="text-xl font-bold text-white mb-2">Automated Billing System</h3>
-                                <p class="text-slate-400 text-sm mb-4">November 2023 – December 2023</p>
-                                <p class="text-slate-300 mb-6 line-clamp-3">
-                                    Designed and implemented a billing system supporting invoice generation, payment tracking, and customer management.
-                                </p>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="tech-tag bg-green-500/10 text-green-300 px-2 py-1 rounded text-xs">Python</span>
-                                    <span class="tech-tag bg-blue-500/10 text-blue-300 px-2 py-1 rounded text-xs">MySQL</span>
-                                    <span class="tech-tag bg-purple-500/10 text-purple-300 px-2 py-1 rounded text-xs">Tkinter</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Project 9 -->
-                        <div class="project-card bg-gradient-to-br from-navy-800 to-navy-900 border border-white/10 rounded-2xl overflow-hidden relative">
-                            <div class="absolute top-0 right-0 w-24 h-24 bg-slate-500/10 rounded-full blur-2xl"></div>
-                            <!-- Project Image -->
-                            <div class="h-48 bg-gradient-to-r from-slate-500/20 to-gray-500/20 relative overflow-hidden">
-                                <img src="assets/Projects/Weather_App.png" alt="Weather Mobile App" class="w-full h-full object-cover opacity-90">
-                                <div class="absolute inset-0 bg-gradient-to-t from-navy-900/40 to-transparent"></div>
-                            </div>
-                            <div class="p-6 relative">
-                                <div class="flex items-center justify-between mb-4">
-                                    <span class="bg-slate-500/10 text-slate-400 px-3 py-1 rounded-full text-sm font-medium">Application Development</span>
-                                    <a href="https://github.com/Chakrapani2122/Weather-App" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-slate-300 transition-colors">
-                                        <i data-lucide="external-link" class="w-4 h-4"></i>
-                                    </a>
-                                </div>
-                                <h3 class="text-xl font-bold text-white mb-2">Weather Desktop Application</h3>
-                                <p class="text-slate-400 text-sm mb-4">October 2023 – November 2023</p>
-                                <p class="text-slate-300 mb-6 line-clamp-3">
-                                    Developed a desktop application with API‑based weather forecasting, offline caching, and interactive displays.
-                                </p>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="tech-tag bg-blue-500/10 text-blue-300 px-2 py-1 rounded text-xs">Python</span>
-                                    <span class="tech-tag bg-orange-500/10 text-orange-300 px-2 py-1 rounded text-xs">Tkinter</span>
-                                    <span class="tech-tag bg-green-500/10 text-green-300 px-2 py-1 rounded text-xs">API Integration</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Certifications Section -->
-            <section id="certifications" class="py-20 px-6">
-                <div class="max-w-7xl mx-auto">
-                    <div class="text-center mb-16">
-                        <h2 class="text-4xl font-heading font-bold text-white mb-4">Certifications</h2>
-                        <p class="text-slate-400 max-w-2xl mx-auto">
-                            Professional certifications and achievements in data science and analytics
-                        </p>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <!-- Certification 1 -->
-                        <div class="project-card bg-gradient-to-br from-navy-800 to-navy-900 border border-white/10 rounded-2xl overflow-hidden relative">
-                            <div class="absolute top-0 right-0 w-24 h-24 bg-blue-500/10 rounded-full blur-2xl"></div>
-                            <!-- Certificate Image -->
-                            <div class="h-48 bg-gradient-to-r from-blue-500/20 to-purple-500/20 relative overflow-hidden">
-                                <img src="assets/certificates/Data_Analysis_Coursera.png" alt="Data Analysis with Python Certificate" class="w-full h-full object-cover opacity-95">
-                                <div class="absolute inset-0 bg-gradient-to-t from-navy-900/40 to-transparent"></div>
-                            </div>
-                            <div class="p-6 relative">
-                                <div class="flex items-center justify-between mb-4">
-                                    <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center">
-                                        <i data-lucide="award" class="w-6 h-6 text-blue-400"></i>
-                                    </div>
-                                </div>
-                                <h3 class="text-xl font-bold text-white mb-2">Data Analysis with Python</h3>
-                                <p class="text-blue-400 font-medium text-sm mb-4">IBM via Coursera</p>
-                                <p class="text-slate-300 mb-4">
-                                    Comprehensive certification covering data manipulation, visualization, and analysis using Python libraries including Pandas, NumPy, and Matplotlib.
-                                </p>
-                                <div class="flex items-center gap-2 text-slate-400 text-sm">
-                                    <i data-lucide="calendar" class="w-4 h-4"></i>
-                                    <span>Issued 2024</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Certification 2 -->
-                        <div class="project-card bg-gradient-to-br from-navy-800 to-navy-900 border border-white/10 rounded-2xl overflow-hidden relative">
-                            <div class="absolute top-0 right-0 w-24 h-24 bg-green-500/10 rounded-full blur-2xl"></div>
-                            <!-- Certificate Image -->
-                            <div class="h-48 bg-gradient-to-r from-green-500/20 to-blue-500/20 relative overflow-hidden">
-                                <img src="assets/certificates/Introduction_to_Dat_Science_Infosys_Springboard.png" alt="Introduction to Data Science Certificate" class="w-full h-full object-cover opacity-95">
-                                <div class="absolute inset-0 bg-gradient-to-t from-navy-900/40 to-transparent"></div>
-                            </div>
-                            <div class="p-6 relative">
-                                <div class="flex items-center justify-between mb-4">
-                                    <div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center">
-                                        <i data-lucide="award" class="w-6 h-6 text-green-400"></i>
-                                    </div>
-                                </div>
-                                <h3 class="text-xl font-bold text-white mb-2">Introduction to Data Science</h3>
-                                <p class="text-green-400 font-medium text-sm mb-4">Infosys Springboard</p>
-                                <p class="text-slate-300 mb-4">
-                                    Foundational certification in data science concepts, statistical analysis, and machine learning fundamentals with hands-on projects.
-                                </p>
-                                <div class="flex items-center gap-2 text-slate-400 text-sm">
-                                    <i data-lucide="calendar" class="w-4 h-4"></i>
-                                    <span>Issued 2023</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Certification 3 -->
-                        <div class="project-card bg-gradient-to-br from-navy-800 to-navy-900 border border-white/10 rounded-2xl overflow-hidden relative">
-                            <div class="absolute top-0 right-0 w-24 h-24 bg-purple-500/10 rounded-full blur-2xl"></div>
-                            <!-- Certificate Image -->
-                            <div class="h-48 bg-gradient-to-r from-purple-500/20 to-blue-500/20 relative overflow-hidden">
-                                <img src="assets/certificates/Linkedin SQL.jpg" alt="SQL Essential Training Certificate" class="w-full h-full object-cover opacity-95">
-                                <div class="absolute inset-0 bg-gradient-to-t from-navy-900/40 to-transparent"></div>
-                            </div>
-                            <div class="p-6 relative">
-                                <div class="flex items-center justify-between mb-4">
-                                    <div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center">
-                                        <i data-lucide="award" class="w-6 h-6 text-purple-400"></i>
-                                    </div>
-                                    
-                                </div>
-                                <h3 class="text-xl font-bold text-white mb-2">SQL Essential Training</h3>
-                                <p class="text-purple-400 font-medium text-sm mb-4">LinkedIn Learning</p>
-                                <p class="text-slate-300 mb-4">
-                                    Advanced SQL certification covering complex queries, database design, and performance optimization for data analysis workflows.
-                                </p>
-                                <div class="flex items-center gap-2 text-slate-400 text-sm">
-                                    <i data-lucide="calendar" class="w-4 h-4"></i>
-                                    <span>Issued 2024</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Certification 4 -->
-                        <div class="project-card bg-gradient-to-br from-navy-800 to-navy-900 border border-white/10 rounded-2xl overflow-hidden relative">
-                            <div class="absolute top-0 right-0 w-24 h-24 bg-teal-500/10 rounded-full blur-2xl"></div>
-                            <!-- Certificate Image -->
-                            <div class="h-48 bg-gradient-to-r from-teal-500/20 to-green-500/20 relative overflow-hidden">
-                                <img src="assets/certificates/LSSYB.jpg" alt="Lean Six Sigma Yellow Belt Certificate" class="w-full h-full object-cover opacity-95">
-                                <div class="absolute inset-0 bg-gradient-to-t from-navy-900/40 to-transparent"></div>
-                            </div>
-                            <div class="p-6 relative">
-                                <div class="flex items-center justify-between mb-4">
-                                    <div class="w-12 h-12 bg-teal-500/20 rounded-lg flex items-center justify-center">
-                                        <i data-lucide="award" class="w-6 h-6 text-teal-400"></i>
-                                    </div>
-                                    
-                                </div>
-                                <h3 class="text-xl font-bold text-white mb-2">Lean Six Sigma Yellow Belt</h3>
-                                <p class="text-teal-400 font-medium text-sm mb-4">Kansas State University</p>
-                                <p class="text-slate-300 mb-4">
-                                    Process improvement methodology certification focusing on data-driven decision making and operational excellence in business environments.
-                                </p>
-                                <div class="flex items-center gap-2 text-slate-400 text-sm">
-                                    <i data-lucide="calendar" class="w-4 h-4"></i>
-                                    <span>Issued 2024</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Certification 5 -->
-                        <div class="project-card bg-gradient-to-br from-navy-800 to-navy-900 border border-white/10 rounded-2xl overflow-hidden relative">
-                            <div class="absolute top-0 right-0 w-24 h-24 bg-orange-500/10 rounded-full blur-2xl"></div>
-                            <!-- Certificate Image -->
-                            <div class="h-48 bg-gradient-to-r from-orange-500/20 to-yellow-500/20 relative overflow-hidden">
-                                <img src="assets/certificates/OOPs Python.png" alt="Python Object-Oriented Programming Certificate" class="w-full h-full object-cover opacity-95">
-                                <div class="absolute inset-0 bg-gradient-to-t from-navy-900/40 to-transparent"></div>
-                            </div>
-                            <div class="p-6 relative">
-                                <div class="flex items-center justify-between mb-4">
-                                    <div class="w-12 h-12 bg-orange-500/20 rounded-lg flex items-center justify-center">
-                                        <i data-lucide="award" class="w-6 h-6 text-orange-400"></i>
-                                    </div>
-                                    
-                                </div>
-                                <h3 class="text-xl font-bold text-white mb-2">Python Object-Oriented Programming</h3>
-                                <p class="text-orange-400 font-medium text-sm mb-4">LinkedIn Learning</p>
-                                <p class="text-slate-300 mb-4">
-                                    Advanced Python programming certification focusing on object-oriented design patterns and software development best practices.
-                                </p>
-                                <div class="flex items-center gap-2 text-slate-400 text-sm">
-                                    <i data-lucide="calendar" class="w-4 h-4"></i>
-                                    <span>Issued 2023</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Certification 6 -->
-                        <div class="project-card bg-gradient-to-br from-navy-800 to-navy-900 border border-white/10 rounded-2xl overflow-hidden relative">
-                            <div class="absolute top-0 right-0 w-24 h-24 bg-pink-500/10 rounded-full blur-2xl"></div>
-                            <!-- Certificate Image -->
-                            <div class="h-48 bg-gradient-to-r from-pink-500/20 to-purple-500/20 relative overflow-hidden">
-                                <img src="assets/certificates/Coursera-Python.jpg" alt="Python Basics Certificate" class="w-full h-full object-cover opacity-95">
-                                <div class="absolute inset-0 bg-gradient-to-t from-navy-900/40 to-transparent"></div>
-                            </div>
-                            <div class="p-6 relative">
-                                <div class="flex items-center justify-between mb-4">
-                                    <div class="w-12 h-12 bg-pink-500/20 rounded-lg flex items-center justify-center">
-                                        <i data-lucide="award" class="w-6 h-6 text-pink-400"></i>
-                                    </div>
-                                    
-                                </div>
-                                <h3 class="text-xl font-bold text-white mb-2">Python Basics</h3>
-                                <p class="text-pink-400 font-medium text-sm mb-4">IBM via Coursera</p>
-                                <p class="text-slate-300 mb-4">
-                                    Fundamental Python programming certification covering syntax, data structures, control flow, and basic programming concepts.
-                                </p>
-                                <div class="flex items-center gap-2 text-slate-400 text-sm">
-                                    <i data-lucide="calendar" class="w-4 h-4"></i>
-                                    <span>Issued 2023</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Additional Certification 1 -->
-                        <div class="project-card bg-gradient-to-br from-navy-800 to-navy-900 border border-white/10 rounded-2xl overflow-hidden relative">
-                            <div class="absolute top-0 right-0 w-24 h-24 bg-yellow-500/10 rounded-full blur-2xl"></div>
-                            <!-- Certificate Image -->
-                            <div class="h-48 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 relative overflow-hidden">
-                                <img src="assets/certificates/excel.jpeg" alt="Excel Advanced Techniques Certificate" class="w-full h-full object-cover opacity-95">
-                                <div class="absolute inset-0 bg-gradient-to-t from-navy-900/40 to-transparent"></div>
-                            </div>
-                            <div class="p-6 relative">
-                                <div class="flex items-center justify-between mb-4">
-                                    <div class="w-12 h-12 bg-yellow-500/20 rounded-lg flex items-center justify-center">
-                                        <i data-lucide="award" class="w-6 h-6 text-yellow-400"></i>
-                                    </div>
-                                    
-                                </div>
-                                <h3 class="text-xl font-bold text-white mb-2">Advanced Excel for Analytics</h3>
-                                <p class="text-yellow-400 font-medium text-sm mb-4">Professional Development</p>
-                                <p class="text-slate-300 mb-4">
-                                    Advanced Excel certification covering pivot tables, complex formulas, data analysis tools, and dashboard creation for business intelligence applications.
-                                </p>
-                                <div class="flex items-center gap-2 text-slate-400 text-sm">
-                                    <i data-lucide="calendar" class="w-4 h-4"></i>
-                                    <span>Issued 2024</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Additional Certification 2 -->
-                        <div class="project-card bg-gradient-to-br from-navy-800 to-navy-900 border border-white/10 rounded-2xl overflow-hidden relative">
-                            <div class="absolute top-0 right-0 w-24 h-24 bg-emerald-500/10 rounded-full blur-2xl"></div>
-                            <!-- Certificate Image -->
-                            <div class="h-48 bg-gradient-to-r from-emerald-500/20 to-green-500/20 relative overflow-hidden">
-                                <img src="assets/certificates/databases.jpeg" alt="Database Management Certificate" class="w-full h-full object-cover opacity-95">
-                                <div class="absolute inset-0 bg-gradient-to-t from-navy-900/40 to-transparent"></div>
-                            </div>
-                            <div class="p-6 relative">
-                                <div class="flex items-center justify-between mb-4">
-                                    <div class="w-12 h-12 bg-emerald-500/20 rounded-lg flex items-center justify-center">
-                                        <i data-lucide="award" class="w-6 h-6 text-emerald-400"></i>
-                                    </div>
-                                    
-                                </div>
-                                <h3 class="text-xl font-bold text-white mb-2">Database Management Systems</h3>
-                                <p class="text-emerald-400 font-medium text-sm mb-4">Professional Certification</p>
-                                <p class="text-slate-300 mb-4">
-                                    Comprehensive database management certification covering SQL, NoSQL, database design, optimization, and data warehousing principles.
-                                </p>
-                                <div class="flex items-center gap-2 text-slate-400 text-sm">
-                                    <i data-lucide="calendar" class="w-4 h-4"></i>
-                                    <span>Issued 2024</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Additional Certification 3 -->
-                        <div class="project-card bg-gradient-to-br from-navy-800 to-navy-900 border border-white/10 rounded-2xl overflow-hidden relative">
-                            <div class="absolute top-0 right-0 w-24 h-24 bg-red-500/10 rounded-full blur-2xl"></div>
-                            <!-- Certificate Image -->
-                            <div class="h-48 bg-gradient-to-r from-red-500/20 to-pink-500/20 relative overflow-hidden">
-                                <img src="assets/certificates/Skillup-AI.jpg" alt="Artificial Intelligence Certificate" class="w-full h-full object-cover opacity-95">
-                                <div class="absolute inset-0 bg-gradient-to-t from-navy-900/40 to-transparent"></div>
-                            </div>
-                            <div class="p-6 relative">
-                                <div class="flex items-center justify-between mb-4">
-                                    <div class="w-12 h-12 bg-red-500/20 rounded-lg flex items-center justify-center">
-                                        <i data-lucide="award" class="w-6 h-6 text-red-400"></i>
-                                    </div>
-                                    
-                                </div>
-                                <h3 class="text-xl font-bold text-white mb-2">Artificial Intelligence Fundamentals</h3>
-                                <p class="text-red-400 font-medium text-sm mb-4">SkillUp by Simplilearn</p>
-                                <p class="text-slate-300 mb-4">
-                                    Comprehensive AI certification covering machine learning algorithms, neural networks, deep learning, and practical AI implementation strategies.
-                                </p>
-                                <div class="flex items-center gap-2 text-slate-400 text-sm">
-                                    <i data-lucide="calendar" class="w-4 h-4"></i>
-                                    <span>Issued 2024</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Additional Certification 4 -->
-                        <div class="project-card bg-gradient-to-br from-navy-800 to-navy-900 border border-white/10 rounded-2xl overflow-hidden relative">
-                            <div class="absolute top-0 right-0 w-24 h-24 bg-blue-600/10 rounded-full blur-2xl"></div>
-                            <!-- Certificate Image -->
-                            <div class="h-48 bg-gradient-to-r from-blue-600/20 to-indigo-500/20 relative overflow-hidden">
-                                <img src="assets/certificates/HackerRank-TheHourofCode.jpg" alt="HackerRank Hour of Code Certificate" class="w-full h-full object-cover opacity-95">
-                                <div class="absolute inset-0 bg-gradient-to-t from-navy-900/40 to-transparent"></div>
-                            </div>
-                            <div class="p-6 relative">
-                                <div class="flex items-center justify-between mb-4">
-                                    <div class="w-12 h-12 bg-blue-600/20 rounded-lg flex items-center justify-center">
-                                        <i data-lucide="award" class="w-6 h-6 text-blue-500"></i>
-                                    </div>
-                                    
-                                </div>
-                                <h3 class="text-xl font-bold text-white mb-2">The Hour of Code</h3>
-                                <p class="text-blue-500 font-medium text-sm mb-4">HackerRank</p>
-                                <p class="text-slate-300 mb-4">
-                                    Programming challenge completion certificate demonstrating problem-solving skills and algorithmic thinking in competitive programming environment.
-                                </p>
-                                <div class="flex items-center gap-2 text-slate-400 text-sm">
-                                    <i data-lucide="calendar" class="w-4 h-4"></i>
-                                    <span>Issued 2023</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Additional Certification 5 -->
-                        <div class="project-card bg-gradient-to-br from-navy-800 to-navy-900 border border-white/10 rounded-2xl overflow-hidden relative">
-                            <div class="absolute top-0 right-0 w-24 h-24 bg-violet-500/10 rounded-full blur-2xl"></div>
-                            <!-- Certificate Image -->
-                            <div class="h-48 bg-gradient-to-r from-violet-500/20 to-purple-500/20 relative overflow-hidden">
-                                <img src="assets/certificates/NPTEL-Python.jpg" alt="NPTEL Python Certificate" class="w-full h-full object-cover opacity-95">
-                                <div class="absolute inset-0 bg-gradient-to-t from-navy-900/40 to-transparent"></div>
-                            </div>
-                            <div class="p-6 relative">
-                                <div class="flex items-center justify-between mb-4">
-                                    <div class="w-12 h-12 bg-violet-500/20 rounded-lg flex items-center justify-center">
-                                        <i data-lucide="award" class="w-6 h-6 text-violet-400"></i>
-                                    </div>
-                                    
-                                </div>
-                                <h3 class="text-xl font-bold text-white mb-2">Programming in Python</h3>
-                                <p class="text-violet-400 font-medium text-sm mb-4">NPTEL (IIT)</p>
-                                <p class="text-slate-300 mb-4">
-                                    Advanced Python programming certification from Indian Institute of Technology covering object-oriented programming, data structures, and algorithms.
-                                </p>
-                                <div class="flex items-center gap-2 text-slate-400 text-sm">
-                                    <i data-lucide="calendar" class="w-4 h-4"></i>
-                                    <span>Issued 2023</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Additional Certification 6 -->
-                        <div class="project-card bg-gradient-to-br from-navy-800 to-navy-900 border border-white/10 rounded-2xl overflow-hidden relative">
-                            <div class="absolute top-0 right-0 w-24 h-24 bg-indigo-600/10 rounded-full blur-2xl"></div>
-                            <!-- Certificate Image -->
-                            <div class="h-48 bg-gradient-to-r from-indigo-600/20 to-blue-600/20 relative overflow-hidden">
-                                <img src="assets/certificates/Linkedin C.jpg" alt="C Programming Certificate" class="w-full h-full object-cover opacity-95">
-                                <div class="absolute inset-0 bg-gradient-to-t from-navy-900/40 to-transparent"></div>
-                            </div>
-                            <div class="p-6 relative">
-                                <div class="flex items-center justify-between mb-4">
-                                    <div class="w-12 h-12 bg-indigo-600/20 rounded-lg flex items-center justify-center">
-                                        <i data-lucide="award" class="w-6 h-6 text-indigo-500"></i>
-                                    </div>
-                                    
-                                </div>
-                                <h3 class="text-xl font-bold text-white mb-2">C Programming Fundamentals</h3>
-                                <p class="text-indigo-500 font-medium text-sm mb-4">LinkedIn Learning</p>
-                                <p class="text-slate-300 mb-4">
-                                    Foundational C programming certification covering memory management, pointers, data structures, and system-level programming concepts.
-                                </p>
-                                <div class="flex items-center gap-2 text-slate-400 text-sm">
-                                    <i data-lucide="calendar" class="w-4 h-4"></i>
-                                    <span>Issued 2023</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Publications Section -->
-            <section id="publications" class="py-20 px-6">
-                <div class="max-w-6xl mx-auto">
-                    <div class="text-center mb-16">
-                        <h2 class="text-4xl font-heading font-bold text-white mb-4">Publications</h2>
-                        <p class="text-slate-400 max-w-2xl mx-auto">
-                            Research contributions and academic publications in the field of data science
-                        </p>
-                    </div>
-
-                    <div class="space-y-8">
-                        <!-- Publication 1 -->
-                        <div class="bg-gradient-to-br from-navy-800 to-navy-900 border border-white/10 rounded-3xl p-8 relative overflow-hidden">
-                            <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl"></div>
-                            <div class="relative">
-                                <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-6">
-                                    <div class="flex-1">
-                                        <div class="flex items-center gap-3 mb-4">
-                                            <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center">
-                                                <i data-lucide="file-text" class="w-6 h-6 text-blue-400"></i>
-                                            </div>
-                                            <div>
-                                                <h3 class="text-2xl font-bold text-white">A Survey on Large Language Models: Overview and Applications</h3>
-                                                <p class="text-blue-400 font-medium">International Research Journal of Engineering and Technology (IRJET)</p>
-                                            </div>
-                                        </div>
-                                        <p class="text-slate-300 leading-relaxed mb-6 max-w-4xl">
-                                            Authored a comprehensive introduction to Large Language Models and Generative AI, detailing evolution, transformer architecture, and providing a practical guide for domain-specific LLMs like Llama 2. The paper covers fundamental concepts, applications, and implementation strategies for modern AI systems.
-                                        </p>
-                                        <div class="flex flex-wrap gap-4 items-center">
-                                            <div class="flex items-center gap-2 text-slate-400 text-sm">
-                                                <i data-lucide="calendar" class="w-4 h-4"></i>
-                                                <span>Published June 2024</span>
-                                            </div>
-                                            <div class="flex items-center gap-2 text-slate-400 text-sm">
-                                                <i data-lucide="book-open" class="w-4 h-4"></i>
-                                                <span>Research Paper</span>
-                                            </div>
-                                            <div class="flex items-center gap-2 text-slate-400 text-sm">
-                                                <i data-lucide="users" class="w-4 h-4"></i>
-                                                <span>Single Author</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="mt-6 lg:mt-0 lg:ml-8 flex flex-col gap-3">
-                                        <a href="https://www.irjet.net/archives/V11/i6/IRJET-V11I6149.pdf" class="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-400 transition-colors flex items-center gap-2">
-                                            
-                                            View Paper
-                                        </a>
-                                        <div class="flex flex-wrap gap-2">
-                                            <span class="tech-tag bg-blue-500/10 text-blue-300 px-3 py-1 rounded-full text-sm">LLM</span>
-                                            <span class="tech-tag bg-purple-500/10 text-purple-300 px-3 py-1 rounded-full text-sm">Transformers</span>
-                                            <span class="tech-tag bg-green-500/10 text-green-300 px-3 py-1 rounded-full text-sm">AI Research</span>
-                                            <span class="tech-tag bg-teal-500/10 text-teal-300 px-3 py-1 rounded-full text-sm">Survey Paper</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Contact Section -->
-            <section id="contact" class="py-20 px-6">
-                <div class="max-w-5xl mx-auto">
-                    <div class="bg-gradient-to-br from-navy-800 to-navy-900 border border-white/10 rounded-3xl p-8 md:p-12 overflow-hidden relative">
-                        <div class="absolute top-0 right-0 w-64 h-64 bg-teal-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 relative z-10">
+        <main class="h-full w-full flex flex-col">
+            <!-- CONTENT -->
+            <section
+                id="contentScroller"
+                class="flex-1 relative overflow-y-auto h-full scroll-smooth">
+                <div class="grid-bg absolute inset-0 opacity-40 pointer-events-none"></div>
+                <!-- PROFILE -->
+                <div
+                    data-section="profile"
+                    class="section-container w-full flex items-start">
+                    <div class="max-w-6xl mx-auto px-6 md:px-14 py-10 md:py-12">
+                        <!-- Profile Layout: Two columns on desktop, stacked on mobile -->
+                        <div class="grid md:grid-cols-2 gap-8 items-start mb-12">
+                            <!-- Left: Text Content -->
                             <div>
-                                <h2 class="text-3xl font-heading font-bold text-white mb-6">Let's Connect</h2>
-                                <p class="text-slate-400 mb-8">
-                                    I’m currently seeking entry‑level roles in Data Analytics, Data Science, Software Engineering, or Software Development. <br>Open to relocation and excited to work on real‑world, data‑driven problems.
-                                </p>
-                                
-                                <div class="space-y-6">
-                                    <a href="mailto:cgajji@ksu.edu" class="flex items-center gap-4 text-slate-300 hover:text-teal-400 transition-colors">
-                                        <div class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center">
-                                            <i data-lucide="mail" class="w-5 h-5"></i>
-                                        </div>
-                                        <div>
-                                            <p class="text-sm text-slate-500">Email</p>
-                                            <p class="font-medium">cgajji@ksu.edu</p>
-                                        </div>
-                                    </a>
-                                    
-                                    <div class="flex items-center gap-4 text-slate-300">
-                                        <div class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center">
-                                            <i data-lucide="phone" class="w-5 h-5"></i>
-                                        </div>
-                                        <div>
-                                            <p class="text-sm text-slate-500">Phone</p>
-                                            <p class="font-medium">+1(785)317-5938</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="flex items-center gap-4 text-slate-300">
-                                        <div class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center">
-                                            <i data-lucide="map-pin" class="w-5 h-5"></i>
-                                        </div>
-                                        <div>
-                                            <p class="text-sm text-slate-500">Location</p>
-                                            <p class="font-medium">Manhattan, KS, USA</p>
-                                        </div>
-                                    </div>
+                                <div class="flex items-center gap-2 mb-3">
+                                    <br>
+                                    <br>
+                                    <span class="status-dot"></span>
+                                    <span class="font-mono text-[10px] uppercase tracking-wider text-muted">Available for work</span>
+                                </div>
+                                <h1 id="sidebarName" class="font-serif text-4xl md:text-5xl leading-tight mb-2">Chakrapani Gajji</h1>
+                                <p id="sidebarRole" class="text-lg text-muted">Research Data Analyst</p>
+                                <br>
+                                <br>
+                                <h2 class="font-serif text-5xl md:text-6xl leading-[0.95] mb-8 tracking-tight">I turn messy data<br>
+                                    into
+                                    <em id="tagline" class="text-accent font-light italic">insights that drive impact</em>.</h2>
+                            </div>
+                            <!-- Right: Profile Image -->
+                            <div class="hidden md:flex self-stretch items-center justify-center">
+                                <img
+                                    id="profileImage"
+                                    src="Chakrapani_Gajji.jpg"
+                                    alt="Profile"
+                                    class="profile-image"
+                                    onerror="this.onerror=null; this.src='Chakrapani_Gajji.png';">
+                            </div>
+                        </div>
+                        <!-- Full width text below -->
+                        <p
+                            id="aboutText"
+                            class="text-lg md:text-xl text-muted leading-relaxed max-w-4xl mb-12">Data
+                            professional with hands-on expertise in data governance, institutional research
+                            analytics, and reproducible research pipelines. Skilled in Python, SQL, R, and
+                            BI tools. Analyzed 50,000+ records, supported 20+ stakeholders, and drove 15%
+                            operational efficiency gains across higher education settings.</p>
+                        <!-- Stats -->
+                        <div
+                            class="grid grid-cols-2 md:grid-cols-4 gap-px bg-[var(--border)] border border-subtle rounded-lg overflow-hidden mb-12">
+                            <div class="bg-surface p-5">
+                                <div class="font-serif text-3xl mb-1">
+                                    50K<span class="text-accent">+</span>
+                                </div>
+                                <div class="font-mono text-[10px] uppercase tracking-wider text-muted">
+                                    Records analyzed
                                 </div>
                             </div>
-
-                            <form class="space-y-4" id="contact-form" action="https://formspree.io/f/myzedaon" method="POST">
-                                <div>
-                                    <label class="block text-sm font-medium text-slate-400 mb-1">Name</label>
-                                    <input type="text" name="name" required class="w-full bg-navy-900 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-teal-500 transition-colors" placeholder="John Doe">
+                            <div class="bg-surface p-5">
+                                <div class="font-serif text-3xl mb-1">
+                                    20<span class="text-accent">+</span>
                                 </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-slate-400 mb-1">Email</label>
-                                    <input type="email" name="email" required class="w-full bg-navy-900 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-teal-500 transition-colors" placeholder="john@example.com">
+                                <div class="font-mono text-[10px] uppercase tracking-wider text-muted">
+                                    Stakeholders served
                                 </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-slate-400 mb-1">Message</label>
-                                    <textarea name="message" rows="4" required class="w-full bg-navy-900 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-teal-500 transition-colors" placeholder="Hello..."></textarea>
+                            </div>
+                            <div class="bg-surface p-5">
+                                <div class="font-serif text-3xl mb-1">
+                                    15%
                                 </div>
-                                <button type="submit" id="submit-btn" class="w-full bg-teal-500 text-navy-900 font-bold py-3 rounded-lg hover:bg-teal-400 transition-colors shadow-lg shadow-teal-500/20">
-                                    <span id="submit-text">Send Message</span>
-                                    <span id="submit-loading" class="hidden">Sending...</span>
-                                </button>
-                            </form>
+                                <div class="font-mono text-[10px] uppercase tracking-wider text-muted">
+                                    Efficiency gains
+                                </div>
+                            </div>
+                            <div class="bg-surface p-5">
+                                <div class="font-serif text-3xl mb-1">
+                                    98%
+                                </div>
+                                <div class="font-mono text-[10px] uppercase tracking-wider text-muted">
+                                    Avg accuracy
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Skill grid -->
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <h2 class="font-serif text-4xl md:text-5xl mb-12 tracking-tight">Technical
+                                <em class="text-accent italic font-light">skills</em>.</h2>
+                            <br>
+                            <div class="bg-surface border border-subtle rounded-lg p-5">
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+                                        Programming &amp; Data
+                                    </div>
+                                    <i data-lucide="code" class="w-3.5 h-3.5 text-muted"></i>
+                                </div>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="chip">Python</span><span class="chip">SQL</span><span class="chip">R</span><span class="chip">Java</span><span class="chip">Git</span>
+                                </div>
+                            </div>
+                            <div class="bg-surface border border-subtle rounded-lg p-5">
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+                                        ML &amp; Statistical
+                                    </div>
+                                    <i data-lucide="brain" class="w-3.5 h-3.5 text-muted"></i>
+                                </div>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="chip">scikit-learn</span><span class="chip">TensorFlow</span><span class="chip">NLP</span><span class="chip">Forecasting</span><span class="chip">Modeling</span>
+                                </div>
+                            </div>
+                            <div class="bg-surface border border-subtle rounded-lg p-5">
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+                                        BI &amp; Visualization
+                                    </div>
+                                    <i data-lucide="bar-chart-3" class="w-3.5 h-3.5 text-muted"></i>
+                                </div>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="chip">Tableau</span><span class="chip">Power BI</span><span class="chip">Streamlit</span><span class="chip">Matplotlib</span><span class="chip">Excel</span>
+                                </div>
+                            </div>
+                            <div class="bg-surface border border-subtle rounded-lg p-5">
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+                                        Platforms &amp; Tools
+                                    </div>
+                                    <i data-lucide="server" class="w-3.5 h-3.5 text-muted"></i>
+                                </div>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="chip">Databricks</span><span class="chip">AWS</span><span class="chip">Docker</span><span class="chip">Jupyter</span><span class="chip">SAS/SPSS</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section>
-        </main>
-
-        <!-- Footer -->
-        <footer class="relative z-10 border-t border-white/5 bg-navy-900/50 backdrop-blur-sm mt-20">
-            <div class="max-w-7xl mx-auto px-6 py-12">
-                <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-                    <div class="text-center md:text-left">
-                        <h3 class="text-xl font-heading font-bold text-white">Chakrapani Gajji</h3>
-                        <p class="text-slate-400 text-sm mt-1">Chakrapani Gajji | Data Analytics Graduate | Data & Software Engineer</p>
-                    </div>
-
-                    <div class="flex items-center gap-6">
-                        <a href="https://linkedin.com/in/chakrapanigajji" target="_blank" rel="noreferrer" class="text-slate-400 hover:text-teal-400 transition-colors">
-                            <i data-lucide="linkedin" class="w-5 h-5"></i>
-                        </a>
-                        <a href="https://github.com/Chakrapani2122" target="_blank" rel="noreferrer" class="text-slate-400 hover:text-teal-400 transition-colors">
-                            <i data-lucide="github" class="w-5 h-5"></i>
-                        </a>
-                        <a href="mailto:cgajji@ksu.edu" class="text-slate-400 hover:text-teal-400 transition-colors">
-                            <i data-lucide="mail" class="w-5 h-5"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="mt-8 pt-8 border-t border-white/5 text-center text-xs text-slate-500">
-                    © 2026 Chakrapani Gajji. All rights reserved.
                 </div>
             </div>
-        </footer>
+            <!-- EXPERIENCE -->
+            <div
+                data-section="experience"
+                class="section-container w-full flex items-start">
+                <div class="max-w-6xl mx-auto px-6 md:px-14 py-10 md:py-12">
+                    <div class="stagger"></div>
+                    <h2 class="font-serif text-4xl md:text-5xl mb-12 tracking-tight">A timeline of
+                        <em class="text-accent italic font-light">impact</em>.</h2>
+                    <div class="relative pl-8 border-l border-subtle space-y-10">
+                        <div class="timeline-dot relative">
+                            <div class="flex flex-wrap items-baseline gap-3 mb-2">
+                                <span class="font-mono text-[10px] uppercase tracking-wider text-accent">Aug 2024 — Present</span>
+                                <span class="font-mono text-[10px] text-muted">· Manhattan, KS</span>
+                            </div>
+                            <h3 class="font-serif text-2xl mb-1">Research Data Analyst &amp; Data Manager</h3>
+                            <div class="text-sm text-muted mb-3">
+                                Kansas State University · Higher Education
+                            </div>
+                            <p class="text-muted leading-relaxed mb-3">Engineered reproducible research
+                                pipelines handling 50,000+ records with Git and Docker, reducing processing time
+                                by 20%. Established data governance framework with validation routines achieving
+                                peer-reviewed grant reporting standards.</p>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="chip">Python</span><span class="chip">R</span><span class="chip">Docker</span><span class="chip">Git</span>
+                            </div>
+                        </div>
+                        <div class="timeline-dot relative">
+                            <div class="flex flex-wrap items-baseline gap-3 mb-2">
+                                <span class="font-mono text-[10px] uppercase tracking-wider text-accent">Jan 2025 — May 2025</span>
+                                <span class="font-mono text-[10px] text-muted">· Manhattan, KS</span>
+                            </div>
+                            <h3 class="font-serif text-2xl mb-1">Institutional Research Analyst: Data Governance &amp; Analytics</h3>
+                            <div class="text-sm text-muted mb-3">
+                                Kansas State University · Analytics &amp; Insights
+                            </div>
+                            <p class="text-muted leading-relaxed mb-3">Spearheaded NLP classification models
+                                on 5,000+ survey responses, surfacing 8+ policy themes. Developed 5 interactive
+                                Power BI dashboards and directed cross-functional team of 3 analysts producing
+                                12+ prioritized recommendations.</p>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="chip">NLP</span><span class="chip">Power BI</span><span class="chip">Python</span><span class="chip">Survey Analysis</span>
+                            </div>
+                        </div>
+                        <div class="timeline-dot relative">
+                            <div class="flex flex-wrap items-baseline gap-3 mb-2">
+                                <span class="font-mono text-[10px] uppercase tracking-wider text-accent">Jan 2023 — May 2023</span>
+                                <span class="font-mono text-[10px] text-muted">· Hyderabad, India</span>
+                            </div>
+                            <h3 class="font-serif text-2xl mb-1">Data Analyst Intern</h3>
+                            <div class="text-sm text-muted mb-3">
+                                Oasis Infobyte · FinTech Operations
+                            </div>
+                            <p class="text-muted leading-relaxed mb-3">Developed ML models for email
+                                classification and sales forecasting using TensorFlow achieving 97% accuracy.
+                                Optimized pipelines cutting model runtime by 30%, enabling production deployment
+                                across 3 business units.</p>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="chip">TensorFlow</span><span class="chip">scikit-learn</span><span class="chip">Tableau</span><span class="chip">Feature Engineering</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- EDUCATION -->
+        <div
+            data-section="education"
+            class="section-container w-full flex items-start">
+            <div class="max-w-6xl mx-auto px-6 md:px-14 py-10 md:py-12">
+                <div class="stagger"></div>
+                <h2 class="font-serif text-4xl md:text-5xl mb-12 tracking-tight">Degrees &amp;
+                    <em class="text-accent italic font-light">continuous learning</em>.</h2>
+                <div class="grid md:grid-cols-2 gap-5">
+                    <div class="bg-surface border border-subtle rounded-lg p-6">
+                        <div class="flex items-start justify-between mb-4">
+                            <i data-lucide="graduation-cap" class="w-6 h-6 text-accent"></i>
+                            <span class="font-mono text-[10px] uppercase tracking-wider text-muted">Aug 2024 - May 2026</span>
+                        </div>
+                        <h3 class="font-serif text-xl mb-1">M.S., Data Analytics</h3>
+                        <div class="text-sm text-muted mb-2">
+                            Kansas State University
+                        </div>
+                        <div class="text-sm text-accent font-mono mb-3">
+                            GPA:
+                            <span id="gpaDisplay">3.89/4.0</span>
+                        </div>
+                        <p class="text-sm text-muted leading-relaxed">Advanced coursework in statistical
+                            modeling, machine learning, and data governance for higher education
+                            institutions.</p>
+                    </div>
+                    <div class="bg-surface border border-subtle rounded-lg p-6">
+                        <div class="flex items-start justify-between mb-4">
+                            <i data-lucide="book-open" class="w-6 h-6 text-accent"></i>
+                            <span class="font-mono text-[10px] uppercase tracking-wider text-muted">Oct 2020 - Apr 2024</span>
+                        </div>
+                        <h3 class="font-serif text-xl mb-1">B.Tech, Computer Science Engineering (AI/ML)</h3>
+                        <div class="text-sm text-muted mb-2">
+                            Sri Indu College of Engineering and Technology
+                        </div>
+                        <div class="text-sm text-muted mb-3">
+                            GPA: 3.4/4.0
+                        </div>
+                        <p class="text-sm text-muted leading-relaxed">Specialized in artificial
+                            intelligence and machine learning with focus on practical data applications.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+    <!-- PROJECTS -->
+    <div
+        data-section="projects"
+        class="section-container w-full flex items-start">
+        <div class="max-w-6xl mx-auto px-6 md:px-14 py-10 md:py-12">
+            <div class="stagger"></div>
+            <h2 class="font-serif text-4xl md:text-5xl mb-12 tracking-tight">Work I'm
+                <em class="text-accent italic font-light">passionate</em>
+                about.</h2>
+            <div class="space-y-5">
+                <!-- Project 1 -->
+                <a
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="card-link">
+                    <article
+                        class="project-card bg-surface border border-subtle rounded-lg overflow-hidden cursor-pointer group">
+                        <div class="grid md:grid-cols-3 gap-0">
+                            <div
+                                class="md:col-span-1 aspect-square md:aspect-auto bg-gradient-to-br from-[var(--chart-2)] to-[var(--chart-1)] relative overflow-hidden border-r border-subtle flex items-center justify-center">
+                                <img src='assets/projects/IRKSU.jpg' alt="Project 1" class="card-media-image"/>
+                            </div>
+                            <div class="md:col-span-2 p-6 flex flex-col justify-between">
+                                <div>
+                                    <div
+                                        class="flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider text-muted mb-3">
+                                        <span class="text-accent">Research</span>
+                                        ·
+                                        <span>Jan 2025 – May 2025</span>
+                                    </div>
+                                    <h3 class="font-serif text-2xl mb-2">Institutional Research: KSU</h3>
+                                    <p class="text-muted leading-relaxed mb-4">Conducted institutional research on
+                                        5,000+ student survey responses, applying statistical and NLP techniques to
+                                        identify trends and key drivers supporting strategic decision-making. Built
+                                        Tableau dashboards and executive-level reports, delivering 10+ actionable
+                                        recommendations to improve operational efficiency.</p>
+                                </div>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="chip">Tableau</span><span class="chip">Power BI</span><span class="chip">Python</span><span class="chip">NLP</span><span class="chip">Statistical Analysis</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </a>
+                <!-- Project 2 -->
+                <a
+                    href="https://public.tableau.com/app/profile/chakrapani.gajji/viz/AnInflationStoryADeepDiveintoFoodPricesinUSA/AnInflationStoryADeepDiveintoFoodPrices_"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="card-link">
+                    <article
+                        class="project-card bg-surface border border-subtle rounded-lg overflow-hidden cursor-pointer group">
+                        <div class="grid md:grid-cols-3 gap-0">
+                            <div
+                                class="md:col-span-1 aspect-square md:aspect-auto bg-gradient-to-br from-[var(--chart-4)] to-[var(--chart-2)] relative overflow-hidden border-r border-subtle flex items-center justify-center">
+                                <img
+                                    src='assets/projects/food_prices.jpeg'
+                                    alt="Project 2"
+                                    class="card-media-image"/>
+                            </div>
+                            <div class="md:col-span-2 p-6 flex flex-col justify-between">
+                                <div>
+                                    <div
+                                        class="flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider text-muted mb-3">
+                                        <span class="text-accent">Visualization</span>
+                                        ·
+                                        <span>Aug 2025 – Sep 2025</span>
+                                    </div>
+                                    <h3 class="font-serif text-2xl mb-2">Food Price Inflation Dashboard</h3>
+                                    <p class="text-muted leading-relaxed mb-4">Developed 6 interactive Tableau
+                                        dashboards analyzing U.S. food price inflation with regional and commodity-level
+                                        drill-downs. Applied time-series and trend analysis to identify seasonal and
+                                        long-term patterns for stakeholder decision-making.</p>
+                                </div>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="chip">Tableau</span><span class="chip">Power BI</span><span class="chip">Python</span><span class="chip">Excel</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </a>
+                <!-- Project 3 -->
+                <a
+                    href="https://public.tableau.com/app/profile/chakrapani.gajji/viz/AnatomyofaTremorAGlobalLookatRecentEarthquakes/AnatomyofaTremorAGlobalLookatRecentEarthquakes"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="card-link">
+                    <article
+                        class="project-card bg-surface border border-subtle rounded-lg overflow-hidden cursor-pointer group">
+                        <div class="grid md:grid-cols-3 gap-0">
+                            <div
+                                class="md:col-span-1 aspect-square md:aspect-auto bg-gradient-to-br from-[var(--chart-3)] to-[var(--chart-4)] relative overflow-hidden border-r border-subtle flex items-center justify-center">
+                                <img
+                                    src='assets/projects/earthquakes.jpeg'
+                                    alt="Project 3"
+                                    class="card-media-image"/>
+                            </div>
+                            <div class="md:col-span-2 p-6 flex flex-col justify-between">
+                                <div>
+                                    <div
+                                        class="flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider text-muted mb-3">
+                                        <span class="text-accent">Visualization</span>
+                                        ·
+                                        <span>Jun 2025 – Jul 2025</span>
+                                    </div>
+                                    <h3 class="font-serif text-2xl mb-2">EarthQuake Analysis Dashboard</h3>
+                                    <p class="text-muted leading-relaxed mb-4">Built Tableau dashboards with
+                                        geospatial maps to analyze 5,000+ seismic events. Improved interpretability of
+                                        risk patterns through interactive filtering and aggregation for emergency
+                                        management teams.</p>
+                                </div>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="chip">Tableau</span><span class="chip">Power BI</span><span class="chip">Excel</span><span class="chip">Python</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </a>
+                <!-- Project 4 -->
+                <a
+                    href="https://github.com/Chakrapani2122/Iris-Flower-Species-Recognition-Project"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="card-link">
+                    <article
+                        class="project-card bg-surface border border-subtle rounded-lg overflow-hidden cursor-pointer group">
+                        <div class="grid md:grid-cols-3 gap-0">
+                            <div
+                                class="md:col-span-1 aspect-square md:aspect-auto bg-gradient-to-br from-[var(--chart-1)] to-[var(--chart-3)] relative overflow-hidden border-r border-subtle flex items-center justify-center">
+                                <img src='assets/projects/iris.jpg' alt="Project 4" class="card-media-image"/>
+                            </div>
+                            <div class="md:col-span-2 p-6 flex flex-col justify-between">
+                                <div>
+                                    <div
+                                        class="flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider text-muted mb-3">
+                                        <span class="text-accent">Machine Learning</span>
+                                        ·
+                                        <span>Mar 2024 – Apr 2024</span>
+                                    </div>
+                                    <h3 class="font-serif text-2xl mb-2">Iris Flower Classification</h3>
+                                    <p class="text-muted leading-relaxed mb-4">Developed classification models to
+                                        identify iris species, achieving 98% accuracy. Performed feature analysis,
+                                        visualization, and model evaluation using scikit-learn and Streamlit for
+                                        interactive deployment.</p>
+                                </div>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="chip">Python</span><span class="chip">Scikit-Learn</span><span class="chip">Streamlit</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </a>
+                <!-- Project 5 -->
+                <a
+                    href="https://vividtones.streamlit.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="card-link">
+                    <article
+                        class="project-card bg-surface border border-subtle rounded-lg overflow-hidden cursor-pointer group">
+                        <div class="grid md:grid-cols-3 gap-0">
+                            <div
+                                class="md:col-span-1 aspect-square md:aspect-auto bg-gradient-to-br from-[var(--chart-2)] to-[var(--chart-4)] relative overflow-hidden border-r border-subtle flex items-center justify-center">
+                                <img
+                                    src='assets/projects/vividtones.jpg'
+                                    alt="Project 5"
+                                    class="card-media-image"/>
+                            </div>
+                            <div class="md:col-span-2 p-6 flex flex-col justify-between">
+                                <div>
+                                    <div
+                                        class="flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider text-muted mb-3">
+                                        <span class="text-accent">Development</span>
+                                        ·
+                                        <span>Dec 2023 – Apr 2024</span>
+                                    </div>
+                                    <h3 class="font-serif text-2xl mb-2">VividTones - Image Colorization</h3>
+                                    <p class="text-muted leading-relaxed mb-4">Engineered a CNN-based TensorFlow
+                                        pipeline for image colorization with multiple artistic modes. Improved
+                                        processing efficiency by 25% and deployed a demo application with GPU
+                                        acceleration.</p>
+                                </div>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="chip">Python</span><span class="chip">OpenCV</span><span class="chip">TensorFlow</span><span class="chip">Streamlit</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </a>
+                <!-- Project 6 -->
+                <a
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="card-link">
+                    <article
+                        class="project-card bg-surface border border-subtle rounded-lg overflow-hidden cursor-pointer group">
+                        <div class="grid md:grid-cols-3 gap-0">
+                            <div
+                                class="md:col-span-1 aspect-square md:aspect-auto bg-gradient-to-br from-[var(--chart-4)] to-[var(--chart-3)] relative overflow-hidden border-r border-subtle flex items-center justify-center">
+                                <img src='assets/projects/sales.jpg' alt="Project 6" class="card-media-image"/>
+                            </div>
+                            <div class="md:col-span-2 p-6 flex flex-col justify-between">
+                                <div>
+                                    <div
+                                        class="flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider text-muted mb-3">
+                                        <span class="text-accent">Analytics</span>
+                                        ·
+                                        <span>Sep 2024 – Nov 2024</span>
+                                    </div>
+                                    <h3 class="font-serif text-2xl mb-2">Sales Analytics Dashboard</h3>
+                                    <p class="text-muted leading-relaxed mb-4">Built sales performance dashboards
+                                        with forecasting and NLP-based insights. Identified key revenue drivers and
+                                        supported strategic planning across multiple business units.</p>
+                                </div>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="chip">Power BI</span><span class="chip">Python</span><span class="chip">Forecasting</span><span class="chip">Excel</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </a>
+                <!-- Project 7 -->
+                <a
+                    href="https://github.com/Chakrapani2122/E-mail-Spam-Detection-Project"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="card-link">
+                    <article
+                        class="project-card bg-surface border border-subtle rounded-lg overflow-hidden cursor-pointer group">
+                        <div class="grid md:grid-cols-3 gap-0">
+                            <div
+                                class="md:col-span-1 aspect-square md:aspect-auto bg-gradient-to-br from-[var(--chart-3)] to-[var(--chart-1)] relative overflow-hidden border-r border-subtle flex items-center justify-center">
+                                <img src='assets/projects/spam.jpg' alt="Project 7" class="card-media-image"/>
+                            </div>
+                            <div class="md:col-span-2 p-6 flex flex-col justify-between">
+                                <div>
+                                    <div
+                                        class="flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider text-muted mb-3">
+                                        <span class="text-accent">Machine Learning</span>
+                                        ·
+                                        <span>Mar 2024 – May 2024</span>
+                                    </div>
+                                    <h3 class="font-serif text-2xl mb-2">Spam Email Detection</h3>
+                                    <p class="text-muted leading-relaxed mb-4">Implemented NLP-based classification
+                                        models achieving 96% accuracy in spam detection. Applied text preprocessing,
+                                        feature extraction, and model evaluation techniques for production deployment.</p>
+                                </div>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="chip">Python</span><span class="chip">NLP</span><span class="chip">Scikit-Learn</span><span class="chip">Streamlit</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </a>
+                <!-- Project 8 -->
+                <a
+                    href="https://precision-object-counting.streamlit.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="card-link">
+                    <article
+                        class="project-card bg-surface border border-subtle rounded-lg overflow-hidden cursor-pointer group">
+                        <div class="grid md:grid-cols-3 gap-0">
+                            <div
+                                class="md:col-span-1 aspect-square md:aspect-auto bg-gradient-to-br from-[var(--chart-1)] to-[var(--chart-2)] relative overflow-hidden border-r border-subtle flex items-center justify-center">
+                                <img
+                                    src='assets/projects/counting.jpg'
+                                    alt="Project 8"
+                                    class="card-media-image"/>
+                            </div>
+                            <div class="md:col-span-2 p-6 flex flex-col justify-between">
+                                <div>
+                                    <div
+                                        class="flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider text-muted mb-3">
+                                        <span class="text-accent">Computer Vision</span>
+                                        ·
+                                        <span>Jan 2024 – Feb 2024</span>
+                                    </div>
+                                    <h3 class="font-serif text-2xl mb-2">Object Detection &amp; Counting</h3>
+                                    <p class="text-muted leading-relaxed mb-4">Built an automated object detection
+                                        and counting system using YOLO-based models. Achieved 94% accuracy in real-time
+                                        image processing for inventory and monitoring applications.</p>
+                                </div>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="chip">Python</span><span class="chip">OpenCV</span><span class="chip">TensorFlow</span><span class="chip">Image Processing</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </a>
+                <!-- Project 9 -->
+                <a
+                    href="https://github.com/Chakrapani2122/Billing-System-using-Python"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="card-link">
+                    <article
+                        class="project-card bg-surface border border-subtle rounded-lg overflow-hidden cursor-pointer group">
+                        <div class="grid md:grid-cols-3 gap-0">
+                            <div
+                                class="md:col-span-1 aspect-square md:aspect-auto bg-gradient-to-br from-[var(--chart-2)] to-[var(--chart-3)] relative overflow-hidden border-r border-subtle flex items-center justify-center">
+                                <img
+                                    src='assets/projects/Billing_System.png'
+                                    alt="Project 9"
+                                    class="card-media-image"/>
+                            </div>
+                            <div class="md:col-span-2 p-6 flex flex-col justify-between">
+                                <div>
+                                    <div
+                                        class="flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider text-muted mb-3">
+                                        <span class="text-accent">Software Development</span>
+                                        ·
+                                        <span>Nov 2023 – Dec 2023</span>
+                                    </div>
+                                    <h3 class="font-serif text-2xl mb-2">Automated Billing System</h3>
+                                    <p class="text-muted leading-relaxed mb-4">Designed and implemented a billing
+                                        system supporting invoice generation, payment tracking, and customer
+                                        management.</p>
+                                </div>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="chip">Python</span><span class="chip">MySQL</span><span class="chip">Tkinter</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </a>
+                <!-- Project 10 -->
+                <a
+                    href="https://github.com/Chakrapani2122/Weather-App"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="card-link">
+                    <article
+                        class="project-card bg-surface border border-subtle rounded-lg overflow-hidden cursor-pointer group">
+                        <div class="grid md:grid-cols-3 gap-0">
+                            <div
+                                class="md:col-span-1 aspect-square md:aspect-auto bg-gradient-to-br from-[var(--chart-4)] to-[var(--chart-1)] relative overflow-hidden border-r border-subtle flex items-center justify-center">
+                                <img
+                                    src='assets/projects/Weather_App.png'
+                                    alt="Project 10"
+                                    class="card-media-image"/>
+                            </div>
+                            <div class="md:col-span-2 p-6 flex flex-col justify-between">
+                                <div>
+                                    <div
+                                        class="flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider text-muted mb-3">
+                                        <span class="text-accent">Application Development</span>
+                                        ·
+                                        <span>Oct 2023 – Nov 2023</span>
+                                    </div>
+                                    <h3 class="font-serif text-2xl mb-2">Weather Desktop Application</h3>
+                                    <p class="text-muted leading-relaxed mb-4">Developed a desktop application with
+                                        API-based weather forecasting, offline caching, and interactive displays.</p>
+                                </div>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="chip">Python</span><span class="chip">Tkinter</span><span class="chip">API Integration</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- CERTIFICATIONS -->
+<div
+    data-section="certifications"
+    class="section-container w-full flex items-start">
+    <div class="max-w-6xl mx-auto px-6 md:px-14 py-10 md:py-12">
+        <div class="stagger"></div>
+        <h2 class="font-serif text-4xl md:text-5xl mb-12 tracking-tight">Professional
+            <em class="text-accent italic font-light">credentials</em>.</h2>
+        <!-- Certifications Section -->
+        <div class="mb-14">
+            <h3 class="font-serif text-2xl mb-8">Certifications &amp; Achievements</h3>
+            <div class="grid grid-cols-1 gap-6">
+                <!-- Cert 1 -->
+                <a
+                    href="#"
+                    rel="noopener noreferrer"
+                    class="card-link bg-surface border border-subtle rounded-lg p-6 hover:border-[var(--accent)] transition-colors">
+                    <div class="flex gap-4 mb-4">
+                        <div class="cert-badge">
+                            <img
+                                src='assets/certificates/Data_Analysis_Coursera.png'
+                                alt="Certification 1"/>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-serif text-lg mb-1">Data Analysis with Python</h4>
+                            <div class="text-sm text-muted">
+                                IBM via Coursera
+                            </div>
+                            <div class="text-xs text-accent font-mono mt-1">
+                                Issued 2024
+                            </div>
+                            <p class="text-sm text-muted leading-relaxed">Comprehensive certification
+                        covering data manipulation, visualization, and analysis using Python libraries
+                        including Pandas, NumPy, and Matplotlib.</p>
+                        </div>
+                    </div>
+                    
+                </a>
+                <!-- Cert 2 -->
+                <a
+                    href="#"
+                    rel="noopener noreferrer"
+                    class="card-link bg-surface border border-subtle rounded-lg p-6 hover:border-[var(--accent)] transition-colors">
+                    <div class="flex gap-4 mb-4">
+                        <div class="cert-badge">
+                            <img
+                                src='assets/certificates/Introduction_to_Dat_Science_Infosys_Springboard.png'
+                                alt="Certification 2"/>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-serif text-lg mb-1">Introduction to Data Science</h4>
+                            <div class="text-sm text-muted">
+                                Infosys Springboard
+                            </div>
+                            <div class="text-xs text-accent font-mono mt-1">
+                                Issued 2023
+                            </div>
+                            <p class="text-sm text-muted leading-relaxed">Foundational certification in data
+                        science concepts, statistical analysis, and machine learning fundamentals with
+                        hands-on projects.</p>
+                        </div>
+                    </div>
+                    
+                </a>
+                <!-- Cert 3 -->
+                <a
+                    href="#"
+                    rel="noopener noreferrer"
+                    class="card-link bg-surface border border-subtle rounded-lg p-6 hover:border-[var(--accent)] transition-colors">
+                    <div class="flex gap-4 mb-4">
+                        <div class="cert-badge">
+                            <img src='assets/certificates/Linkedin SQL.jpg' alt="Certification 3"/>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-serif text-lg mb-1">SQL Essential Training</h4>
+                            <div class="text-sm text-muted">
+                                LinkedIn Learning
+                            </div>
+                            <div class="text-xs text-accent font-mono mt-1">
+                                Issued 2024
+                            </div>
+                            <p class="text-sm text-muted leading-relaxed">Advanced SQL certification
+                        covering complex queries, database design, and performance optimization for data
+                        analysis workflows.</p>
+                        </div>
+                    </div>
+                    
+                </a>
+                <!-- Cert 4 -->
+                <a
+                    href="#"
+                    rel="noopener noreferrer"
+                    class="card-link bg-surface border border-subtle rounded-lg p-6 hover:border-[var(--accent)] transition-colors">
+                    <div class="flex gap-4 mb-4">
+                        <div class="cert-badge">
+                            <img src='assets/certificates/LSSYB.jpg' alt="Certification 4"/>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-serif text-lg mb-1">Lean Six Sigma Yellow Belt</h4>
+                            <div class="text-sm text-muted">
+                                Kansas State University
+                            </div>
+                            <div class="text-xs text-accent font-mono mt-1">
+                                Issued 2024
+                            </div>
+                            <p class="text-sm text-muted leading-relaxed">Process improvement methodology
+                        certification focusing on data-driven decision making and operational excellence
+                        in business environments.</p>
+                        </div>
+                    </div>
+                    
+                </a>
+                <!-- Cert 5 -->
+                <a
+                    href="#"
+                    rel="noopener noreferrer"
+                    class="card-link bg-surface border border-subtle rounded-lg p-6 hover:border-[var(--accent)] transition-colors">
+                    <div class="flex gap-4 mb-4">
+                        <div class="cert-badge">
+                            <img src='assets/certificates/OOPs Python.png' alt="Certification 5"/>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-serif text-lg mb-1">Python OOP</h4>
+                            <div class="text-sm text-muted">
+                                LinkedIn Learning
+                            </div>
+                            <div class="text-xs text-accent font-mono mt-1">
+                                Issued 2023
+                            </div>
+                            <p class="text-sm text-muted leading-relaxed">Advanced Python programming
+                        certification focusing on object-oriented design patterns and software
+                        development best practices.</p>
+                        </div>
+                    </div>
+                    
+                </a>
+                <!-- Cert 6 -->
+                <a
+                    href="#"
+                    rel="noopener noreferrer"
+                    class="card-link bg-surface border border-subtle rounded-lg p-6 hover:border-[var(--accent)] transition-colors">
+                    <div class="flex gap-4 mb-4">
+                        <div class="cert-badge">
+                            <img src='assets/certificates/Coursera-Python.jpg' alt="Certification 6"/>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-serif text-lg mb-1">Python Basics</h4>
+                            <div class="text-sm text-muted">
+                                IBM via Coursera
+                            </div>
+                            <div class="text-xs text-accent font-mono mt-1">
+                                Issued 2023
+                            </div>
+                            <p class="text-sm text-muted leading-relaxed">Fundamental Python programming
+                        certification covering syntax, data structures, control flow, and basic
+                        programming concepts.</p>
+                        </div>
+                    </div>
+                    
+                </a>
+                <!-- Cert 7 -->
+                <a
+                    href="#"
+                    rel="noopener noreferrer"
+                    class="card-link bg-surface border border-subtle rounded-lg p-6 hover:border-[var(--accent)] transition-colors">
+                    <div class="flex gap-4 mb-4">
+                        <div class="cert-badge">
+                            <img src='assets/certificates/excel.jpeg' alt="Certification 7"/>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-serif text-lg mb-1">Advanced Excel for Analytics</h4>
+                            <div class="text-sm text-muted">
+                                Professional Development
+                            </div>
+                            <div class="text-xs text-accent font-mono mt-1">
+                                Issued 2024
+                            </div>
+                            <p class="text-sm text-muted leading-relaxed">Advanced Excel certification
+                        covering pivot tables, complex formulas, data analysis tools, and dashboard
+                        creation for business intelligence.</p>
+                        </div>
+                    </div>
+                    
+                </a>
+                <!-- Cert 8 -->
+                <a
+                    href="#"
+                    rel="noopener noreferrer"
+                    class="card-link bg-surface border border-subtle rounded-lg p-6 hover:border-[var(--accent)] transition-colors">
+                    <div class="flex gap-4 mb-4">
+                        <div class="cert-badge">
+                            <img src='assets/certificates/databases.jpeg' alt="Certification 8"/>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-serif text-lg mb-1">Database Management Systems</h4>
+                            <div class="text-sm text-muted">
+                                Professional Certification
+                            </div>
+                            <div class="text-xs text-accent font-mono mt-1">
+                                Issued 2024
+                            </div>
+                            <p class="text-sm text-muted leading-relaxed">Comprehensive database management
+                        certification covering SQL, NoSQL, database design, optimization, and data
+                        warehousing principles.</p>
+                        </div>
+                    </div>
+                    
+                </a>
+                <!-- Cert 9 -->
+                <a
+                    href="#"
+                    rel="noopener noreferrer"
+                    class="card-link bg-surface border border-subtle rounded-lg p-6 hover:border-[var(--accent)] transition-colors">
+                    <div class="flex gap-4 mb-4">
+                        <div class="cert-badge">
+                            <img src='assets/certificates/Skillup-AI.jpg' alt="Certification 1"/>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-serif text-lg mb-1">AI Fundamentals</h4>
+                            <div class="text-sm text-muted">
+                                SkillUp by Simplilearn
+                            </div>
+                            <div class="text-xs text-accent font-mono mt-1">
+                                Issued 2024
+                            </div>
+                            <p class="text-sm text-muted leading-relaxed">Comprehensive AI certification
+                        covering machine learning algorithms, neural networks, deep learning, and
+                        practical AI implementation strategies.</p>
+                        </div>
+                    </div>
+                    
+                </a>
+                <!-- Cert 10 -->
+                <a
+                    href="#"
+                    rel="noopener noreferrer"
+                    class="card-link bg-surface border border-subtle rounded-lg p-6 hover:border-[var(--accent)] transition-colors">
+                    <div class="flex gap-4 mb-4">
+                        <div class="cert-badge">
+                            <img
+                                src='assets/certificates/HackerRank-TheHourofCode.jpg'
+                                alt="Certification 10"/>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-serif text-lg mb-1">The Hour of Code</h4>
+                            <div class="text-sm text-muted">
+                                HackerRank
+                            </div>
+                            <div class="text-xs text-accent font-mono mt-1">
+                                Issued 2023
+                            </div>
+                            <p class="text-sm text-muted leading-relaxed">Programming challenge completion
+                        certificate demonstrating problem-solving skills and algorithmic thinking in
+                        competitive programming.</p>
+                        </div>
+                    </div>
+                    
+                </a>
+                <!-- Cert 11 -->
+                <a
+                    href="#"
+                    rel="noopener noreferrer"
+                    class="card-link bg-surface border border-subtle rounded-lg p-6 hover:border-[var(--accent)] transition-colors">
+                    <div class="flex gap-4 mb-4">
+                        <div class="cert-badge">
+                            <img src='assets/certificates/NPTEL-Python.jpg' alt="Certification 11"/>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-serif text-lg mb-1">Programming in Python</h4>
+                            <div class="text-sm text-muted">
+                                NPTEL (IIT)
+                            </div>
+                            <div class="text-xs text-accent font-mono mt-1">
+                                Issued 2023
+                            </div>
+                            <p class="text-sm text-muted leading-relaxed">Advanced Python programming
+                        certification from Indian Institute of Technology covering OOP, data structures,
+                        and algorithms.</p>
+                        </div>
+                    </div>
+                    
+                </a>
+                <!-- Cert 12 -->
+                <a
+                    href="#"
+                    rel="noopener noreferrer"
+                    class="card-link bg-surface border border-subtle rounded-lg p-6 hover:border-[var(--accent)] transition-colors">
+                    <div class="flex gap-4 mb-4">
+                        <div class="cert-badge">
+                            <img src='assets/certificates/Linkedin C.jpg' alt="Certification 12"/>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-serif text-lg mb-1">C Programming Fundamentals</h4>
+                            <div class="text-sm text-muted">
+                                LinkedIn Learning
+                            </div>
+                            <div class="text-xs text-accent font-mono mt-1">
+                                Issued 2023
+                            </div>
+                            <p class="text-sm text-muted leading-relaxed">Foundational C programming
+                        certification covering memory management, pointers, data structures, and
+                        system-level programming concepts.</p>
+                        </div>
+                    </div>
+                    
+                </a>
+            </div>
+        </div>
+        <!-- Publications Section -->
+        <h3 class="font-serif text-2xl mb-8">Publications &amp; Research</h3>
+        <a
+            href="https://www.irjet.net/archives/V11/i6/IRJET-V11I6149.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="card-link bg-surface border border-subtle rounded-lg p-8 hover:border-[var(--accent)] transition-colors">
+            <div class="flex items-start gap-4 mb-4">
 
-    <!-- Initialize Lucide icons -->
-    <script>
-        // Initialize Lucide icons when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            if (window.lucide) {
-                lucide.createIcons();
-            }
-        });
-    </script>
+                <div class="flex-1">
+                    <h4 class="font-serif text-xl mb-1">A Survey on Large Language Models: Overview and Applications</h4>
+                    <div class="text-sm text-muted mb-2">
+                        International Research Journal of Engineering and Technology (IRJET)
+                    </div>
+                    <div class="flex gap-3 text-xs text-accent font-mono mb-3">
+                        <span>Published June 2024</span>
+                        <span>·</span>
+                        <span>Research Paper</span>
+                    </div>
+                </div>
+            </div>
+            <p class="text-muted leading-relaxed mb-4">Authored a comprehensive introduction
+                to Large Language Models and Generative AI, detailing evolution, transformer
+                architecture, and providing a practical guide for domain-specific LLMs like
+                Llama 2. The paper covers fundamental concepts, applications, and implementation
+                strategies for modern AI systems.</p>
+            <div class="flex flex-wrap gap-1.5">
+                <span class="chip">LLM</span><span class="chip">Transformers</span><span class="chip">AI Research</span><span class="chip">Survey Paper</span>
+            </div>
+        </a>
+    </div>
+</div>
+</div>
+</div>
+<!-- CONTACT -->
+<div
+data-section="contact"
+class="section-container w-full flex items-start">
+<div class="max-w-6xl mx-auto px-6 md:px-14 py-10 md:py-12">
+<div class="stagger"></div>
+<h2 class="font-serif text-5xl md:text-7xl leading-[0.95] mb-8 tracking-tight">Let's build
+    <br>
+    something
+    <em class="text-accent italic font-light">meaningful</em>.</h2>
+<p class="text-lg text-muted leading-relaxed max-w-xl mb-10">Open to full-time opportunities, research collaborations, and consulting engagements. I reply to every thoughtful message within 24 hours.</p>
+<!-- Contact Links -->
+<div class="grid md:grid-cols-2 gap-4 mb-12">
+    <a
+        id="emailLink"
+        href="mailto:cgajji@ksu.edu"
+        class="group bg-surface border border-subtle rounded-lg p-5 flex items-center gap-4 hover:border-[var(--accent)]">
+        <div
+            class="w-10 h-10 rounded-lg bg-[var(--bg)] flex items-center justify-center shrink-0">
+            <i data-lucide="mail" class="w-4 h-4 text-accent"></i>
+        </div>
+        <div class="flex-1 min-w-0">
+            <div class="font-mono text-[10px] uppercase tracking-wider text-muted mb-0.5">
+                Email
+            </div>
+            <div id="emailText" class="text-sm truncate">
+                cgajji@ksu.edu
+            </div>
+        </div>
+        <i
+            data-lucide="arrow-up-right"
+            class="w-4 h-4 text-muted group-hover:text-accent transition-colors"></i>
+    </a>
+    <a
+        id="phoneLink"
+        href="tel:+17853175938"
+        class="group bg-surface border border-subtle rounded-lg p-5 flex items-center gap-4 hover:border-[var(--accent)]">
+        <div
+            class="w-10 h-10 rounded-lg bg-[var(--bg)] flex items-center justify-center shrink-0">
+            <i data-lucide="phone" class="w-4 h-4 text-accent"></i>
+        </div>
+        <div class="flex-1 min-w-0">
+            <div class="font-mono text-[10px] uppercase tracking-wider text-muted mb-0.5">
+                Phone
+            </div>
+            <div id="phoneText" class="text-sm truncate">
+                (785) 317-5938
+            </div>
+        </div>
+        <i
+            data-lucide="arrow-up-right"
+            class="w-4 h-4 text-muted group-hover:text-accent transition-colors"></i>
+    </a>
+    <a
+        id="linkedinLink"
+        href="https://linkedin.com/in/chakrapanigajji"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group bg-surface border border-subtle rounded-lg p-5 flex items-center gap-4 hover:border-[var(--accent)]">
+        <div
+            class="w-10 h-10 rounded-lg bg-[var(--bg)] flex items-center justify-center shrink-0">
+            <i data-lucide="linkedin" class="w-4 h-4 text-accent"></i>
+        </div>
+        <div class="flex-1 min-w-0">
+            <div class="font-mono text-[10px] uppercase tracking-wider text-muted mb-0.5">
+                LinkedIn
+            </div>
+            <div id="linkedinText" class="text-sm truncate">
+                /in/chakrapanigajji
+            </div>
+        </div>
+        <i
+            data-lucide="arrow-up-right"
+            class="w-4 h-4 text-muted group-hover:text-accent transition-colors"></i>
+    </a>
+    <a
+        id="githubLink"
+        href="https://github.com/Chakrapani2122"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group bg-surface border border-subtle rounded-lg p-5 flex items-center gap-4 hover:border-[var(--accent)]">
+        <div
+            class="w-10 h-10 rounded-lg bg-[var(--bg)] flex items-center justify-center shrink-0">
+            <i data-lucide="github" class="w-4 h-4 text-accent"></i>
+        </div>
+        <div class="flex-1 min-w-0">
+            <div class="font-mono text-[10px] uppercase tracking-wider text-muted mb-0.5">
+                GitHub
+            </div>
+            <div id="githubText" class="text-sm truncate">
+                Chakrapani2122
+            </div>
+        </div>
+        <i
+            data-lucide="arrow-up-right"
+            class="w-4 h-4 text-muted group-hover:text-accent transition-colors"></i>
+    </a>
+</div>
+<!-- Contact Form -->
+<div class="bg-surface border border-subtle rounded-lg p-8">
+    <h3 class="font-serif text-2xl mb-6">Send me a message</h3>
+    <form
+        id="contactForm"
+        action="https://formspree.io/f/myzedaon"
+        method="POST"
+        class="space-y-5">
+        <div class="grid md:grid-cols-2 gap-5">
+            <div>
+                <label
+                    for="firstName"
+                    class="font-mono text-[10px] uppercase tracking-wider text-muted mb-2 block">First Name</label>
+                <input
+                    type="text"
+                    id="firstName"
+                    name="first_name"
+                    required="required"
+                    class="form-input w-full"
+                    placeholder="Your first name">
+            </div>
+            <div>
+                <label
+                    for="lastName"
+                    class="font-mono text-[10px] uppercase tracking-wider text-muted mb-2 block">Last Name</label>
+                <input
+                    type="text"
+                    id="lastName"
+                    name="last_name"
+                    required="required"
+                    class="form-input w-full"
+                    placeholder="Your last name">
+            </div>
+        </div>
+        <div>
+            <label
+                for="email"
+                class="font-mono text-[10px] uppercase tracking-wider text-muted mb-2 block">Email</label>
+            <input
+                type="email"
+                id="email"
+                name="email"
+                required="required"
+                class="form-input w-full"
+                placeholder="your.email@example.com">
+        </div>
+        <div>
+            <label
+                for="message"
+                class="font-mono text-[10px] uppercase tracking-wider text-muted mb-2 block">Message</label>
+            <textarea
+                id="message"
+                name="message"
+                required="required"
+                rows="5"
+                class="form-input w-full"
+                placeholder="Your message here..."></textarea>
+        </div>
+            <button type="submit" class="form-button">Send Message</button>
+            <p id="contactFormStatus" class="form-status" role="status" aria-live="polite"></p>
+    </form>
+</div>
+<div class="flex items-center gap-3 pt-6 border-t border-subtle">
+    <i data-lucide="map-pin" class="w-3.5 h-3.5 text-muted"></i>
+    <span id="locationText" class="text-sm text-muted">Manhattan, KS 66502</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<script>
+const defaultConfig = {
+full_name: "Chakrapani Gajji",
+role_title: "Research Data Analyst & Data Manager",
+tagline: "insights that drive impact",
+about_text: "Data professional with hands-on expertise in data governance, institutional re" +
+"search analytics, and reproducible research pipelines. Skilled in Python, SQL," +
+" R, and BI tools. Analyzed 50,000+ records, supported 20+ stakeholders, and dr" +
+"ove 15% operational efficiency gains across higher education settings.",
+location: "Manhattan, KS 66502",
+gpa: "3.89/4.0",
+email_address: "cgajji@ksu.edu",
+phone_number: "(785) 317-5938",
+linkedin_handle: "/in/chakrapanigajji",
+github_handle: "Chakrapani2122",
+profile_image_url: "Chakrapani_Gajji.jpg",
+formspree_id: "myzedaon"
+};
+
+const root = document.documentElement;
+const savedTheme = localStorage.getItem('da-theme');
+if (savedTheme === 'light') {
+root.classList.remove('dark');
+} else {
+root.classList.add('dark');
+}
+
+const themeToggle = document.getElementById('themeToggleNav');
+const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+const mobileNav = document.getElementById('mobileNav');
+
+themeToggle.addEventListener('click', (e) => {
+e.preventDefault();
+e.stopPropagation();
+root
+.classList
+.toggle('dark');
+localStorage.setItem(
+'da-theme',
+root.classList.contains('dark')
+? 'dark'
+: 'light'
+);
+});
+
+mobileMenuToggle.addEventListener('click', (e) => {
+e.preventDefault();
+e.stopPropagation();
+const isOpen = mobileNav
+.classList
+.contains('hidden');
+if (isOpen) {
+mobileNav
+.classList
+.remove('hidden');
+setTimeout(() => {
+mobileNav.style.maxHeight = mobileNav.scrollHeight + 'px';
+}, 10);
+} else {
+mobileNav.style.maxHeight = '0';
+setTimeout(() => mobileNav.classList.add('hidden'), 300);
+}
+});
+
+// Close mobile menu when nav item is clicked
+const allNavButtons = document.querySelectorAll('[data-nav]');
+allNavButtons.forEach(btn => {
+btn.addEventListener('click', () => {
+if (window.innerWidth < 768) {
+mobileNav.style.maxHeight = '0';
+setTimeout(() => mobileNav.classList.add('hidden'), 300);
+}
+});
+});
+
+// Update both desktop and mobile nav items
+function updateNav(target) {
+const desktopNavs = document.querySelectorAll('.nav-horizontal');
+const mobileNavs = document.querySelectorAll('.nav-item-mobile');
+
+desktopNavs.forEach(nav => {
+nav
+.classList
+.toggle('active', nav.dataset.nav === target);
+});
+
+mobileNavs.forEach(nav => {
+nav
+.classList
+.toggle('active', nav.dataset.nav === target);
+});
+}
+
+// Update active nav on theme toggle
+document
+.getElementById('themeToggleNav')
+.addEventListener('click', () => {
+const themeToggle = document.getElementById('themeToggleNav');
+const isDark = root
+.classList
+.contains('dark');
+themeToggle
+.classList
+.toggle('dark', isDark);
+});
+
+// Navigation click handlers
+allNavButtons.forEach(btn => {
+btn.addEventListener('click', () => {
+const target = btn.dataset.nav;
+updateNav(target);
+
+const targetSection = document.querySelector(`[data-section="${target}"]`);
+if (targetSection) {
+targetSection.scrollIntoView({behavior: 'smooth', block: 'start'});
+}
+});
+});
+
+function applyConfig(config) {
+const c = {
+...defaultConfig,
+...config
+};
+const name = c.full_name || defaultConfig.full_name;
+const parts = name
+.trim()
+.split(/\s+/);
+const initials = (
+parts[0]
+?.[0] || ''
+) + (
+parts[parts.length - 1]
+?.[0] || ''
+);
+document
+.getElementById('initials')
+.textContent = initials.toUpperCase() || 'CG';
+document
+.getElementById('sidebarName')
+.textContent = name;
+document
+.getElementById('sidebarRole')
+.textContent = c.role_title || defaultConfig.role_title;
+document
+.getElementById('tagline')
+.textContent = c.tagline || defaultConfig.tagline;
+document
+.getElementById('aboutText')
+.textContent = c.about_text || defaultConfig.about_text;
+document
+.getElementById('locationText')
+.textContent = c.location || defaultConfig.location;
+document
+.getElementById('gpaDisplay')
+.textContent = c.gpa || defaultConfig.gpa;
+document
+.getElementById('emailText')
+.textContent = c.email_address || defaultConfig.email_address;
+document
+.getElementById('emailLink')
+.href = `mailto:${c.email_address || defaultConfig.email_address}`;
+document
+.getElementById('phoneText')
+.textContent = c.phone_number || defaultConfig.phone_number;
+document
+.getElementById('phoneLink')
+.href = `tel:${ (c.phone_number || defaultConfig.phone_number).replace(
+/\s/g,
+''
+)}`;
+document
+.getElementById('linkedinText')
+.textContent = c.linkedin_handle || defaultConfig.linkedin_handle;
+document
+.getElementById('githubText')
+.textContent = c.github_handle || defaultConfig.github_handle;
+
+const imgUrl = c.profile_image_url || defaultConfig.profile_image_url;
+document
+.getElementById('profileImage')
+.src = imgUrl;
+
+const formId = c.formspree_id || defaultConfig.formspree_id;
+document
+.getElementById('contactForm')
+.action = `https://formspree.io/f/${formId}`;
+}
+
+const contactForm = document.getElementById('contactForm');
+const contactFormStatus = document.getElementById('contactFormStatus');
+
+if (contactForm && contactFormStatus) {
+contactForm.addEventListener('submit', async (e) => {
+e.preventDefault();
+
+const submitButton = contactForm.querySelector('button[type="submit"]');
+const originalButtonText = submitButton
+? submitButton.textContent
+: 'Send Message';
+
+if (submitButton) {
+submitButton.disabled = true;
+submitButton.textContent = 'Sending...';
+}
+
+contactFormStatus.className = 'form-status';
+contactFormStatus.textContent = 'Sending your message...';
+
+try {
+const response = await fetch(contactForm.action, {
+method: 'POST',
+body: new FormData(contactForm),
+headers: {
+Accept: 'application/json'
+}
+});
+
+if (response.ok) {
+contactFormStatus.className = 'form-status success';
+contactFormStatus.textContent = 'Message sent successfully.';
+contactForm.reset();
+} else {
+let errorMessage = 'Failed to send message. Please try again.';
+try {
+const errorData = await response.json();
+if (errorData && Array.isArray(errorData.errors) && errorData.errors.length > 0) {
+errorMessage = errorData.errors
+.map(err => err.message)
+.filter(Boolean)
+.join(' ');
+}
+} catch (_) {}
+
+contactFormStatus.className = 'form-status error';
+contactFormStatus.textContent = errorMessage;
+}
+} catch (_) {
+contactFormStatus.className = 'form-status error';
+contactFormStatus.textContent = 'Network error. Please check your connection and try again.';
+} finally {
+if (submitButton) {
+submitButton.disabled = false;
+submitButton.textContent = originalButtonText;
+}
+}
+});
+}
+
+applyConfig(defaultConfig);
+
+if (window.elementSdk) {
+window
+.elementSdk
+.init({
+defaultConfig,
+onConfigChange: async (config) => applyConfig(config),
+mapToCapabilities: () => (
+{recolorables: [], borderables: [], fontEditable: undefined, fontSizeable: undefined}
+),
+mapToEditPanelValues: (config) => {
+const c = {
+    ...defaultConfig,
+    ...config
+};
+return new Map([
+    [
+        'full_name', c.full_name
+    ],
+    [
+        'role_title', c.role_title
+    ],
+    [
+        'tagline', c.tagline
+    ],
+    [
+        'about_text', c.about_text
+    ],
+    [
+        'location', c.location
+    ],
+    [
+        'gpa', c.gpa
+    ],
+    [
+        'email_address', c.email_address
+    ],
+    [
+        'phone_number', c.phone_number
+    ],
+    [
+        'linkedin_handle', c.linkedin_handle
+    ],
+    [
+        'github_handle', c.github_handle
+    ],
+    [
+        'profile_image_url', c.profile_image_url
+    ],
+    [
+        'formspree_id', c.formspree_id
+    ]
+]);
+}
+});
+}
+
+lucide.createIcons();
+</script>
+<script>
+(function () {
+function c() {
+var b = a.contentDocument || a.contentWindow.document;
+if (b) {
+var d = b.createElement('script');
+d.innerHTML = "window.__CF$cv$params={r:'9f192afc454dd1a6',t:'MTc3NzA3NjI3OS4wMDAwMDA='};var " +
+    "a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platfo" +
+    "rm/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a" +
+    ");";
+b
+.getElementsByTagName('head')[0]
+.appendChild(d)
+}
+}
+if (document.body) {
+var a = document.createElement('iframe');
+a.height = 1;
+a.width = 1;
+a.style.position = 'absolute';
+a.style.top = 0;
+a.style.left = 0;
+a.style.border = 'none';
+a.style.visibility = 'hidden';
+document
+.body
+.appendChild(a);
+if ('loading' !== document.readyState) 
+c();
+else if (window.addEventListener) 
+document.addEventListener('DOMContentLoaded', c);
+else {
+var e = document.onreadystatechange || function () {};
+document.onreadystatechange = function (b) {
+e(b);
+'loading' !== document.readyState && (document.onreadystatechange = e, c())
+}
+}
+}
+})();
+</script>
 </body>
 </html>
